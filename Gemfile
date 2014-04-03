@@ -39,6 +39,8 @@ gem 'execjs'
 gem 'pry'
 gem 'annotate'
 gem 'bcrypt-ruby'
+gem 'spork', '~> 1.0rc'
+gem 'factory_girl'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -51,3 +53,19 @@ gem 'bcrypt-ruby'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+group :test, :development do
+	gem 'rspec-rails'
+	gem 'pry-rails'
+	gem 'mysql2'
+end
+
+group :test do
+	gem 'selenium-webdriver'
+	gem 'capybara'
+end
+
+group :production do
+	gem 'pg'
+end
