@@ -11,7 +11,7 @@ body, input, select, textarea, a, div,{
   color: #130c0e
 }
 
-body{background-color: #FFF}
+body{background-color: #E7E7E7}
 .base_button {
   border: none;
   background-color:#44c767;
@@ -39,3 +39,49 @@ body{background-color: #FFF}
   position:relative;
   top:1px;
 }
+
+header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #444;
+  color: #FFF;
+}
+
+header div{
+  margin-top: 4px;
+  background-color: #333;
+  height: 80px;
+}
+
+header div a{
+  margin: -4px 5px 0 5px;
+  line-height: 80px;
+  float: right;
+  height: 80px;
+  border-top: 4px solid #444;
+  text-decoration: none;
+  cursor: pointer;
+  color: #FFF;
+  padding: 0 20px;
+}
+
+header div a:hover{
+  background-color: #111;
+  border-top: 4px solid #2D2C2C;
+  //border-top: 4px solid #E46A3F;
+}
+
+.scaffold{
+  width: 920px;
+  margin: 60px auto;
+  border: 2px solid #666;
+  border-radius: 4px;
+  padding: 40px;
+}
+
+.scaffold_top{
+  height: 84px;
+  width: 100%;
+}
+
