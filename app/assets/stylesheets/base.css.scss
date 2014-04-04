@@ -11,31 +11,26 @@ body, input, select, textarea, a, div,{
   color: #130c0e
 }
 
-body{background-color: #FFF}
-.base_button {
-  border: none;
-  background-color:#44c767;
-  -moz-border-radius:15px;
-  -webkit-border-radius:15px;
-  border-radius:8px;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-family:arial;
-  font-size:15px;
-  padding:7px 20px;
-  text-decoration:none;
-  outline: none;
-  font-weight: bold;
-}
-.base_button:hover {
-  border-bottom:1px solid #18ab29;
-  position:relative;
-  top:-1px;
+body{background-color: #E7E7E7;}
 
-}
-.base_button:active {
-  border: none;
-  position:relative;
-  top:1px;
-}
+//共用button
+.base_button {  border: none;  background-color:#44c767;  -moz-border-radius:15px;  -webkit-border-radius:15px;  border-radius:8px;  display:inline-block;  cursor:pointer;  color:#ffffff;  font-family:arial;  font-size:15px;  padding:7px 20px;  text-decoration:none;  outline: none;  font-weight: bold;}
+.base_button:hover {  border-bottom:1px solid #18ab29;  position:relative;  top:-1px;}
+.base_button:active {  border: none;  position:relative;  top:1px;}
+
+header{  position: absolute;  top: 0;  width: 100%;  background-color: #444;  color: #FFF;}
+
+header div{ margin-top: 4px;  background-color: #212121;  height: 80px;}
+
+header div div{  width: 1000px;  margin: 0 auto;}
+
+header div a{  margin: -4px 5px 0 5px;  line-height: 80px;  float: right;  height: 80px;  border-top: 4px solid #444;  text-decoration: none;  cursor: pointer;  color: #FFF;  padding: 0 20px;}
+
+header div a:hover{ background-color: #111;  border-top: 4px solid #E46A3F; }
+
+.scaffold{  min-height: 100%;  width: 940px;  margin: 85px auto 125px auto;  border: 1px solid #888;  border-radius: 4px;  padding: 0 30px;  background-color: #ffffff;}
+
+footer{  display: block;  margin-top: -84px;  height: 84px;  width: 100%;  background-color: #49565D;}
+
+.logo{ float: left; margin-left: 10px}
+

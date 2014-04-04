@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
+  $('body').attr 'overflow-y', 'hidden'
   $('.welcome_tip').fadeIn 2000, ->
   $('.welcome_signin, .welcome_signup').fadeIn 3000, ->
     $('#bg_img_second').fadeIn 5000

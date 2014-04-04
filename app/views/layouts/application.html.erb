@@ -6,18 +6,24 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<header style="background: pink">
-  <%= link_to "Users", '#' %>
-  <%= link_to "Settings", '#'%>
-  <%= link_to "Sign out", signout_path, method:"delete"%>
-  <%= link_to "Profile", current_user %>
+<header>
+  <div>
+    <div>
+      <%= image_tag 'Fdur_bubble.jpg', class: "logo"%>
+      <%= link_to "Sign out", signout_path, method:"delete"%>
+      <%= link_to "Settings", '#'%>
+    </div>
+  </div>
 </header>
+<body>
+<div class="scaffold">
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
 
 <%= yield %>
+</div>
 
 </body>
+<footer></footer>
 </html>
