@@ -12,5 +12,8 @@
 class Project < ActiveRecord::Base
   belongs_to :user
 
-  validates :content, length: {:maximum => 140}
+  validates :state, presence: true,
+                    in: ['private','public','closed','finished']
+
+  validates :name, presence: true
 end

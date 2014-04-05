@@ -2,9 +2,12 @@ FdurLink::Application.routes.draw do
   
   root 'sessions#new'
   
-  resources :users do
-    resources :projects
+  resources :users
+
+  resources :projects do
+    resources :milestones
   end
+
   get '/signup', to: 'users#new'
 
   resources :sessions, only: [:new, :create, :destroy]
