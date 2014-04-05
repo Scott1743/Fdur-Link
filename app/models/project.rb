@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   validates :state, presence: true,
-                    in: ['private','public','closed','finished']
+                    inclusion: ['private','public','closed','finished']
 
   validates :name, presence: true
 end
