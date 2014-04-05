@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
   before_action :set_project, only: [:show, :edit, :update, :destroy]
@@ -5,6 +6,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = current_user.projects.all
+    @project = current_user.projects.build
   end
 
   def show
@@ -18,9 +20,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build project_params
-    if @project.save
-      redirect_to action: :index, notice: 'Project was successfully created.' 
+    custom_project_params = project_params
+    if custom_project_params[:name].nil?
+      custom_project_params[:name] = '未命名'
+    end
+    custom_project_params[:state] = 'open'
+    project = current_user.projects.build custom_project_params
+    if project.save!
+      flash[:message] = 'success'
+
+      redirect_to action: :index
     else
       render action: 'new' 
     end
@@ -28,7 +37,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to [@user,@project], notice: 'Project was successfully updated.' 
+      redirect_to [@user,@project], notice: 'Project was successfully updated.'
     else
       render action: 'edit'
     end
@@ -47,7 +56,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:content, :user_id)
+      params.require(:project).permit(:name,:description,:is_public)
     end
 
     def find_current_user

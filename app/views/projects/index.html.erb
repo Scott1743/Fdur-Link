@@ -1,11 +1,12 @@
 <h1>Listing projects</h1>
-
+<p id="notice"><%= notice %></p>
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>State</th>
+      <th>Is_public?</th>
     </tr>
   </thead>
 
@@ -15,6 +16,7 @@
         <td><%= project.name %></td>
         <td><%= project.description %></td>
         <td><%= project.state %></td>
+        <td><%= project.is_public %></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(@user,project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,5 +26,16 @@
 </table>
 
 <br>
+<%= form_for :project,url: projects_path,methode: :post do |f| %>
+    <span>计划名</span>
+    <%= f.text_field :name %><br/>
+    <span>描述</span>
+    <%= f.text_area :description %><br/>
+    <%= f.radio_button :is_public, 'false', checked: true %>
+    <%= f.label :is_public, "private", value: 'false'%>
+    <%= f.radio_button :is_public, 'true' %>
+    <%= f.label :is_public, "public", value: 'true'%>
+    <%= f.submit %>
+<% end %>
 
 <%= link_to 'New Project', new_project_path %>
