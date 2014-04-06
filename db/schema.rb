@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140405082140) do
     t.string   "image"
     t.text     "description"
     t.integer  "user_id"
+    t.boolean  "is_public",   null: false
     t.string   "state",       null: false
     t.integer  "num"
     t.datetime "created_at"

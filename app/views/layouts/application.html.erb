@@ -10,16 +10,21 @@
   <div>
     <div>
       <%= image_tag 'Fdur_bubble.jpg', class: "logo"%>
-      <%= link_to "Sign out", signout_path, method:"delete"%>
-      <%= link_to "Settings", '#'%>
+      <% if signed_in? %>
+        <%= link_to "Sign out", signout_path, method:"delete"%>
+      <% else %>
+        <%= link_to "Sign in ",signin_path %>
+      <% end %>
     </div>
   </div>
 </header>
 <body>
-<div class="scaffold">
+<div class="scaffold_top"></div>
 <% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
+    <div id='flash_message' class="flash <%= key %>"><%= value %></div>
 <% end %>
+<div class="scaffold">
+
 
 <%= yield %>
 </div>
