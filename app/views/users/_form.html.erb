@@ -1,9 +1,13 @@
 <%= form_for(@user) do |f| %>
+	<% signup_error %>
     <%= f.label :email %><br>
-    <%= f.text_field :email %><br>
+    <%= f.text_field :email %><%= signup_error[:email].first .last unless signup_error[:email].first.blank? %><br>
     <%= f.label :password %><br>
-    <%= f.password_field :password %><br>
+    <%= f.password_field :password %><%= signup_error[:password].first.last unless signup_error[:password].first.blank? %><br>
     <%= f.label :password_confirmation,"Confirmation"%><br>
-    <%= f.password_field :password_confirmation%><br>
+    <%= f.password_field :password_confirmation%>
+    <% if signup_error[:password].blank? %>
+      <%= signup_error[:password_confirmation].first.last %>
+    <% end %><br>
     <%= f.submit "Create my account" %>
 <% end %>
