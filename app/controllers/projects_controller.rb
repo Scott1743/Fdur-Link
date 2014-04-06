@@ -26,11 +26,12 @@ class ProjectsController < ApplicationController
     end
     custom_project_params[:state] = 'open'
     project = current_user.projects.build custom_project_params
-    if project.save!
-      flash[:message] = 'success'
+    if project.save
+      flash[:success] = '建立成功'
 
       redirect_to action: :index
     else
+      flash.now[:failed]= '建立失败'
       render action: 'new' 
     end
   end
@@ -45,7 +46,8 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to user_projects_url
+    flash[:success] = '删除成功'
+    redirect_to projects_url
   end
 
   private
