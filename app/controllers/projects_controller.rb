@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_action :find_current_user
 
   def index
-    @projects = current_user.projects.all
+    @projects = current_user.projects.order(id: :desc).all
     @project = current_user.projects.build
   end
 
@@ -20,19 +20,23 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @projects = current_user.projects.order(id: :desc).all
     custom_project_params = project_params
-    if custom_project_params[:name].nil?
+    if custom_project_params[:name].blank?
       custom_project_params[:name] = '未命名'
     end
     custom_project_params[:state] = 'open'
     project = current_user.projects.build custom_project_params
-    if project.save
-      flash[:success] = '建立成功'
+    respond_to do |format|
+      if project.save
+        flash.now[:success] = '建立成功'
 
-      redirect_to action: :index
-    else
-      flash.now[:failed]= '建立失败'
-      render action: 'new' 
+        format.html { redirect_to action: :index }
+        format.js
+      else
+        flash.now[:failed]= '建立失败'
+        render action: 'new'
+      end
     end
   end
 
@@ -50,6 +54,11 @@ class ProjectsController < ApplicationController
     redirect_to projects_url
   end
 
+  def chang_state
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
@@ -58,7 +67,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name,:description,:is_public)
+      params.require(:project).permit(:name,:description,:is_public,:image)
     end
 
     def find_current_user
