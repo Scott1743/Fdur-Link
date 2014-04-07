@@ -1,41 +1,17 @@
-<h1>Listing projects</h1>
-<p id="notice"><%= notice %></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>State</th>
-      <th>Is_public?</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.description %></td>
-        <td><%= project.state %></td>
-        <td><%= project.is_public %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(@user,project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div id="list">
+  <%= render 'projects_list' %>
+</div>
 <br>
-<%= form_for :project,url: projects_path,methode: :post do |f| %>
-    <span>计划名</span>
-    <%= f.text_field :name %><br/>
-    <span>描述</span>
-    <%= f.text_area :description %><br/>
-    <%= f.radio_button :is_public, 'false', checked: true %>
-    <%= f.label :is_public, "private", value: 'false'%>
-    <%= f.radio_button :is_public, 'true' %>
-    <%= f.label :is_public, "public", value: 'true'%>
-    <%= f.submit %>
+<%= form_for :project,url: projects_path,methode: :post,remote: true do |f| %>
+  <span>计划名</span>
+  <%= f.text_field :name %><br/>
+  <span>描述</span>
+  <%= f.text_area :description %><br/>
+  <span>图片链接</span>
+  <%= f.text_field :image %><br/>
+  <%= f.radio_button :is_public, 'false', checked: true %>
+  <%= f.label :is_public, "private", value: 'false'%>
+  <%= f.radio_button :is_public, 'true' %>
+  <%= f.label :is_public, "public", value: 'true'%>
+  <%= f.submit %>
 <% end %>
-
-<%= link_to 'New Project', new_project_path %>

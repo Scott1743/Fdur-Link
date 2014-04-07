@@ -20,6 +20,9 @@ class Project < ActiveRecord::Base
 
   validates :state, presence: true,
                     inclusion: ['open','closed','finished']
+  VALID_IMAGE_REGEX = /http:\/\/[\s\S]+.(jpg|png|gif)/
+  validates :image, format: {with: VALID_IMAGE_REGEX}
+
   validates :is_public, inclusion: [true, false]
   validates :name, presence: true
 end
