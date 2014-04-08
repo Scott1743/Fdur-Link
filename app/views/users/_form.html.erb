@@ -1,19 +1,19 @@
 <%= form_for(@user) do |f| %>
-	<% signup_error %>
+	<% error=signup_error %>
     <span class="form_input_font">用户邮箱</span>
     <%= f.text_field :email , class: "form_input" %>
-    <% unless signup_error[:email].first.blank? %>
-      <span class="form_input_error"> *  <%= signup_error[:email].first.last %></span>
+    <% unless error[:email].first.blank? %>
+      <span class="form_input_error"> *  <%= error[:email].first.last %></span>
     <% end %>
     <span class="form_input_font">用户密码</span>
     <%= f.password_field :password, class: "form_input" %>
-    <% unless signup_error[:password].first.blank? %>
-     <span class="form_input_error"> *  <%= signup_error[:password].first.last %></span>
+    <% unless error[:password].first.blank? %>
+     <span class="form_input_error"> *  <%= error[:password].first.last %></span>
     <% end %>
     <span class="form_input_font">确认密码</span> 
     <%= f.password_field :password_confirmation , class: "form_input"%>
-    <% if signup_error[:password].blank? && !signup_error[:password_confirmation].blank? %>
-    <span class="form_input_error"> *  <%= signup_error[:password_confirmation].first.last %></span>
+    <% if error[:password].blank? && !error[:password_confirmation].blank? %>
+    <span class="form_input_error"> *  <%= error[:password_confirmation].first.last %></span>
     <% end %>
     <%= f.submit '注册帐号', class: "base_button form_button "%>
 <% end %>
