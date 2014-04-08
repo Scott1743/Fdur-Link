@@ -27,7 +27,7 @@
 <div class="projects">
 <ul>
 <% @projects.each_with_index do |project,index| %>
-  <% if (index%2 == 0) %>
+  <% if (index%3 == 0) %>
     <li>
       <div>
         <% if project.image.nil? %>
@@ -44,23 +44,43 @@
   <% end %>
 <% end %>
 </ul>
-  <ul>
-    <% @projects.each_with_index do |project,index| %>
-      <% if (index%2 == 1) %>
-        <li>
-          <div>
-            <% if project.image.nil? %>
-              <span><%= image_tag "http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=a21e736d3887e9504617f3692003227e/3bf33a87e950352ad24259a65143fbf2b2118b78.jpg?referer=ad26d2ce4dc2d562ab1fe5ddf516&x=.jpg" ,style:'width: 480px; max-height:500px; overflow:hidden;'%></span>
-            <% else %>
-              <span><%= image_tag project.image ,style: 'width: 480px; max-height:500px; overflow:hidden;'%></span>
-            <% end %>
-            <span class="project_span project_name" ><%= project.name %></span><br/>
-            <span class="project_span project_description" ><%= project.description %></span>
-            <span class="project_span project_milestone">milestone</span>
-          </div>
-          <span class="project_span project_comments">comments<br/>comments</span>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
+<ul>
+<% @projects.each_with_index do |project,index| %>
+  <% if (index%3 == 1) %>
+    <li>
+      <div>
+        <% if project.image.nil? %>
+          <span><%= image_tag "http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=a21e736d3887e9504617f3692003227e/3bf33a87e950352ad24259a65143fbf2b2118b78.jpg?referer=ad26d2ce4dc2d562ab1fe5ddf516&x=.jpg" ,style:'width: 480px; max-height:500px; overflow:hidden;'%></span>
+        <% else %>
+          <span><%= image_tag project.image ,style: 'width: 480px; max-height:500px; overflow:hidden;'%></span>
+        <% end %>
+        <span class="project_span project_name" ><%= project.name %></span><br/>
+        <span class="project_span project_description" ><%= project.description %></span>
+        <span class="project_span project_milestone">milestone</span>
+      </div>
+      <span class="project_span project_comments">comments<br/>comments</span>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+<ul>
+<% @projects.each_with_index do |project,index| %>
+  <% if (index%3 == 2) %>
+    <li>
+      <div>
+        <% if project.image.nil? %>
+          <span><%= image_tag "http://e.hiphotos.bdimg.com/album/s%3D550%3Bq%3D90%3Bc%3Dxiangce%2C100%2C100/sign=a21e736d3887e9504617f3692003227e/3bf33a87e950352ad24259a65143fbf2b2118b78.jpg?referer=ad26d2ce4dc2d562ab1fe5ddf516&x=.jpg" ,style:'width: 480px; max-height:500px; overflow:hidden;'%></span>
+        <% else %>
+          <span><%= image_tag project.image ,style: 'width: 480px; max-height:500px; overflow:hidden;'%></span>
+        <% end %>
+        <span class="project_span project_name" ><%= project.name %></span><br/>
+        <span class="project_span project_description" ><%= project.description %></span>
+        <span class="project_span project_milestone">milestone</span>
+      </div>
+      <span class="project_span project_comments">comments<br/>comments</span>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+
 </div>
