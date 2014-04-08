@@ -7,7 +7,7 @@ class CreateMilestones < ActiveRecord::Migration
       t.string :image
       t.integer :num
       t.string :state, null: false
-      t.integer :project_id
+      t.integer :project_id, null: false
 
       t.timestamps
     end

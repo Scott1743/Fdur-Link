@@ -3,18 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .projects{ width: 100%; }
 
-.projects ul{ display:inline-block; width: 480px; padding: 0;margin-left:10px;vertical-align: top; }
+.projects ul{ display:inline-block; width: 320px; padding: 0; margin-left:10px; vertical-align: top; }
 
-.projects ul li{ display:inline-block;margin-bottom: 15px;border: 1px solid #cccccc;border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc;-webkit-box-shadow:0 1px 2px 0 #cccccc; }
+.projects ul li{ display:inline-block; margin-top: 15px; border: 1px solid #cccccc; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; }
 
-.projects ul li div { border-bottom: 1px solid #cccccc;box-shadow: 0 1px 2px 0 #cccccc;-webkit-box-shadow:0 1px 2px 0 #cccccc;background-color:#4A525C; }
+.projects ul li div { border-bottom: 1px solid #cccccc; box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color:#4A525C; }
 
-.project_span { display:inline-block;width:460px;padding: 10px; }
+.project_span { display:inline-block; width: 300px; padding: 10px; }
 
-.project_name { font-size: 17px;font-weight: 600;color: #FDFDFD;overflow: hidden; }
+.project_name { font-size: 15px; color: #FDFDFD; overflow: hidden; }
 
-.project_description { font-size:15px;color: #FDFDFD;text-align: justify;text-justify: inter-ideograph; }
+.project_description { font-size: 14px; color: #FDFDFD; text-align: justify; text-justify: inter-ideograph; }
 
-.project_milestone { display:inline-block;width:460px;padding: 10px; background-color: #ffffff; }
+.project_milestone { display:inline-block; width: 460px; padding: 10px; background-color: #ffffff; }
 
-.project_comments { background-color: #f1f1f1;margin-top: 2px }
+.project_comments { background-color: #f1f1f1; margin-top: 2px }
+
+

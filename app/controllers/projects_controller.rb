@@ -21,12 +21,7 @@ class ProjectsController < ApplicationController
 
   def create
     @projects = current_user.projects.order(id: :desc).all
-    custom_project_params = project_params
-    if custom_project_params[:name].blank?
-      custom_project_params[:name] = '未命名'
-    end
-    custom_project_params[:state] = 'open'
-    project = current_user.projects.build custom_project_params
+    project = current_user.projects.build project_params
     respond_to do |format|
       if project.save
         flash.now[:success] = '建立成功'
@@ -62,7 +57,10 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = current_user.projects.where(id: params[:project_id]).first
+      if @project
+        redirect_to '/404.html'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

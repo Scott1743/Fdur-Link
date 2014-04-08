@@ -1,3 +1,4 @@
+#encoding: utf-8
 # == Schema Information
 #
 # Table name: projects
@@ -18,6 +19,8 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :milestones
 
+  before_validation :add_default_information
+
   validates :state, presence: true,
                     inclusion: ['open','closed','finished']
   VALID_IMAGE_REGEX = /http:\/\/[\s\S]+.(jpg|png|gif)/
@@ -25,4 +28,13 @@ class Project < ActiveRecord::Base
 
   validates :is_public, inclusion: [true, false]
   validates :name, presence: true
+
+  private
+
+  def add_default_information
+    self.state = 'open'
+    if self.name.nil?
+      self.name = '为命名'
+    end
+  end
 end
