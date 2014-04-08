@@ -1,3 +1,30 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.projects{ width: 100%; }
+
+.projects ul{ display:inline-block; width: 310px; padding: 0; margin-left:15px; vertical-align: top; }
+
+.projects ul li{ display:inline-block; margin-bottom: 15px; border: 1px solid #aaaaaa; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc;
+  transition: margin 0.2s;
+  -moz-transition: margin 0.2s;
+  -webkit-transition: margin 0.2s;
+  -o-transition: margin 0.2s; }
+
+.projects ul li div { border-bottom: 1px solid #aaaaaa; box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color:#4A525C; }
+
+.project_span { display:inline-block; width: 290px; padding: 10px;}
+
+.project_name { width: 295px;margin-left: -5px; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;font-size: 16px; color: #FDFDFD; overflow: hidden; }
+
+.project_description { font-size: 14px; color: #FDFDFD; text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
+
+.project_milestone { display:inline-block; width: 290px; padding: 10px; background-color: #ffffff; }
+
+.project_comments { background-color: #f1f1f1; margin-top: 2px; }
+
+.projects ul li:hover { margin-top: -4px; margin-bottom: 24px; box-shadow: 1px 3px 15px #aaa; }
+
+.new_project { background-color: #4A525C; margin: 0 auto; width: 960px; border: 1px solid #aaaaaa; border-radius: 4px; }
+
+
