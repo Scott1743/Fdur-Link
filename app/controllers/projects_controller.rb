@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects.order(id: :desc).all
     project = current_user.projects.build project_params
     respond_to do |format|
-      if project.save
+      if project.save!
         flash.now[:success] = '建立成功'
 
         format.html { redirect_to action: :index }
@@ -57,8 +57,8 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = current_user.projects.where(id: params[:project_id]).first
-      if @project
+      @project = current_user.projects.where(id: params[:id]).first
+      unless @project
         redirect_to '/404.html'
       end
     end
