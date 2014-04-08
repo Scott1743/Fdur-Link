@@ -1,3 +1,4 @@
+#encoding: utf-8
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
   before_action :check_signed_in ,except: [:new, :create]
@@ -18,15 +19,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       default_name = user_params[:email].match(/(\A[\w+\-.]+)@[a-z\d\-.]+\.[a-z]+\z/)[1]
       @user.create_user_detail name: default_name
-      flash.now[:success] = "welcome to the Fdur"
       sign_in @user
-      redirect_to @user, notice: 'Welcome To The Fdur' 
+      flash[:success] = "注册成功，欢迎来到Fdur"
+      redirect_to @user
     else
-      flash.now[:error] = 'Invalid email/password combination'
-      render action: :new
+      flash.now[:failed] = '注册失败，请检查您的注册信息'
+      render :new
     end
   end
 

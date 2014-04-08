@@ -1,10 +1,12 @@
+#encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :find_current_user
 
   def index
-    @projects = current_user.projects.all
+    @projects = current_user.projects.order(id: :desc).all
+    @project = current_user.projects.build
   end
 
   def show
@@ -18,17 +20,29 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build project_params
-    if @project.save
-      redirect_to action: :index, notice: 'Project was successfully created.' 
-    else
-      render action: 'new' 
+    @projects = current_user.projects.order(id: :desc).all
+    custom_project_params = project_params
+    if custom_project_params[:name].blank?
+      custom_project_params[:name] = '未命名'
+    end
+    custom_project_params[:state] = 'open'
+    project = current_user.projects.build custom_project_params
+    respond_to do |format|
+      if project.save
+        flash.now[:success] = '建立成功'
+
+        format.html { redirect_to action: :index }
+        format.js
+      else
+        flash.now[:failed]= '建立失败'
+        render action: 'new'
+      end
     end
   end
 
   def update
     if @project.update(project_params)
-      redirect_to [@user,@project], notice: 'Project was successfully updated.' 
+      redirect_to [@user,@project], notice: 'Project was successfully updated.'
     else
       render action: 'edit'
     end
@@ -36,8 +50,14 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to user_projects_url
+    flash[:success] = '删除成功'
+    redirect_to projects_url
   end
+
+  def chang_state
+
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -47,7 +67,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:content, :user_id)
+      params.require(:project).permit(:name,:description,:is_public,:image)
     end
 
     def find_current_user

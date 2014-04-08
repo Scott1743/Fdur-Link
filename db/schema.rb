@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330093852) do
+ActiveRecord::Schema.define(version: 20140405082140) do
+
+  create_table "milestones", force: true do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.text     "reflections"
+    t.string   "image"
+    t.integer  "num"
+    t.string   "state",       null: false
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "milestones", ["project_id"], name: "index_milestones_on_project_id", using: :btree
+  add_index "milestones", ["state"], name: "index_milestones_on_state", using: :btree
 
   create_table "permissions", force: true do |t|
     t.string   "name"
@@ -21,11 +36,19 @@ ActiveRecord::Schema.define(version: 20140330093852) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "content"
+    t.string   "name",        null: false
+    t.string   "image"
+    t.text     "description"
     t.integer  "user_id"
+    t.boolean  "is_public",   null: false
+    t.string   "state",       null: false
+    t.integer  "num"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["state"], name: "index_projects_on_state", using: :btree
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "user_details", force: true do |t|
     t.string   "name"
@@ -40,7 +63,7 @@ ActiveRecord::Schema.define(version: 20140330093852) do
   add_index "user_details", ["user_id"], name: "index_user_details_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email"
+    t.string   "email",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
@@ -48,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140330093852) do
     t.integer  "permission_id",   default: 1
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["permission_id"], name: "index_users_on_permission_id", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class SessionsController < ApplicationController
   layout false
 
@@ -8,7 +9,8 @@ class SessionsController < ApplicationController
   	user = User.find_by_email(params[:session][:email].downcase)
   	if user && user.authenticate(params[:session][:password])
   	  sign_in user
-  	  redirect_to user_projects_path current_user
+      flash[:success] = "欢迎回来,#{current_user.name}"
+  	  redirect_to projects_path current_user
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'

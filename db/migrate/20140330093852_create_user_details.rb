@@ -10,6 +10,5 @@ class CreateUserDetails < ActiveRecord::Migration
       t.timestamps
     end
     add_index :user_details, :user_id
-    remove_column :users, :name
   end
 end

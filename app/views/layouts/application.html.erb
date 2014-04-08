@@ -7,17 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header style="background: pink">
-  <%= link_to "Users", '#' %>
-  <%= link_to "Settings", '#'%>
-  <%= link_to "Sign out", signout_path, method:"delete"%>
-  <%= link_to "Profile", current_user %>
+<header>
+  <div>
+    <div>
+      <%= image_tag 'Fdur_1.jpg', class: "logo"%>
+      <% if signed_in? %>
+        <%= link_to "Sign out", signout_path, method:"delete"%>
+      <% else %>
+        <%= link_to "Sign in ",signin_path %>
+      <% end %>
+    </div>
+  </div>
 </header>
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
-
-<%= yield %>
-
+<div class="scaffold_overall">
+<div class="scaffold_top"></div>
+  <% flash.each do |key, value| %>
+      <div id='flash_message' class="flash <%= key %>"><%= value %></div>
+  <% end %>
+<div class="scaffold">
+  <%= yield %>
+</div>
+<div class="scaffold_footer"></div>
+</div>
+<footer></footer>
 </body>
 </html>
