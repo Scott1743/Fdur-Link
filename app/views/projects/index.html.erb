@@ -1,10 +1,10 @@
 
 <%= form_for :project,url: projects_path,methode: :post,remote: false do |f| %>
-  <div class="new_project">
-    <span class="project_new_name">计划名</span>
-    <%= f.text_field :name %><br/>
+  <div>
+    <span>计划名</span>
+      <%= f.text_field :name %><br/>
     <span>描述</span>
-    <%= f.text_area :description %><br/>
+      <%= f.text_area :description %><br/>
     <span>图片链接</span>
     <%= f.text_field :image %><br/>
     <%= f.radio_button :is_public, 'false', checked: true %>
