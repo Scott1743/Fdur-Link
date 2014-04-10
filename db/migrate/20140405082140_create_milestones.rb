@@ -3,7 +3,7 @@ class CreateMilestones < ActiveRecord::Migration
     create_table :milestones do |t|
       t.string :name, null: false
       t.text :description
-      t.text :reflections
+      t.text :reflection
       t.string :image
       t.integer :num
       t.string :state, null: false

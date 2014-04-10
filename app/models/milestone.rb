@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)      not null
 #  description :text
-#  reflections :text
+#  reflection  :text
 #  image       :string(255)
 #  num         :integer
 #  state       :string(255)      not null
