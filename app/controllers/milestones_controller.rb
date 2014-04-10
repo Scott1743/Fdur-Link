@@ -3,11 +3,11 @@ class MilestonesController < ApplicationController
   before_action :set_project
 
   def create
-    binding.pry
-    milestone = @project.milestones.build
-    if milestone.save!
-      render
-    end
+    milestone = @project.milestones.build milestone_params
+    @milestones =  @project.milestones
+      if milestone.save
+        render
+      end
   end
 
   private

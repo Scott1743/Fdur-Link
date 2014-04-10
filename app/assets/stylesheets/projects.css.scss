@@ -23,7 +23,7 @@
 
 .project_comments { background-color: #f1f1f1; margin-top: 2px; }
 
-.projects ul li:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; }
+.projects ul li.can_hover:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; }
 
 .new_project { background-image: image-url('unbrella.jpg');display: block; height: 480px; width: 290px; padding: 10px;text-align: center;line-height: 500px;border-radius: 2px;font-size: 20px;font-weight:600;color: #FDFDFD; cursor: pointer; opacity: 0.01; filter:alpha(opacity=01);
   transition: opacity 2s, filter 2s, line-height 2s;
