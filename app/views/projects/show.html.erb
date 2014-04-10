@@ -1,13 +1,19 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Content:</strong>
+  <strong>Name:</strong>
   <%= @project.name %>
 </p>
+<% @milestones.each do |m| %>
+  <div>
+    <%= m.name %>
+    <%= m.updated_at %>
+    <%= m.reflections %>
+  </div>
+<% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
+<%= form_for :milestone,url: project_milestones_path(@project.id),methode: :post,remont: true do |f| %>
+    <%= f.text_field :name ,placeholder:"你好" %><br/>
+    <%= f.text_field :image %><br/>
+    <%= f.submit %>
+<% end %>
 
 <%= link_to 'Back', projects_path %>

@@ -36,6 +36,7 @@ class Project < ActiveRecord::Base
     if self.name.blank?
       self.name = '未命名'
     end
+
     if self.image.blank?
       self.image = nil
     end

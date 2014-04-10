@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @milestones = @project.milestones
   end
 
   def new
@@ -22,24 +23,24 @@ class ProjectsController < ApplicationController
   def create
     @projects = current_user.projects.order(id: :desc).all
     project = current_user.projects.build project_params
-    respond_to do |format|
+    #respond_to do |format|
       if project.save!
-        flash.now[:success] = '建立成功'
+        flash[:success] = '建立成功'
 
-        format.html { redirect_to action: :index }
-        format.js
+        redirect_to project
+        #format.js
       else
         flash.now[:failed]= '建立失败'
-        render action: 'new'
+        render action: 'index'
       end
-    end
+    #end
   end
 
   def update
     if @project.update(project_params)
       redirect_to [@user,@project], notice: 'Project was successfully updated.'
     else
-      render action: 'edit'
+      render
     end
   end
 
@@ -47,10 +48,6 @@ class ProjectsController < ApplicationController
     @project.destroy
     flash[:success] = '删除成功'
     redirect_to projects_url
-  end
-
-  def chang_state
-
   end
 
 

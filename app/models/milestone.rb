@@ -15,8 +15,17 @@
 #
 
 class Milestone < ActiveRecord::Base
-  belongs_to :project
+  belongs_to :project, :foreign_key => :project_id
+
+  before_validation :set_default_information
 
   validates :state, presence: true,
             inclusion: ['undo','doing','finished']
+
+  private
+
+  def set_default_information
+    self.state = 'undo'
+  end
+
 end
