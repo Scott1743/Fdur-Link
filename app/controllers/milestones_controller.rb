@@ -1,14 +1,35 @@
+#encoding: utf-8
 class MilestonesController < ApplicationController
 
   before_action :set_project
+  before_action :set_milestone, only: [:destroy,:ajax_update]
 
   def create
     milestone = @project.milestones.build milestone_params
-    @milestones =  @project.milestones
-      if milestone.save
-        render
-      end
+    if milestone.save
+      classify_milestones
+      render 'reload_milestones'
+    else
+      render js: 'alert("error!")'
+    end
   end
+
+  def ajax_update
+    p = params.permit(:state)
+    if @milestone.update(p)
+      classify_milestones
+      render 'reload_milestones'
+    else
+      render js: 'alert("error!")'
+    end
+  end
+
+  def destroy
+    @milestone.destroy
+    flash[:success] = '删除成功'
+    redirect_to @project
+  end
+
 
   private
 
@@ -21,6 +42,20 @@ class MilestonesController < ApplicationController
     unless @project
       redirect_to '/404.html'
     end
+  end
+
+  def set_milestone
+    @milestone = @project.milestones.where(id: params[:id]).first
+    unless @milestone
+      redirect_to '/404.html'
+    end
+  end
+
+  def classify_milestones
+    milestones =  @project.milestones
+    @milestones_undo = milestones.select {|m| m.state == 'undo'}
+    @milestones_doing = milestones.select {|m| m.state == 'doing'}
+    @milestones_finished = milestones.select{|m| m.state == 'finished'}
   end
 
 end

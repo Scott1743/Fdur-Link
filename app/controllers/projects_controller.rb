@@ -10,7 +10,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @milestones = @project.milestones
+    milestones =  @project.milestones
+    @milestones_undo = milestones.select {|m| m.state == 'undo'}
+    @milestones_doing = milestones.select {|m| m.state == 'doing'}
+    @milestones_finished = milestones.select{|m| m.state == 'finished'}
   end
 
   def new
@@ -24,7 +27,7 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects.order(id: :desc).all
     project = current_user.projects.build project_params
     #respond_to do |format|
-      if project.save!
+      if project.save
         flash[:success] = '建立成功'
 
         redirect_to project

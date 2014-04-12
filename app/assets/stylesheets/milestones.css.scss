@@ -1,3 +1,16 @@
 // Place all the styles related to the milestones controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.milestones { display: inline-block; vertical-align: top;width: 660px;margin: 15px 0 0 8px;border: 1px solid #cccccc; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #C0DEED; }
+
+.milestones_first_line { height: 50px;padding-left: 10px ;line-height: 50px; font-size: 20px; border-bottom: 1px solid #cccccc; }
+
+#milestone_list { background-color: #ffffff }
+
+#milestone_list span { display: block; padding: 10px; border-bottom: 1px solid #cccccc; }
+
+.milestones_undo { background-color: lightgreen }
+
+.milestones_doing { background-color: #ffffff}
+
+.milestones_finished {background-color: lightblue}

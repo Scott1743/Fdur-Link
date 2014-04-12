@@ -1,3 +1,4 @@
+#encoding: utf-8
 # == Schema Information
 #
 # Table name: milestones
@@ -19,13 +20,16 @@ class Milestone < ActiveRecord::Base
 
   before_validation :set_default_information
 
+  validates :name, presence: true
   validates :state, presence: true,
             inclusion: ['undo','doing','finished']
 
   private
 
   def set_default_information
-    self.state = 'undo'
+    self.name = '未命名' if self.name.blank?
+
+    self.state = 'undo' if self.state.blank?
   end
 
 end
