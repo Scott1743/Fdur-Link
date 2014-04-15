@@ -2,7 +2,8 @@
 class MilestonesController < ApplicationController
 
   before_action :set_project
-  before_action :set_milestone, only: [:destroy,:ajax_update]
+  before_action :set_milestone, only: [:destroy, :ajax_update, :update]
+  before_action :milestone_params, only: [:create, :update]
 
   def create
     milestone = @project.milestones.build milestone_params
@@ -24,6 +25,15 @@ class MilestonesController < ApplicationController
     end
   end
 
+  def update
+    if @milestone.update(milestone_params)
+      classify_milestones
+      render 'reload_milestones'
+    else
+      render js: 'alert("error!")'
+    end
+  end
+
   def destroy
     @milestone.destroy
     flash[:success] = '删除成功'
@@ -34,7 +44,7 @@ class MilestonesController < ApplicationController
   private
 
   def milestone_params
-    params.require(:milestone).permit(:name,:image)
+    params.require(:milestone).permit(:name,:image,:state)
   end
 
   def set_project
