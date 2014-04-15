@@ -26,15 +26,32 @@
 </table>
 <div class="projects">
 <ul>
-  <li class="can_hover">
+  <li class="can_hover" data-flag="click_hidden">
     <div>
       <span class="new_project">
-        <b style="font-size: 80px">+</b><br/>
+        <b style="display: block;font-size: 100px;font-weight: 600;margin-top: 50px;line-height: 120px">+</b>
         新的启程让生活更多彩
       </span>
     </div>
   </li>
-  <li id='new_project_form' class="can_hover">
+  <li id="new_project_form" >
+    <div>
+      <%= form_for :project,url: projects_path,methode: :post do |f| %>
+          <div>
+            <span>计划名</span>
+            <%= f.text_field :name %><br/>
+            <span>描述</span>
+            <%= f.text_area :description %><br/>
+            <span>图片链接</span>
+            <%= f.text_field :image %><br/>
+            <%= f.radio_button :is_public, 'false', checked: true %>
+            <%= f.label :is_public, "private", value: 'false'%>
+            <%= f.radio_button :is_public, 'true' %>
+            <%= f.label :is_public, "public", value: 'true'%>
+            <%= f.submit %>
+          </div>
+      <% end %>
+    </div>
   </li>
 <% @projects.each_with_index do |project,index| %>
   <% if (index%3 == 2) %>

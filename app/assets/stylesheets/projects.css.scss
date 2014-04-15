@@ -11,7 +11,7 @@
   -webkit-transition: margin 0.2s;
   -o-transition: margin 0.2s; }
 
-.projects ul li div { border-bottom: 1px solid #aaaaaa; box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color:#4A525C; }
+.projects ul li div { border-bottom: 1px solid #aaaaaa; box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #4A525C; }
 
 .project_span { display:inline-block; width: 290px; padding: 10px;}
 
@@ -25,13 +25,15 @@
 
 .projects ul li.can_hover:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; }
 
-.new_project { display: block; height: 480px; width: 290px; padding: 10px;text-align: center;line-height: 500px;border-radius: 2px;font-size: 20px;font-weight:600;color: #FDFDFD; cursor: pointer;overflow: hidden;
-  transition: line-height 2s;
-  -moz-transition:  line-height 2s;
-  -webkit-transition: line-height 2s;
-  -o-transition: line-height 2s; }
+.projects ul li.can_hover:active { margin-top: 0px; margin-bottom: 15px; }
 
-.new_project:hover { line-height: 200px}
+.new_project { display: block; height: 290px; width: 290px; padding: 10px;text-align: center;line-height: 50px;border-radius: 2px;font-size: 20px;font-weight:600;color: #666666; cursor: pointer;overflow: hidden; background-color: #F1F1F1;
+  transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s; }
+
+.new_project:hover { background-color: #FDFDFD; color: #4A525C; }
 
 #new_project_form { display: none; }
 
