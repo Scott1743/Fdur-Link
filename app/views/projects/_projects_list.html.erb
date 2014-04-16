@@ -28,28 +28,24 @@
 <ul>
   <li class="can_hover" data-flag="click_hidden">
     <div>
-      <span class="new_project">
-        <b style="display: block;font-size: 100px;font-weight: 600;margin-top: 50px;line-height: 120px">+</b>
+      <span class="new_project" onselectstart='return false'>
+        <b style="display: block;font-size: 100px;font-weight: 600;margin-top: 50px;line-height: 120px;">+</b>
         新的启程让生活更多彩
       </span>
     </div>
   </li>
-  <li id="new_project_form" >
-    <div>
+  <li id="new_project_form" class="new_project" >
+    <div style="border: 1px solid #4A525C">
       <%= form_for :project,url: projects_path,methode: :post do |f| %>
-          <div>
-            <span>计划名</span>
-            <%= f.text_field :name %><br/>
-            <span>描述</span>
-            <%= f.text_area :description %><br/>
-            <span>图片链接</span>
-            <%= f.text_field :image %><br/>
-            <%= f.radio_button :is_public, 'false', checked: true %>
-            <%= f.label :is_public, "private", value: 'false'%>
-            <%= f.radio_button :is_public, 'true' %>
-            <%= f.label :is_public, "public", value: 'true'%>
-            <%= f.submit %>
-          </div>
+        <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
+        <p>图片链接</p><%= f.text_field :image, autocomplete: :off %>
+        <p>描述</p><%= f.text_area :description %>
+        <%= f.radio_button :is_public, 'false' ,style: "display: none"%>
+        <%= f.label :is_public, "私有", value: 'false'%>
+        <%= f.radio_button :is_public, 'true', checked: true ,style: "display: none"%>
+        <%= f.label :is_public, "公开", value: 'true'%>
+        <%= f.submit '保存' %>
+        <input type='button' id="new_project_form_cancel" data-flag="click_cancel" value="取消"/>
       <% end %>
     </div>
   </li>

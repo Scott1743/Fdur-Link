@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
       if project.save
         flash[:success] = '建立成功'
 
-        redirect_to project
+        redirect_to action: 'index'
         #format.js
       else
         flash.now[:failed]= '建立失败'

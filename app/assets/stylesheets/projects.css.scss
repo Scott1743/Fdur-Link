@@ -27,7 +27,8 @@
 
 .projects ul li.can_hover:active { margin-top: 0px; margin-bottom: 15px; }
 
-.new_project { display: block; height: 290px; width: 290px; padding: 10px;text-align: center;line-height: 50px;border-radius: 2px;font-size: 20px;font-weight:600;color: #666666; cursor: pointer;overflow: hidden; background-color: #F1F1F1;
+.new_project { display: block; height: 290px; width: 290px; padding: 10px;text-align: center;line-height: 50px;border-radius: 2px;font-size: 20px;color: #666666; cursor: pointer;overflow: hidden; background-color: #F1F1F1;
+  -moz-user-select:-moz-none;
   transition: background-color 0.2s;
   -moz-transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
@@ -35,6 +36,36 @@
 
 .new_project:hover { background-color: #FDFDFD; color: #4A525C; }
 
-#new_project_form { display: none; }
+#new_project_form { display: none; height: 442px; }
 
+#new_project_form div { margin: -10px 0 0 -10px; width: 308px; font-size: 16px; }
 
+#new_project_form p { background-color: #67B4B1; color: #ffffff; margin: 0; line-height: 50px; height: 50px; }
+
+#new_project_form input { display: block; padding: 0 10px; width: 288px; height: 40px; background-color: #F1F1F1; color: #4A525C; border: none}
+
+#new_project_form textarea { display: block; padding: 0 10px; width: 288px; height: 80px; background-color: #f1f1f1; color: #4A525C; border: none}
+
+[for='project_is_public_true']:hover { font-weight: 600 }
+
+[for='project_is_public_true'] { float: left; width: 153px; color: #fdfdfd; cursor: pointer; background: #67B4B1; }
+
+[for='project_is_public_false']:hover { font-weight: 600 }
+
+[for='project_is_public_false'] { float: left; width: 153px; color: #fdfdfd; cursor: pointer; border-right:2px solid #fdfdfd; }
+
+#new_project_form input[name='commit'] { display: block; width: 100%; height: 50px;margin: 50px auto 0 auto; color: #fff;background-color: transparent; cursor: pointer;
+  transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s; }
+
+#new_project_form input[name='commit']:hover { font-weight: 600;background: #67B4B1; }
+
+#new_project_form input#new_project_form_cancel { display: block; width: 100%; height: 50px; margin: 0 auto 20px auto; color: #fff;background-color: transparent; cursor: pointer; outline: none;
+  transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s; }
+
+#new_project_form input#new_project_form_cancel:hover { font-weight: 600;background: #F08080; }
