@@ -1,10 +1,9 @@
 <div class="form_main_flame">
-<h1><span class="form_signup_h1">创建账户</span></h1>
+  <span class="form_signup_h1">创建账户</span>
   <div class="form_signup_flame">
-    <h4><span class="form_signup_title">没有账户的小伙伴们快来注册吧!</span></h4>
+    <span class="form_signup_h2">小伙伴们快来注册吧!</span>
+    <span class="form_back">或者  <%= link_to '登录', users_path ,class: "form_back_font"%></span>
     <%= render 'form' %>
-    <span class="form_back">已有帐号？<%= link_to '立即登录', users_path%></span>
-    <span class="signup_agreement">点击注册表示已阅读并同意<a href="#">《Fdur服务条款》</a></span>
   </div>
   <div class="signup_other"></div>
 </div>
