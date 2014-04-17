@@ -1,0 +1,39 @@
+<% @milestones_undo.each do |m| %>
+<%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
+<!--或者写成[@project, m]-->
+  <span class="milestones_undo">
+    <%= f.text_field :name,id: 'edit_milestone_name' %><br/>
+    <%= f.text_field :image,id: 'edit_milestone_image' %>
+    <%= f.submit 'Save' %><br/>
+    <%= link_to '改变为doing', ajax_update_project_milestone_path(@project,m,state: 'doing'), remote: true, method: :post %>
+    <%= link_to '删除', project_milestone_path(@project,m), method: :delete %>
+  </span>
+<% end %>
+<% end %>
+
+<% @milestones_doing.each do |m| %>
+    <span class="milestones_doing">
+    <%= m.name %><br/>
+      更新时间：
+      <%= m.updated_at %><br/>
+      感慨：
+      <%= m.reflection %><br/>
+      <%= link_to '编辑' %>
+      <%= link_to '改变为finished', ajax_update_project_milestone_path(@project,m,state: 'finished'), remote: true, method: :post %>
+      <%= link_to '删除', project_milestone_path(@project,m), method: :delete %>
+  </span>
+<% end %>
+
+<% @milestones_finished.each do |m| %>
+    <span class="milestones_finished">
+    <%= m.name %><br/>
+      更新时间：
+      <%= m.updated_at %><br/>
+      感慨：
+      <%= m.reflection %><br/>
+      <a>展开</a>
+      <%= link_to '编辑' %>
+      <%= link_to '改变为undo',ajax_update_project_milestone_path(@project,m,state: 'undo'), remote: true, method: :post, data: { confirm: '这样做不会清空这个里程碑的感慨' } %>
+      <%= link_to '删除', project_milestone_path(@project,m), method: :delete %>
+  </span>
+<% end %>

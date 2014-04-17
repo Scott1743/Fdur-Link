@@ -1,14 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="projects display_inline">
+<ul>
+  <li>
+    <div>
+      <% if @project.image.nil? %>
+        <span><%= image_tag 'default.jpg' ,style: 'width: 310px; max-height:500px; overflow:hidden;' %></span>
+      <% else %>
+        <span><%= image_tag @project.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' %></span>
+      <% end %>
+      <span class="project_span project_name <%= @project.is_public ? 'state_public' : 'state_private' %>" ><%= @project.name %></span><br/>
+      <span class="project_span project_description" ><%= @project.description %></span>
+      <span class="project_span project_milestone">milestone</span>
+    </div>
+    <span class="project_span project_comments">comments<br/>comments</span>
+  </li>
+</ul>
+</div>
+<div class="milestones">
+  <div class="milestones_first_line">里程碑</div>
+  <div id="milestone_list">
+    <%= render 'milestones/milestones_list' %>
+  </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @project.content %>
-</p>
+  <%= form_for :milestone,url: project_milestones_path(@project),methode: :post,remote: true do |f| %>
+    <%= f.text_field :name ,placeholder: "里程碑" %><br/>
+    <%= f.text_field :image %><br/>
+    <%= f.submit %>
+  <% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_user_project_path(@user,@project) %> |
-<%= link_to 'Back', user_projects_path %>
+  <%= link_to 'Back', projects_path %>
+</div>
