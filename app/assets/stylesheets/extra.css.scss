@@ -1,0 +1,27 @@
+// Place all the styles related to the extra controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here:  http: //sass-lang.com/  ∂∂
+.clear { clear: both; height: 0; overflow: hidden; }
+#cent { height: 100%; width: 920px; position: relative; }
+#left,#right { display: inline;height: 500px; background-color: #ccc; width: 100px; opacity: 0.9; filter: alpha(opacity=90); position: absolute; top: 0; left: 0px; z-index: 10; }
+#left img { display: block; margin-top: 180px; margin-left: 90px; opacity: 0.6; filter: alpha(opacity=60); }
+#left:hover { cursor: pointer; }
+#right:hover { cursor: pointer; }
+#right img { display: block; margin-top: 180px; margin-right: 90px; opacity: 0.6; filter: alpha(opacity=60); }
+#cent table { height: 500px; position: absolute; top: 0; left: 0px; }
+#cent td { height: 500px; width: 900px; background-color: white}
+.teach_leftbox { float: left; width: 300px; height: 500px; background-color: #ebebeb ; border-right: 1px solid ; }
+.teach_rightbox { float: left; width: 600px; height: 500px; }
+.teach_rightbox_h { display: block; margin-left: 140px; margin-top: 120px; font-size: 40px; font-weight: bold; }
+.teach_rightbox_p { display: block; width: 180px; height: 200px; margin-left: 150px; font-size: 18px; }
+.teach_leftbox1 { float: left; width: 250px; height: 458px; padding: 20px; }
+.teach_leftbox1_h1 { border-bottom: 1px solid #DEDEDE}
+.teach_leftbox1_h2 { color: green;  font-size: 50px; }
+.teach_leftbox1_h3 { color: #DEDEDE; font-size: 30px; }
+.teach_leftbox1_p1 { display: block; font-size: 15px; margin-top: 20px; }
+.teach_imagebox { float: left; width: 508px; height: 378px; padding: 60px; }
+.teach_leftbox1_p1 a:link {  text-decoration: none; }
+#bottom { position: absolute; bottom: 40px; left: 45%; }
+#bottom span { background-color: #adadad; border-radius: 50%; color:  #FFFFFF; display:  inline-block; height:  25px; line-height: 25px; text-align:  center; width:  25px; cursor: pointer; }
+#bottom span:hover { background-color: #5c5c5c; }
+#bottom span.index { background-color: #5cbc4b; }

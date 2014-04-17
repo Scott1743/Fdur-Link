@@ -1,0 +1,4 @@
+$('#milestone_list').parent().hide()
+$('#milestone_list').html("<%= j( render 'milestones/milestones_list' ) %>")
+$('#milestone_list').parent().fadeIn()
+$('#milestone_name').val("")

@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 20140405082140) do
   create_table "milestones", force: true do |t|
     t.string   "name",        null: false
     t.text     "description"
-    t.text     "reflections"
+    t.text     "reflection"
     t.string   "image"
     t.integer  "num"
     t.string   "state",       null: false
-    t.integer  "project_id"
+    t.integer  "project_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140405082140) do
     t.string   "name",        null: false
     t.string   "image"
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
     t.boolean  "is_public",   null: false
     t.string   "state",       null: false
     t.integer  "num"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140405082140) do
     t.text     "description"
     t.string   "avatar"
     t.string   "qqnumber"
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20140405082140) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "permission_id",   default: 1
+    t.integer  "permission_id",   default: 1, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

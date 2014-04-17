@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :update, :destroy]
   before_action :find_current_user
 
   def index
@@ -10,36 +10,36 @@ class ProjectsController < ApplicationController
   end
 
   def show
-  end
-
-  def new
-    @project = current_user.projects.build
-  end
-
-  def edit
+    milestones =  @project.milestones
+    @milestones_undo = milestones.select {|m| m.state == 'undo'}
+    @milestones_doing = milestones.select {|m| m.state == 'doing'}
+    @milestones_finished = milestones.select{|m| m.state == 'finished'}
   end
 
   def create
     @projects = current_user.projects.order(id: :desc).all
     project = current_user.projects.build project_params
-    respond_to do |format|
-      if project.save!
-        flash.now[:success] = '建立成功'
+    #respond_to do |format|
+      if project.save
+        flash[:success] = '建立成功'
 
-        format.html { redirect_to action: :index }
-        format.js
+        redirect_to action: 'index'
+        #format.js
       else
         flash.now[:failed]= '建立失败'
-        render action: 'new'
+        render action: 'index'
       end
-    end
+    #end
   end
 
   def update
     if @project.update(project_params)
-      redirect_to [@user,@project], notice: 'Project was successfully updated.'
+      flash[:success] = '修改成功'
+
+      redirect_to action: 'show'
     else
-      render action: 'edit'
+      flash.now[:failed]= '修改失败'
+      render action: 'show'
     end
   end
 
@@ -47,10 +47,6 @@ class ProjectsController < ApplicationController
     @project.destroy
     flash[:success] = '删除成功'
     redirect_to projects_url
-  end
-
-  def chang_state
-
   end
 
 

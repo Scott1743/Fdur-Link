@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   before_validation :add_default_information
 
   validates :state, presence: true,
-                    inclusion: ['open','closed','finished']
+                    inclusion: ['open','finished']
   VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif)|)/
   validates :image, format: {with: VALID_IMAGE_REGEX}
 
@@ -32,12 +32,10 @@ class Project < ActiveRecord::Base
   private
 
   def add_default_information
-    self.state = 'open'
-    if self.name.blank?
-      self.name = '未命名'
-    end
-    if self.image.blank?
-      self.image = nil
-    end
+    self.state = 'open' if self.state.blank?
+
+    self.name = '未命名' if self.name.blank?
+
+    self.image = nil if self.image.blank?
   end
 end

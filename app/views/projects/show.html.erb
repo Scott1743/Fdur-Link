@@ -1,13 +1,53 @@
-<p id="notice"><%= notice %></p>
+<div class="projects display_inline">
+<ul>
+  <li>
+    <div>
+      <% if @project.image.nil? %>
+        <span><%= image_tag 'default.jpg' ,style: 'width: 310px; max-height:500px; overflow:hidden;' %></span>
+      <% else %>
+        <span><%= image_tag @project.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' %></span>
+      <% end %>
+      <span class="project_span project_name <%= @project.is_public ? 'state_public' : 'state_private' %>" >
+        <%= @project.name %>
+      <a style="display:inline-block; float: right; margin-top: -2px; height: 24px; width: 24px; border-left: 1px solid #fdfdfd" data-flag="edit_project"></a></span><br/>
+      <span class="project_span project_description" ><%= @project.description %></span>
+      <span class="project_span project_milestone">milestone</span>
+    </div>
+    <span class="project_span project_comments">comments<br/>comments</span>
+  </li>
+  <li id="new_project_form" class="new_project" >
+    <div class="extra_project_new_form_border">
+      <%= form_for @project,url: project_path(@project),methode: :post do |f| %>
+          <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
+          <p>图片链接</p><%= f.text_field :image, autocomplete: :off %>
+          <p>描述</p><%= f.text_area :description %>
+          <%= f.radio_button :is_public, 'false' ,style: "display: none"%>
+          <%= f.label :is_public, "私有", value: 'false'%>
+          <%= f.radio_button :is_public, 'true', style: "display: none"%>
+          <%= f.label :is_public, "公开", value: 'true'%>
+          <%= f.submit '保存' %>
+          <input type='button' id="new_project_form_cancel" data-flag="click_cancel" value="取消"/>
+      <% end %>
+      <% if @project.is_public == false %>
+        <script>
+          (function(){$("[for='project_is_public_false']").click()})();
+        </script>
+      <% end %>
+    </div>
+  </li>
+</ul>
+</div>
+<div class="milestones">
+  <div class="milestones_first_line">里程碑</div>
+  <div id="milestone_list">
+    <%= render 'milestones/milestones_list' %>
+  </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @project.name %>
-</p>
+  <%= form_for :milestone,url: project_milestones_path(@project),methode: :post,remote: true do |f| %>
+    <%= f.text_field :name ,placeholder: "里程碑" %><br/>
+    <%= f.text_field :image %><br/>
+    <%= f.submit %>
+  <% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
-
-<%= link_to 'Back', projects_path %>
+  <%= link_to 'Back', projects_path %>
+</div>
