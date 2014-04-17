@@ -13,3 +13,10 @@ $(document).ready ->
     $(this).css 'background-color': '#67B4B1'
     $("#new_project_form p").css 'background-color': '#67B4B1'
     $('#project_name').focus()
+
+  $('[data-flag="edit_project"]').click ->
+    $(this).parent().parent().parent().hide()
+    $(this).parent().parent().parent().next().fadeIn()
+    if $('[checked="checked"]').attr('id') == 'project_is_public_false'
+      $("[for='project_is_public_false']").click()
+

@@ -35,7 +35,8 @@ background-color: #67B4B1;
 .form_input
 {
 display:block;
-width:315px;
+padding: 0 10px;
+width:295px;
 height:38px;
 border:1px solid #E5E5E5;
 
@@ -93,14 +94,16 @@ font-size:15px;
  width:100px;
  height:100px;
 }
-.signup_agreement a:link
-{
- text-decoration:none;
- color:blue;
-}
+.signup_agreement a:link { text-decoration:none; color:blue; }
+
+.signup_agreement a:hover { text-decoration: underline; }
 .form_back a:link
 {
- text-decoration:none;
+  text-decoration:none;
+}
+.form_back a:hover
+{
+  text-decoration:underline;
 }
 .form_back_font
 {

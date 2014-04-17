@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :update, :destroy]
   before_action :find_current_user
 
   def index
@@ -14,13 +14,6 @@ class ProjectsController < ApplicationController
     @milestones_undo = milestones.select {|m| m.state == 'undo'}
     @milestones_doing = milestones.select {|m| m.state == 'doing'}
     @milestones_finished = milestones.select{|m| m.state == 'finished'}
-  end
-
-  def new
-    @project = current_user.projects.build
-  end
-
-  def edit
   end
 
   def create
@@ -41,9 +34,12 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to [@user,@project], notice: 'Project was successfully updated.'
+      flash[:success] = '修改成功'
+
+      redirect_to action: 'show'
     else
-      render
+      flash.now[:failed]= '修改失败'
+      render action: 'show'
     end
   end
 
