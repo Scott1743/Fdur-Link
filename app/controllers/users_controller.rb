@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       @user.create_user_detail name: default_name
       sign_in @user
       flash[:success] = "注册成功，欢迎来到Fdur"
-      redirect_to @user
+      redirect_to projects_path
     else
       flash.now[:failed] = '注册失败，请检查您的注册信息'
       render :new
