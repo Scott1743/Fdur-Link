@@ -20,7 +20,7 @@ FdurLink::Application.routes.draw do
 
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  get '/baiduyun_tips', to: 'extra#tips'
+  get '/tips', to: 'extra#tips'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -30,5 +30,51 @@ $(document).ready ->
       $(this).text '新增 +'
       $(this).attr('data-flag', '+')
 
+#  $('a[data-flag="all"]').click ->
+#    $('.milestone_state').css('font-weight': 'normal')
+#    $(this).css('font-weight': '600')
+#    $("dt[data-flag='undo']").show()
+#    $("dt[data-flag='doing']").show()
+#    $("dt[data-flag='finished']").show()
+#    $('#project_show_information').attr('data-flag': 'all')
+#
+#  $('a[data-flag="undo"]').click ->
+#    $('.milestone_state').css('font-weight': 'normal')
+#    $(this).css('font-weight': '600')
+#    $("dt[data-flag='undo']").show()
+#    $("dt[data-flag='doing']").hide()
+#    $("dt[data-flag='finished']").hide()
+#    $('#project_show_information').attr('data-flag': 'undo')
+#
+#  $('a[data-flag="doing"]').click ->
+#    $('.milestone_state').css('font-weight': 'normal')
+#    $(this).css('font-weight': '600')
+#    $("dt[data-flag='doing']").show()
+#    $("dt[data-flag='undo']").hide()
+#    $("dt[data-flag='finished']").hide()
+#    $('#project_show_information').attr('data-flag': 'doing')
+#
+#  $('a[data-flag="finished"]').click ->
+#    $('.milestone_state').css('font-weight': 'normal')
+#    $(this).css('font-weight': '600')
+#    $("dt[data-flag='finished']").show()
+#    $("dt[data-flag='undo']").hide()
+#    $("dt[data-flag='doing']").hide()
+#    $('#project_show_information').attr('data-flag': 'finished')
+
+  $('.milestone_state').click ->
+    $('.milestone_state').css('font-weight': 'normal')
+    $(this).css('font-weight': '600')
+    t = $(this).attr('data-flag')
+    if t == 'all'
+      $('.milestone_flag').show()
+    else
+      $('.milestone_flag').hide()
+      $('dt[data-flag="' + "#{t}" + '"]').show()
+    $('#project_show_information').attr('data-flag': t)
+
+
+  $('a[data-flag="all"]').click()
+
 
 

@@ -9,7 +9,9 @@
 
 #milestone_list span { display: block; padding: 10px; border-bottom: 1px solid #cccccc; }
 
-.milestones_undo { color: #fdfdfd }
+.milestones_undo { color: #fdfdfd; }
+
+.milestones_undo b,.milestones_doing b,.milestones_finished b { font-size: 17px; font-weight: normal; line-height: 2.0em }
 
 .milestones_doing { background-color: #FDFDFD; }
 
@@ -21,20 +23,57 @@
 
 .new_milestone { display: inline-block; margin: 10px;  }
 
-.new_milestone_form { display: none;width: 500px; margin: 0 auto; padding: 10px; background-color: #4A525C;border-radius: 2px;line-height: 2.0em; color: #fdfdfd }
+.new_milestone_form { display: none;width: 400px; margin: 0 auto; padding: 10px; background-color: #4A525C;border-radius: 2px;line-height: 2.0em; color: #fdfdfd }
 
-.new_milestone_form input[type='text'] { padding: 0 10px; height: 30px; width: 360px; }
+.new_milestone_form input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
 
 .new_milestone_form span { display: block;margin: 10px auto;text-align: center; font-size: 16px; }
 
 .new_milestone_form_button { display: block; margin: 20px auto; }
 
-.delete_milestone { background-image: image-url('icon/delete.png'); }
+.delete_milestone { background-image: image-url('icon/delete.png'); background-repeat: no-repeat; }
 
-.undo_state { background-image: image-url('icon/play.png') }
+.undo_state { background-image: image-url('icon/play.png'); background-repeat: no-repeat; }
 
-.doing_state_delete_milestone { background-image: image-url('icon/delete_black.png') }
+.doing_state_delete_milestone { background-image: image-url('icon/delete_black.png'); background-repeat: no-repeat; }
 
-.doing_state { background-image: image-url('icon/tick_black.png') }
+.doing_state { background-image: image-url('icon/tick_black.png'); background-repeat: no-repeat; }
 
-.finished_state { display: block;background-image: image-url('icon/return.png'); width: 24px; height: 24px }
+.finished_state { background-image: image-url('icon/return.png'); background-repeat: no-repeat; }
+
+.delete_milestone { background-image: image-url('icon/delete.png'); background-repeat: no-repeat;}
+
+.edit_milestone_button { background-image: image-url('icon/edit.png'); background-repeat: no-repeat; }
+
+.undo_form { display: none; color: #fdfdfd; width: 400px; margin: 20px auto; padding: 10px; border: 1px solid #cccccc; }
+
+.undo_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
+
+.undo_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+
+.undo_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #4A525C }
+
+.milestone_name { line-height: 1em; font-size: 17px }
+
+.doing_form { display: none; color: #4A525C; width: 400px; margin: 20px auto; padding: 10px; border: 1px solid #cccccc; }
+
+.doing_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
+
+.doing_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+
+.doing_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #4A525C }
+
+.doing_form dd textarea { padding: 0 10px; height: 60px; width: 320px }
+
+.finished_form  { display: none; color: #FDFDFD; width: 400px; margin: 20px auto; padding: 10px; border: 1px solid #cccccc; }
+
+.finished_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
+
+.finished_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+
+.finished_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #67B4B1 }
+
+.finished_form dd textarea { padding: 0 10px; height: 60px; width: 320px }
+
+
+

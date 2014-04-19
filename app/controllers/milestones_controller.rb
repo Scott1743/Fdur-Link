@@ -9,7 +9,8 @@ class MilestonesController < ApplicationController
     milestone = @project.milestones.build milestone_params
     if milestone.save
       classify_milestones
-      render 'reload_milestones'
+      flash[:success] = '建立成功'
+      redirect_to @project
     else
       render js: 'alert("error!")'
     end
@@ -44,7 +45,7 @@ class MilestonesController < ApplicationController
   private
 
   def milestone_params
-    params.require(:milestone).permit(:name,:image,:state)
+    params.require(:milestone).permit(:name,:image,:state,:reflection)
   end
 
   def set_project
@@ -62,8 +63,8 @@ class MilestonesController < ApplicationController
   end
 
   def classify_milestones
-    milestones =  @project.milestones
-    @milestones_undo = milestones.select {|m| m.state == 'undo'}
+    milestones =  @project.milestones.order('updated_at DESC')
+    @milestones_undo = milestones.select{|m| m.state == 'undo'}
     @milestones_doing = milestones.select {|m| m.state == 'doing'}
     @milestones_finished = milestones.select{|m| m.state == 'finished'}
   end

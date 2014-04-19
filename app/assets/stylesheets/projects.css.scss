@@ -36,6 +36,8 @@
 
 .new_project:hover { background-color: #FDFDFD; color: #4A525C; }
 
+.new_project b { display: block;font-size: 100px;font-weight: 600;margin-top: 50px;line-height: 120px; }
+
 #new_project_form { display: none; height: 442px; }
 
 #new_project_form div { margin: -10px 0 0 -10px; width: 308px; font-size: 16px; }
@@ -99,3 +101,5 @@ a[data-flag='doing'] { border-top: 4px solid #fdfdfd; }
 a[data-flag='finished'] { border-top: 4px solid #4A525C; }
 
 .milestone_state:hover { font-weight: 600 }
+
+dt.milestone_flag { display: none }

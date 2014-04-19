@@ -23,7 +23,7 @@
     <div class="extra_project_new_form_border">
       <%= form_for @project,url: project_path(@project),methode: :post do |f| %>
           <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
-          <p>图片链接</p><%= f.text_field :image, autocomplete: :off %>
+          <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p><%= f.text_field :image, autocomplete: :off %>
           <p>描述</p><%= f.text_area :description %>
           <%= f.radio_button :is_public, 'false' ,style: "display: none"%>
           <%= f.label :is_public, "私有", value: 'false'%>
@@ -43,12 +43,13 @@
     <a class='milestone_state' data-flag='undo' style="border-top: 4px solid <%= @project.is_public? ? '#67B4B1' : '#F08080' %>">未开始</a>
     <a class='milestone_state' data-flag='all'>总览</a>
   </div>
+  <i id='project_show_information' data-flag='all'></i>
   <div id="milestone_list">
     <%= render 'milestones/milestones_list' %>
   </div>
   <a class="base_button new_milestone" data-flag="+">新增 +</a>
   <div class="new_milestone_form" >
-  <%= form_for :milestone,url: project_milestones_path(@project),methode: :post,remote: true do |f| %>
+  <%= form_for :milestone,url: project_milestones_path(@project),methode: :post do |f| %>
     <span>里程碑<br>
     <%= f.text_field :name %><br/>
     </span>

@@ -1,53 +1,108 @@
-<dt data-flag='all'>
+
+<dt class='milestone_flag' data-flag='undo'>
 <% @milestones_undo.each do |m| %>
   <span class="milestones_undo state_<%= @project.is_public? ? "public" : "private" %>">
-  <% if m.image.nil? %>
+  <% unless m.image.blank? %>
     <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' %><br/>
   <% end %>
-    <%= m.name %><br/>
+    <b><%= m.name %></b><br/>
     更新时间：
-    <%= m.updated_at %>
+    <%= m.updated_at.strftime("%y/%m/%d %X") %>
     <%= link_to '', project_milestone_path(@project,m), method: :delete ,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
     <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'doing'), remote: true, method: :post, class: 'undo_state',title: '开始' %>
-    <a class="new_milestone" data-flag="+">heh</a>
-    <div style="display: none">
+    <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <div class='undo_form'>
     <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
     <!--或者写成[@project, m]-->
-      <%= f.text_field :name,id: 'edit_milestone_name' %>
-      <%= f.text_field :image,id: 'edit_milestone_image' %>
-      <%= f.submit 'Save' %>
+      <dd>里程碑<br>
+        <%= f.text_field :name%>
+      </dd>
+      <dd>图片链接<br>
+        <%= f.text_field :image %>
+      </dd>
+      <dd>
+        <%= f.submit 'Save', class: 'base_button' %>
+      </dd>
     <% end %>
+    </div>
+      <script>
+        function toggle_div(){
+          var e = event.srcElement;
+          $(e).next().slideToggle();
+        }
+      </script>
+  </span>
+<% end %>
+</dt>
+
+<dt class='milestone_flag' data-flag='doing'>
+<% @milestones_doing.each do |m| %>
+  <span class="milestones_doing">
+  <% unless m.image.blank? %>
+    <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' %><br/>
+  <% end %>
+    <b><%= m.name %></b><br/>
+    <% unless m.reflection.blank? %>
+      <%= m.reflection %><br/>
+    <% end %>
+    更新时间:
+    <%= m.updated_at.strftime("%y/%m/%d %X") %>
+    <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'doing_state_delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
+    <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'finished'), remote: true, method: :post,class: 'doing_state',title: '完成' %>
+    <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <div class='doing_form'>
+      <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
+          <!--或者写成[@project, m]-->
+          <dd>里程碑<br>
+            <%= f.text_field :name %>
+          </dd>
+          <dd>图片链接<br>
+            <%= f.text_field :image %>
+          </dd>
+          <dd>随笔<br>
+            <%= f.text_area :reflection %>
+          </dd>
+          <dd>
+            <%= f.submit 'Save', class: 'base_button' %>
+          </dd>
+      <% end %>
     </div>
   </span>
 <% end %>
+</dt>
 
-<% @milestones_doing.each do |m| %>
-  <span class="milestones_doing">
-  <% if m.image.nil? %>
-    <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' %><br/>
-  <% end %>
-    <%= m.name %><br/>
-    感慨：
-    <%= m.reflection %><br/>
-    更新时间:
-    <%= m.updated_at %>
-    <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'doing_state_delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
-    <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'finished'), remote: true, method: :post,class: 'doing_state',title: '完成' %>
-  </span>
-<% end %>
-
+<dt class='milestone_flag' data-flag='finished'>
 <% @milestones_finished.each do |m| %>
     <span class="milestones_finished">
-    <% if m.image.nil? %>
+    <% unless m.image.blank? %>
       <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' %><br/>
     <% end %>
-    <%= m.name %><br/>
-      感慨：
+    <b><%= m.name %></b><br/>
+    <% unless m.reflection.blank? %>
       <%= m.reflection %><br/>
-      更新时间：
-      <%= m.updated_at %>
-      <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
-      <%= link_to '',ajax_update_project_milestone_path(@project,m,state: 'undo'), remote: true, method: :post, class: 'finished_state', data: { confirm: '这样做不会清空这个里程碑的感慨' },title: '改回未做状态' %>
-  </span>
+    <% end %>
+    更新时间：
+    <%= m.updated_at.strftime("%y/%m/%d %X") %>
+    <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
+    <%= link_to '',ajax_update_project_milestone_path(@project,m,state: 'undo'), remote: true, method: :post, class: 'finished_state',title: '改回未做状态' %>
+    <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <div class='finished_form'>
+      <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
+          <!--或者写成[@project, m]-->
+          <dd>里程碑<br>
+            <%= f.text_field :name %>
+          </dd>
+          <dd>图片链接<br>
+            <%= f.text_field :image %>
+          </dd>
+          <dd>随笔<br>
+            <%= f.text_area :reflection %>
+          </dd>
+          <dd>
+            <%= f.submit 'Save', class: 'base_button' %>
+          </dd>
+      <% end %>
+    </div>
+    </span>
 <% end %>
 </dt>
