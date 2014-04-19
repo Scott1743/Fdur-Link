@@ -52,7 +52,7 @@
 
 [for='project_is_public_false']:hover { font-weight: 600 }
 
-[for='project_is_public_false'] { float: left; width: 153px; color: #fdfdfd; cursor: pointer; border-right:2px solid #fdfdfd; }
+[for='project_is_public_false'] { float: left; width: 154px; color: #fdfdfd; cursor: pointer; border-right:1px solid #fdfdfd; }
 
 #new_project_form input[name='commit'] { display: block; width: 100%; height: 50px;margin: 50px auto 0 auto; color: #fff;background-color: transparent; cursor: pointer;
   transition: background-color 0.2s;
@@ -71,3 +71,31 @@
 #new_project_form input#new_project_form_cancel:hover { font-weight: 600;background: #F08080; }
 
 .extra_project_new_form_border { border: 1px solid #4A525C }
+
+.back_to_projects { float: right; margin: 10px; }
+
+[data-flag="edit_project"] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C; float: left; height: 40px; width: 154px; text-align: center; color: #fdfdfd; border-right: 1px solid #cccccc;
+  transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s; }
+
+[data-flag="delete_project"] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C;float: left; height: 40px; width: 155px; text-align: center; color: #fdfdfd;
+  transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s; }
+
+a[data-flag="edit_project"]:hover { background-color: #67B4B1; }
+
+a[data-flag="delete_project"]:hover { background-color: #F08080; }
+
+.milestone_state { float: right; width: 66px; text-align: center; font-weight: normal; color: #4A525C; line-height: 42px; }
+
+a[data-flag='all'] { border-top: 4px solid #E6764E;}
+
+a[data-flag='doing'] { border-top: 4px solid #fdfdfd; }
+
+a[data-flag='finished'] { border-top: 4px solid #4A525C; }
+
+.milestone_state:hover { font-weight: 600 }

@@ -9,11 +9,15 @@
       <% end %>
       <span class="project_span project_name <%= @project.is_public ? 'state_public' : 'state_private' %>" >
         <%= @project.name %>
-      <a style="display:inline-block; float: right; margin-top: -2px; height: 24px; width: 24px; border-left: 1px solid #fdfdfd" data-flag="edit_project"></a></span><br/>
+      </span><br/>
       <span class="project_span project_description" ><%= @project.description %></span>
-      <span class="project_span project_milestone">milestone</span>
+      <a data-flag="edit_project" title='编辑'>
+        <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>
+      </a>
+      <a data-flag="delete_project" data-confirm="确定删除该微计划及评论?" herf='' title='删除'>
+        <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
+      </a>
     </div>
-    <span class="project_span project_comments">comments<br/>comments</span>
   </li>
   <li id="new_project_form" class="new_project" >
     <div class="extra_project_new_form_border">
@@ -28,26 +32,31 @@
           <%= f.submit '保存' %>
           <input type='button' id="new_project_form_cancel" data-flag="click_cancel" value="取消"/>
       <% end %>
-      <% if @project.is_public == false %>
-        <script>
-          (function(){$("[for='project_is_public_false']").click()})();
-        </script>
-      <% end %>
     </div>
   </li>
 </ul>
 </div>
 <div class="milestones">
-  <div class="milestones_first_line">里程碑</div>
+  <div class="milestones_first_line">里程碑
+    <a class='milestone_state' data-flag='finished'>完成</a>
+    <a class='milestone_state' data-flag='doing'>已开始</a>
+    <a class='milestone_state' data-flag='undo' style="border-top: 4px solid <%= @project.is_public? ? '#67B4B1' : '#F08080' %>">未开始</a>
+    <a class='milestone_state' data-flag='all'>总览</a>
+  </div>
   <div id="milestone_list">
     <%= render 'milestones/milestones_list' %>
   </div>
-
+  <a class="base_button new_milestone" data-flag="+">新增 +</a>
+  <div class="new_milestone_form" >
   <%= form_for :milestone,url: project_milestones_path(@project),methode: :post,remote: true do |f| %>
-    <%= f.text_field :name ,placeholder: "里程碑" %><br/>
+    <span>里程碑<br>
+    <%= f.text_field :name %><br/>
+    </span>
+    <span>图片链接<br>
     <%= f.text_field :image %><br/>
-    <%= f.submit %>
+    </span>
+    <%= f.submit '新增里程碑', class: 'base_button new_milestone_form_button' %>
   <% end %>
-
-  <%= link_to 'Back', projects_path %>
+  </div>
+  <%= link_to '返回', projects_path, class: 'base_button back_to_projects' %>
 </div>

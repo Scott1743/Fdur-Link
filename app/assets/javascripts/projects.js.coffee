@@ -15,8 +15,20 @@ $(document).ready ->
     $('#project_name').focus()
 
   $('[data-flag="edit_project"]').click ->
-    $(this).parent().parent().parent().hide()
-    $(this).parent().parent().parent().next().fadeIn()
+    $(this).parent().parent().hide()
+    $(this).parent().parent().next().fadeIn()
     if $('[checked="checked"]').attr('id') == 'project_is_public_false'
       $("[for='project_is_public_false']").click()
+
+  $('.new_milestone').click ->
+    $(this).next().slideToggle()
+    if $(this).attr('data-flag') == '+'
+      $(this).text '新增 -'
+      $(this).attr('data-flag', '-')
+      $('#milestone_name').focus()
+    else if $(this).attr('data-flag') == '-'
+      $(this).text '新增 +'
+      $(this).attr('data-flag', '+')
+
+
 
