@@ -10,6 +10,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    milestones =  @project.milestones
+    @milestones_undo = milestones.select {|m| m.state == 'undo'}
+    @milestones_doing = milestones.select {|m| m.state == 'doing'}
+    @milestones_finished = milestones.select{|m| m.state == 'finished'}
   end
 
   def new
@@ -22,24 +26,24 @@ class ProjectsController < ApplicationController
   def create
     @projects = current_user.projects.order(id: :desc).all
     project = current_user.projects.build project_params
-    respond_to do |format|
+    #respond_to do |format|
       if project.save
-        flash.now[:success] = '建立成功'
+        flash[:success] = '建立成功'
 
-        format.html { redirect_to action: :index }
-        format.js
+        redirect_to action: 'index'
+        #format.js
       else
         flash.now[:failed]= '建立失败'
-        render action: 'new'
+        render action: 'index'
       end
-    end
+    #end
   end
 
   def update
     if @project.update(project_params)
       redirect_to [@user,@project], notice: 'Project was successfully updated.'
     else
-      render action: 'edit'
+      render
     end
   end
 
@@ -49,16 +53,12 @@ class ProjectsController < ApplicationController
     redirect_to projects_url
   end
 
-  def chang_state
-
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = current_user.projects.where(id: params[:project_id]).first
-      if @project
+      @project = current_user.projects.where(id: params[:id]).first
+      unless @project
         redirect_to '/404.html'
       end
     end

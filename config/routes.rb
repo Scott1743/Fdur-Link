@@ -2,10 +2,14 @@ FdurLink::Application.routes.draw do
   
   root 'sessions#new'
   
-  resources :users
+  resources :users, except: [:new]
 
   resources :projects do
-    resources :milestones
+    resources :milestones do
+      member do
+        post :ajax_update
+      end
+    end
   end
 
   get '/signup', to: 'users#new'

@@ -12,9 +12,9 @@
     <div>
       <%= image_tag 'Fdur_1.jpg', class: "logo"%>
       <% if signed_in? %>
-        <%= link_to "Sign out", signout_path, method:"delete"%>
+        <%= link_to "Sign out", signout_path, method: "delete" %>
       <% else %>
-        <%= link_to "Sign in ",signin_path %>
+        <%= link_to "Sign in ", signin_path %>
       <% end %>
     </div>
   </div>
