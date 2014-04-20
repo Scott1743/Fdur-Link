@@ -1,16 +1,81 @@
 // Place all the styles related to the milestones controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.milestones { display: inline-block; vertical-align: top;width: 660px;margin: 15px 0 0 8px;border: 1px solid #cccccc; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #C0DEED; }
+.milestones { display: inline-block; vertical-align: top;width: 660px;margin: 15px 0 0 8px;border: 1px solid #cccccc; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #F1F1F1; }
 
-.milestones_first_line { height: 50px;padding-left: 10px ;line-height: 50px; font-size: 20px; border-bottom: 1px solid #cccccc; }
+.milestones_first_line { height: 50px; padding-left: 10px ;line-height: 50px; font-size: 20px; border-bottom: 1px solid #cccccc; font-weight: 600; color: #4A525C }
 
 #milestone_list { background-color: #ffffff }
 
 #milestone_list span { display: block; padding: 10px; border-bottom: 1px solid #cccccc; }
 
-.milestones_undo { background-color: lightgreen }
+.milestones_undo { color: #fdfdfd; }
 
-.milestones_doing { background-color: #ffffff}
+.milestones_undo b,.milestones_doing b,.milestones_finished b { font-size: 17px; font-weight: normal; line-height: 2.0em }
 
-.milestones_finished {background-color: lightblue}
+.milestones_doing { background-color: #FDFDFD; }
+
+.milestones_finished { background-color: #4A525C; color: #fdfdfd }
+
+.milestones_finished a{ color: #fdfdfd }
+
+.milestones_undo a,.milestones_doing a,.milestones_finished a{ float: right; width: 26px; height: 26px; color: #fdfdfd; text-align: center; }
+
+.new_milestone { display: inline-block; margin: 10px;  }
+
+.new_milestone_form { display: none;width: 400px; margin: 0 auto; padding: 10px; background-color: #4A525C;border-radius: 2px;line-height: 2.0em; color: #fdfdfd }
+
+.new_milestone_form input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+
+.new_milestone_form span { display: block;margin: 10px auto;text-align: center; font-size: 16px; }
+
+.new_milestone_form_button { display: block; margin: 20px auto; }
+
+.delete_milestone { background-image: image-url('icon/delete.png'); background-repeat: no-repeat; }
+
+.undo_state { background-image: image-url('icon/play.png'); background-repeat: no-repeat; }
+
+.doing_state_delete_milestone { background-image: image-url('icon/delete_black.png'); background-repeat: no-repeat; }
+
+.doing_state { background-image: image-url('icon/tick_black.png'); background-repeat: no-repeat; }
+
+.finished_state { background-image: image-url('icon/return.png'); background-repeat: no-repeat; }
+
+.delete_milestone { background-image: image-url('icon/delete.png'); background-repeat: no-repeat;}
+
+.edit_milestone_button { background-image: image-url('icon/edit.png'); background-repeat: no-repeat; }
+
+.edit_milestone_button_black { background-image: image-url('icon/edit_black.png'); background-repeat: no-repeat; }
+
+.undo_form { display: none; color: #fdfdfd; width: 400px; margin: 20px auto; padding: 10px; border: 1px solid #cccccc; }
+
+.undo_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
+
+.undo_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+
+.undo_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #4A525C }
+
+.milestone_name { line-height: 1em; font-size: 17px }
+
+.doing_form { display: none; color: #4A525C; width: 400px; margin: 20px auto; padding: 10px; border: 1px solid #cccccc; }
+
+.doing_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
+
+.doing_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+
+.doing_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #4A525C }
+
+.doing_form dd textarea { padding: 0 10px; height: 60px; width: 320px }
+
+.finished_form  { display: none; color: #FDFDFD; width: 400px; margin: 20px auto; padding: 10px; border: 1px solid #cccccc; }
+
+.finished_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
+
+.finished_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+
+.finished_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #67B4B1 }
+
+.finished_form dd textarea { padding: 0 10px; height: 60px; width: 320px }
+
+
+

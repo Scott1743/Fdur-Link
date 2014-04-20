@@ -1,6 +1,6 @@
 #encoding: utf-8
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:detail, :edit, :update]
   before_action :check_signed_in ,except: [:new, :create]
 
   def index
@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def detail
+    #binding.pry
   end
 
   def new
@@ -24,7 +28,7 @@ class UsersController < ApplicationController
       @user.create_user_detail name: default_name
       sign_in @user
       flash[:success] = "注册成功，欢迎来到Fdur"
-      redirect_to @user
+      redirect_to projects_path
     else
       flash.now[:failed] = '注册失败，请检查您的注册信息'
       render :new

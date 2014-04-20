@@ -1,35 +1,9 @@
-<!--<table>-->
-  <!--<thead>-->
-  <!--<tr>-->
-    <!--<th>Name</th>-->
-    <!--<th>Description</th>-->
-    <!--<th>State</th>-->
-    <!--<th>Is_public?</th>-->
-    <!--<th>ajax</th>-->
-  <!--</tr>-->
-  <!--</thead>-->
-
-  <!--<tbody>-->
-  <!--<% @projects.each do |project| %>-->
-      <!--<tr>-->
-        <!--<td><%= project.name %></td>-->
-        <!--<td><%= project.description %></td>-->
-        <!--<td><%= project.state %></td>-->
-        <!--<td><%= project.is_public %></td>-->
-        <!--<td><%= 1%></td>-->
-        <!--<td><%= link_to 'Show', project %></td>-->
-        <!--<td><%= link_to 'Edit', edit_project_path(@user,project) %></td>-->
-        <!--<td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-      <!--</tr>-->
-  <!--<% end %>-->
-  <!--</tbody>-->
-</table>
 <div class="projects">
 <ul>
   <li class="can_hover" data-flag="click_hidden">
     <div>
       <span class="new_project" onselectstart='return false'>
-        <b style="display: block;font-size: 100px;font-weight: 600;margin-top: 50px;line-height: 120px;">+</b>
+        <b>+</b>
         新的启程让生活更多彩
       </span>
     </div>
@@ -38,7 +12,7 @@
     <div style="border: 1px solid #4A525C">
       <%= form_for :project,url: projects_path,methode: :post do |f| %>
         <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
-        <p>图片链接</p><%= f.text_field :image, autocomplete: :off %>
+        <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p><%= f.text_field :image, autocomplete: :off %>
         <p>描述</p><%= f.text_area :description %>
         <%= f.radio_button :is_public, 'false' ,style: "display: none"%>
         <%= f.label :is_public, "私有", value: 'false'%>

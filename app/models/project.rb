@@ -17,7 +17,7 @@
 
 class Project < ActiveRecord::Base
   belongs_to :user
-  has_many :milestones
+  has_many :milestones, dependent: :destroy
 
   before_validation :add_default_information
 

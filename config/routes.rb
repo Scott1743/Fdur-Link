@@ -1,10 +1,14 @@
 FdurLink::Application.routes.draw do
   
-  root 'sessions#new'
+  root 'projects#index'
   
-  resources :users, except: [:new]
+  resources :users, except: [:new, :index] do
+    collection do
+      get :detail
+    end
+  end
 
-  resources :projects do
+  resources :projects, except: [:edit, :new] do
     resources :milestones do
       member do
         post :ajax_update
@@ -15,8 +19,12 @@ FdurLink::Application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :sessions, only: [:new, :create, :destroy]
+
   get '/signin', to: 'sessions#new'
+
   match '/signout', to: 'sessions#destroy', via: :delete
+
+  get '/tips', to: 'extra#tips'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

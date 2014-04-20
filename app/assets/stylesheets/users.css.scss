@@ -64,7 +64,8 @@ margin-top:30px;
 .form_input
 {
 display:block;
-width:315px;
+padding: 0 10px;
+width:295px;
 height:38px;
 border:1px solid #E5E5E5;
 
@@ -115,14 +116,14 @@ font-size:15px;
   margin-top:10px;
   margin-left:10px;
 }
+
 .signup_agreement a:link
 {
- text-decoration:none;
- color:blue;
+  text-decoration:none;
 }
-.form_back a:link
+.form_back a:hover
 {
- text-decoration:none;
+  text-decoration:underline;
 }
 .form_back_font
 {
@@ -132,7 +133,6 @@ font-size:15px;
 {
   border:1px solid lightcoral;
 }
-
 
 .signup_other
 {
@@ -198,3 +198,10 @@ font-size:15px;
 {
   margin-left:68px; 
 }
+
+.user_detail { display: inline-block; vertical-align: top;width: 660px;margin: 15px 0 0 8px;border: 1px solid #cccccc; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #F1F1F1; }
+
+.detail_first_line { height: 50px; padding-left: 10px ;line-height: 50px; font-size: 20px; border-bottom: 1px solid #cccccc; font-weight: 600; color: #4A525C }
+
+.edit_user_detail { margin: 10px }
+

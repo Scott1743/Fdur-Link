@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>FdurLink</title>
+  <meta name="renderer" content="webkit">
   <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -12,18 +13,21 @@
     <div>
       <%= image_tag 'Fdur_1.jpg', class: "logo"%>
       <% if signed_in? %>
-        <%= link_to "Sign out", signout_path, method: "delete" %>
+        <%= link_to "登出", signout_path, method: "delete" %>
+          <%= link_to "个人信息", detail_users_path, id: 'user_path'%>
+          <%= link_to "微计划", projects_path ,id: 'projects_path' %>
+          <%= link_to "动态", '#' %>
       <% else %>
-        <%= link_to "Sign in ", signin_path %>
+        <%= link_to "登录", signin_path %>
       <% end %>
     </div>
   </div>
-</header>
-<div class="scaffold_overall">
-<div class="scaffold_top"></div>
   <% flash.each do |key, value| %>
       <div id='flash_message' class="flash <%= key %>"><%= value %></div>
   <% end %>
+</header>
+<div class="scaffold_overall">
+<div class="scaffold_top"></div>
 <div class="scaffold">
   <%= yield %>
 </div>
