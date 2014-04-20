@@ -113,3 +113,9 @@ font-size:15px;
 {
   border:1px solid lightcoral;
 }
+
+.user_detail { display: inline-block; vertical-align: top;width: 660px;margin: 15px 0 0 8px;border: 1px solid #cccccc; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #F1F1F1; }
+
+.detail_first_line { height: 50px; padding-left: 10px ;line-height: 50px; font-size: 20px; border-bottom: 1px solid #cccccc; font-weight: 600; color: #4A525C }
+
+.edit_user_detail { margin: 10px }

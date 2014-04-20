@@ -2,7 +2,11 @@ FdurLink::Application.routes.draw do
   
   root 'projects#index'
   
-  resources :users, except: [:new]
+  resources :users, except: [:new, :index] do
+    collection do
+      get :detail
+    end
+  end
 
   resources :projects, except: [:edit, :new] do
     resources :milestones do

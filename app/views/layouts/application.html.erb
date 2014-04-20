@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>FdurLink</title>
+  <meta name="renderer" content="webkit">
   <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -13,7 +14,7 @@
       <%= image_tag 'Fdur_1.jpg', class: "logo"%>
       <% if signed_in? %>
         <%= link_to "登出", signout_path, method: "delete" %>
-          <%= link_to "个人信息", '#'%>
+          <%= link_to "个人信息", detail_users_path, id: 'user_path'%>
           <%= link_to "微计划", projects_path ,id: 'projects_path' %>
           <%= link_to "动态", '#' %>
       <% else %>

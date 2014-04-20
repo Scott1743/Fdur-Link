@@ -1,0 +1,25 @@
+<i id="page_flag" page-flag='users_show'></i>
+<div class="user_detail" >
+  <div class="milestones_first_line">我的个人信息 </div>
+  <div style="padding: 20px;background-color: #FDFDFD">
+    <% if @user.user_detail.avatar.nil? %>
+      <%= image_tag 'icon/default_avatar.png',style: 'width: 120px; height: 120px;' %>
+    <% else %>
+      <%= @user.user_detail.avatar %>
+    <% end %>
+    <br>
+    <%= @user.name %><br>
+    <b>Email</b><br>
+    <%= @user.email %> <br>
+    <b>个人简介</b><br>
+    <% if @user.user_detail.avatar.nil? %>
+      <span>快来说点什么，让大家认识你吧</span>
+    <% else %>
+      <%= @user.user_detail.description %>
+    <% end %>
+  </div>
+  <a class="base_button edit_user_detail" data-flag="+">编辑 +</a>
+  <div class="new_milestone_form" >
+
+  </div>
+</div>

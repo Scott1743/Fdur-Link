@@ -1,6 +1,6 @@
 #encoding: utf-8
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:detail, :edit, :update]
   before_action :check_signed_in ,except: [:new, :create]
 
   def index
@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def detail
+    #binding.pry
   end
 
   def new

@@ -18,4 +18,6 @@ $(document).ready ->
 
   if $('#page_flag').attr('page-flag') == 'projects_index'
     $('a#projects_path').addClass 'selected'
+  else if $('#page_flag').attr('page-flag') == 'users_show'
+    $('a#user_path').addClass 'selected'
 
