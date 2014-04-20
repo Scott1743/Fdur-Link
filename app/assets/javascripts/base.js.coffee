@@ -16,7 +16,6 @@ $(document).ready ->
     $(this).parent().parent().parent().hide()
     $(this).parent().parent().parent().prev().fadeIn('slow')
 
-  current_path = window.location.href
-  if current_path.match /\/projects/
+  if $('#page_flag').attr('page-flag') == 'projects_index'
     $('a#projects_path').addClass 'selected'
 

@@ -1,6 +1,6 @@
 FdurLink::Application.routes.draw do
   
-  root 'sessions#new'
+  root 'projects#index'
   
   resources :users, except: [:new]
 

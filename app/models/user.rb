@@ -12,7 +12,7 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :projects
+  has_many :projects, dependent: :destroy
   belongs_to :permission, dependent: :destroy
   has_one :user_detail, dependent: :destroy
   

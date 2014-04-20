@@ -15,10 +15,10 @@
     <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
     <!--或者写成[@project, m]-->
       <dd>里程碑<br>
-        <%= f.text_field :name%>
+        <%= f.text_field :name, autocomplete: :off %>
       </dd>
       <dd>图片链接<br>
-        <%= f.text_field :image %>
+        <%= f.text_field :image, autocomplete: :off %>
       </dd>
       <dd>
         <%= f.submit 'Save', class: 'base_button' %>
@@ -49,15 +49,15 @@
     <%= m.updated_at.strftime("%y/%m/%d %X") %>
     <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'doing_state_delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
     <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'finished'), remote: true, method: :post,class: 'doing_state',title: '完成' %>
-    <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <a onclick="toggle_div()" class="edit_milestone_button_black"></a>
     <div class='doing_form'>
       <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
           <!--或者写成[@project, m]-->
           <dd>里程碑<br>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, autocomplete: :off%>
           </dd>
           <dd>图片链接<br>
-            <%= f.text_field :image %>
+            <%= f.text_field :image, autocomplete: :off %>
           </dd>
           <dd>随笔<br>
             <%= f.text_area :reflection %>
@@ -90,10 +90,10 @@
       <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
           <!--或者写成[@project, m]-->
           <dd>里程碑<br>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, autocomplete: :off %>
           </dd>
           <dd>图片链接<br>
-            <%= f.text_field :image %>
+            <%= f.text_field :image, autocomplete: :off %>
           </dd>
           <dd>随笔<br>
             <%= f.text_area :reflection %>
