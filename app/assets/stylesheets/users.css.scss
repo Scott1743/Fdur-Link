@@ -1,10 +1,20 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.form_main_flame
+.form_signup_flame
 {
 border:1px solid #BDBDBD;
-float:left;
+display:block;
+width:736px;
+height:470px;
+margin-top:5px;
+margin-left:68px; 
+padding:32px;
+}
+.form_signin_flame
+{
+border:1px solid #BDBDBD;
+display:block;
 width:736px;
 height:420px;
 margin-top:5px;
@@ -12,81 +22,179 @@ margin-left:68px;
 padding:32px;
 }
 
-.form_button
+.form_signup_button
 {
 padding:7px 54px;
-float:left;
-margin-top:18px;
+display:block;
+margin-top:16px;
+margin-left:64px;
+}
+.form_signin_button
+{
+padding:16px 35px;
+display:block;
+margin-top:30px;
 }
 
-.form_signup_flame
+
+.form_box_signup
 {
  float:left;
  clear:left;
  width:320px;
- height:346px;
+ height:360px;
  padding:16px;
  margin-top:20px;
  background-color: #F5F5F5;
  border:1px solid #E4E4E4;
 }
+
+.form_box_signin
+{
+ float:left;
+ clear:left;
+ width:320px;
+ height:310px;
+ padding:16px;
+ margin-top:20px;
+ background-color: #F5F5F5;
+ border:1px solid #E4E4E4;
+}
+
 .form_input
 {
-float:left;
+display:block;
 width:315px;
 height:38px;
-border:1px inset #E5E5E5;
-border-radius:6px;
-margin-top:4px;
+border:1px solid #E5E5E5;
+
 font-size:15px;
 }
-.form_signup_title
+
+.form_box_h1
 {
-float:left;
+display:block;
+border-bottom:1px solid #ccc;
+width:736px;
+height:48px;
+font-size:25px;
+}
+
+.form_box_h2
+{
+display:block;
 width:318px;
 height:24px;
 border-bottom:1px solid #ccc;
 }
-.form_signup_h1
-{
-float:left;
-border-bottom:1px solid #ccc;
-width:736px;
-height:48px;
-}
 .form_input_font
 {
-margin-top:4px;
-float:left;
-clear:left;
+display:block;
+margin-top:14px;
 font-size:15px;
 
 }
 .form_input_error
-{
- float:left;
- color:red;
+{ 
+ display:block;
+ width:290px;
+ height:30px;
+ background-color:lightcoral;
+ padding-left:10px;
+ line-height:30px;
+ margin-left:7px;
 }
 .form_back
 { 
  float:right;
- margin-top:24px;
+ margin-top:-24px;
 }
 .signup_agreement
 {
-  float:left;
+  display:block;
   margin-top:10px;
   margin-left:10px;
-}
-.signup_other
-{
- float:right;
- background-color:red;
- width:100px;
- height:100px;
 }
 .signup_agreement a:link
 {
  text-decoration:none;
- color: blue;
+ color:blue;
+}
+.form_back a:link
+{
+ text-decoration:none;
+}
+.form_back_font
+{
+  color:blue;
+}
+.field_with_errors
+{
+  border:1px solid lightcoral;
+}
+
+
+.signup_other
+{
+ float:right;
+ width:340px;
+ height:376px;
+ margin-top:20px;
+}
+
+.other_icon
+{
+	float:left;
+	width:70px;
+	height:70px;
+}
+.other_box_word
+{
+	float:left;
+    width:260px;
+	height:70px;
+	margin-left:10px;
+}
+.other_box_h
+{   
+    font-weight:bold;
+	display:block;
+}
+
+.other_box_p
+{
+    margin-top:10px;
+	display:block;
+}
+
+.other_box2
+{
+	margin-top:100px;
+}
+.other_box3
+{
+	margin-top:200px;
+}
+.other_box4
+{
+  color:#747474;
+  font-size:18px;
+  display:block;
+  margin-top:300px;
+}
+
+.forget_code:link
+{
+   text-decoration:none;
+   color:blue;
+}
+.forget_code
+{
+  display:block;
+  margin-top:20px;
+  margin-left:5px;
+}
+.shadow_bottom
+{
+  margin-left:68px; 
 }

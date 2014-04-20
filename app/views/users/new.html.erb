@@ -1,10 +1,33 @@
-<div class="form_main_flame">
-<h1><span class="form_signup_h1">创建账户</span></h1>
-  <div class="form_signup_flame">
-    <h4><span class="form_signup_title">没有账户的小伙伴们快来注册吧!</span></h4>
+<div class="form_signup_flame">
+  <span class="form_box_h1">创建账户</span>
+  <div class="form_box_signup">
+    <span class="form_box_h2">小伙伴们快来注册吧!</span>
+    <span class="form_back">或者  <%= link_to '登录', signin_path ,class: "form_back_font"%></span>
     <%= render 'form' %>
-    <span class="form_back">已有帐号？<%= link_to '立即登录', users_path%></span>
-    <span class="signup_agreement">点击注册表示已阅读并同意<a href="#">《Fdur服务条款》</a></span>
   </div>
-  <div class="signup_other"></div>
+  <div class="signup_other">
+    <div class="other_box1">
+      <%= image_tag 'clock.png', class: "other_icon"%> 	
+      <div class="other_box_word">
+        <span class="other_box_h">治疗拖延症</span>
+        <span class="other_box_p">拖延症患者？给自己制定计划，并且按进度完成，让你不再拖延。</span>
+      </div>
+    </div>
+    <div class="other_box2">
+      <%= image_tag 'foot.png', class: "other_icon"%>
+      <div class="other_box_word">
+        <span class="other_box_h">成就的记录</span>
+        <span class="other_box_p">在这里留下你走向成功的每一个脚印，再回首，所有感动都被记录。</span>
+      </div>
+    </div>
+    <div class="other_box3">
+      <%= image_tag 'friends.png', class: "other_icon"%>
+      <div class="other_box_word">
+        <span class="other_box_h">认识新朋友</span>
+        <span class="other_box_p">说出你的心得,分享你的心情，让你认识更多志同道合的朋友。</span>
+      </div>
+    </div>
+        <span class="other_box4">Fdur,让你的生活更加丰富多彩,无论用手机、平板还是电脑。</span>
+  </div>
 </div>
+<%= image_tag 'shadow.png' , class: "shadow_bottom"%>
