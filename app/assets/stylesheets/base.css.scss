@@ -49,11 +49,11 @@ a.selected { background-color: #111;  border-bottom: 4px solid #67B4B1; }
 .scaffold_top{ width: 100%;height: 64px}
 .scaffold_footer{ width: 100%;height: 64px}
 
-footer{  display: block;  margin-top: -64px;  height: 64px;  width: 100%;  background-color: #49565D;}
+footer{  display: block; width: 1000px; margin: -64px auto 0 auto; height: 64px;  border-top: 1px solid #cccccc;  }
 
 .logo{ float: left; margin-left: 10px; height: 60px }
 
-.flash{ display: block; width: 100%; height: 50px; line-height: 50px; margin: 0; text-align: center; font-weight: bold; font-size: 17px;}
+.flash{ display: block; width: 100%; height: 40px; line-height: 40px; margin: 0; text-align: center; font-weight: bold; font-size: 17px;}
 
 .success{ background-color: #67B4B1 }
 

@@ -1,5 +1,5 @@
 #encoding: utf-8
-# == Schema Information
+#formation
 #
 # Table name: projects
 #
@@ -21,9 +21,11 @@ class Project < ActiveRecord::Base
 
   before_validation :add_default_information
 
+  after_save :create_default_milestone
+
   validates :state, presence: true,
                     inclusion: ['open','finished']
-  VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif)|)/
+  VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif))|(default)/
   validates :image, format: {with: VALID_IMAGE_REGEX}
 
   validates :is_public, inclusion: [true, false]
@@ -36,6 +38,10 @@ class Project < ActiveRecord::Base
 
     self.name = '未命名' if self.name.blank?
 
-    self.image = nil if self.image.blank?
+    self.image = 'default' if self.image.blank?
+  end
+
+  def create_default_milestone
+    self.milestones.create name: "开启了新计划——#{self.name}", state: 'finished'
   end
 end

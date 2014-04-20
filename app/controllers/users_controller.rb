@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def detail
-    #binding.pry
   end
 
   def new
@@ -27,8 +26,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      default_name = user_params[:email].match(/(\A[\w+\-.]+)@[a-z\d\-.]+\.[a-z]+\z/)[1]
-      @user.create_user_detail name: default_name
       sign_in @user
       flash[:success] = "注册成功，欢迎来到Fdur"
       redirect_to projects_path

@@ -21,13 +21,13 @@ class ProjectsController < ApplicationController
     project = current_user.projects.build project_params
     #respond_to do |format|
       if project.save
-        flash[:success] = '建立成功'
-
+        flash[:success] = '创建成功'
         redirect_to action: 'index'
         #format.js
       else
-        flash.now[:failed]= '建立失败'
-        render action: 'index'
+        flash[:failed]= '创建失败，图片链接格式不正确，看看帮助吧'
+        #render js: 'alert("图片链接格式不正确，看看帮助吧");'
+        render action: :index
       end
     #end
   end
@@ -35,11 +35,10 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       flash[:success] = '修改成功'
-
       redirect_to action: 'show'
     else
-      flash.now[:failed]= '修改失败'
-      render action: 'show'
+      flash[:failed]= '编辑失败，图片链接格式不正确，看看帮助吧'
+      redirect_to action: :show
     end
   end
 

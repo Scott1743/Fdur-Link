@@ -3,12 +3,12 @@
   <div class="milestones_first_line">我的个人信息 </div>
   <div style="padding: 20px;background-color: #FDFDFD">
     <% if @user.user_detail.avatar.nil? %>
-      <%= image_tag 'icon/default_avatar.png',style: 'width: 120px; height: 120px;' %>
+      <%= image_tag 'icon/default_avatar.png',style: 'width: 160px;', onerror: 'showImgDelay(this,"default.jpg",2)'%>
     <% else %>
       <%= @user.user_detail.avatar %>
     <% end %>
     <br>
-    <%= @user.name %><br>
+    <p style="font-weight: bold;font-size: 17px" ><%= @user.name %></p>
     <b>Email</b><br>
     <%= @user.email %> <br>
     <b>个人简介</b><br>

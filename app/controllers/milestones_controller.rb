@@ -12,7 +12,8 @@ class MilestonesController < ApplicationController
       flash[:success] = '建立成功'
       redirect_to @project
     else
-      render js: 'alert("error!")'
+      flash[:failed]= '创建失败，图片链接格式不正确，看看帮助吧'
+      redirect_to @project
     end
   end
 
@@ -31,7 +32,7 @@ class MilestonesController < ApplicationController
       classify_milestones
       render 'reload_milestones'
     else
-      render js: 'alert("error!")'
+      render js: 'alert("图片格式不正确！")'
     end
   end
 

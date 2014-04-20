@@ -8,7 +8,7 @@ def check_signed_in
   if signed_in?
     nil
   else
-    flash[:error] = "Please singin first!"
+    #flash[:failed] = "请先登录"
     redirect_to signin_path
   end
 end

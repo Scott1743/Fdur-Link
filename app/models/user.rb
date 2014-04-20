@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   
   before_save {self.email.downcase!}
   before_save :create_remember_token
+  after_save :create_detail
 
   has_secure_password
   
@@ -34,5 +35,10 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def create_detail
+      default_name = self.email.match(/(\A[\w+\-.]+)@[a-z\d\-.]+\.[a-z]+\z/)[1]
+      self.create_user_detail name: default_name
     end
 end
