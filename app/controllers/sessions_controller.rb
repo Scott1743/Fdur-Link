@@ -3,6 +3,9 @@ class SessionsController < ApplicationController
   # layout false
 
   def new
+    if signed_in?
+      redirect_to projects_path
+    end
   end
 
   def create
