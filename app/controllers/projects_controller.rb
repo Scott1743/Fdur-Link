@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     #respond_to do |format|
       if project.save
         flash[:success] = '创建成功'
-        redirect_to action: 'index'
+        redirect_to action: :index
         #format.js
       else
         flash[:failed]= '创建失败，图片链接格式不正确，看看帮助吧'

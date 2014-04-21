@@ -12,7 +12,7 @@
     <b>Email</b><br>
     <%= @user.email %> <br>
     <b>个人简介</b><br>
-    <% if @user.user_detail.avatar.nil? %>
+    <% if @user.user_detail.description.blank? %>
       <span>快来说点什么，让大家认识你吧</span>
     <% else %>
       <%= @user.user_detail.description %>
@@ -20,6 +20,14 @@
   </div>
   <a class="base_button edit_user_detail" data-flag="+">编辑 +</a>
   <div class="new_milestone_form" >
-
+    <%= form_for @user_detail, url: user_detail_path(@user_detail) do |f| %>
+     <span>名号
+        <%= f.text_field :name %>
+     </span>
+     <span>个人描述<br>
+       <%= f.text_area :description %>
+     </span>
+    <%= f.submit %>
+    <% end %>
   </div>
 </div>

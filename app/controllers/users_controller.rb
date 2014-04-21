@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def detail
+    @user_detail = @user.user_detail
   end
 
   def new
