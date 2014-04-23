@@ -12,7 +12,8 @@
     <div style="border: 1px solid #cccccc">
       <%= form_for :project,url: projects_path,methode: :post do |f| %>
         <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
-        <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p><%= f.text_field :image, autocomplete: :off, data_flag: :image_address_text  %>
+        <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p>
+        <%= f.text_field :image, autocomplete: :off, data_flag: :image_address_text  %>
         <div id="default_tips">输入链接可以预览您的图片</div>
         <dt id="verify_image">
           <img id="my_image" src="" onerror="image_error_warnning()"/>
@@ -100,9 +101,10 @@
 </div>
 
 <script>
-  function image_error_warnning(){
-    if($("#my_image").attr("src") != ""){
-      $("#warnning_words").html("您的图片链接可能不对，看看帮助?");
+    function image_error_warnning(){
+        var e = event.srcElement;
+        if($(e).attr("src") != ""){
+            $(e).next().html("您的图片链接可能不对，看看帮助?").css('color','#212121');
+        }
     }
-  }
 </script>

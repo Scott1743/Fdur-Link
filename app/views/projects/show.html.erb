@@ -61,7 +61,12 @@
     <%= f.text_field :name, autocomplete: :off%><br/>
     </span>
     <span>图片链接<br>
-    <%= f.text_field :image, autocomplete: :off%><br/>
+    <%= f.text_field :image, autocomplete: :off , data_flag: :image_address_text %>
+    <div id="default_tips">输入链接可以预览您的图片</div>
+    <dt id="verify_image">
+      <img id="my_image" src="" onerror="image_error_warnning()"/>
+      <b id="warnning_words"></b>
+    </dt>
     </span>
     <%= f.submit '新增里程碑', class: 'base_button new_milestone_form_button' %>
   <% end %>
@@ -71,8 +76,9 @@
 
 <script>
   function image_error_warnning(){
-    if($("#my_image").attr("src") != ""){
-      $("#warnning_words").html("您的图片链接可能不对，看看帮助?");
+    var e = event.srcElement;
+    if($(e).attr("src") != ""){
+      $(e).next().html("您的图片链接可能不对，看看帮助?").css('color','#212121');
     }
   }
 </script>

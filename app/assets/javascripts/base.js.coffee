@@ -22,15 +22,20 @@ $(document).ready ->
     $('a#user_path').addClass 'selected'
 
   $('[data_flag="image_address_text"]').blur ->
-    image_add = $(this).val()
+    image_input = $(this)
+    image_add = image_input.val()
     if image_add == ""
-      $('#verify_image').slideUp '', ->
-        $("#default_tips").slideDown()
+#      $('#verify_image').slideUp '', ->
+      image_input.next().next().slideUp '', ->
+#        $("#default_tips").slideDown()
+        image_input.next().slideDown()
     else
-      $("#default_tips").slideUp '', ->
-        $("#warnning_words").html('')
-        $("#verify_image").slideDown()
-        $("#my_image").attr "src", image_add
+      image_input.next().slideUp '', ->
+#       $("#warnning_words").html('')
+        image_input.next().next().children().last().html('')
+        image_input.next().next().slideDown '', ->
+#          $("#my_image").attr "src", image_add
+          image_input.next().next().children().first().attr "src", image_add
 
 
   $('[img_flag="loading"]').one 'load', ->

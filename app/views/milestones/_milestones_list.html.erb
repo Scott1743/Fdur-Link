@@ -3,7 +3,8 @@
 <% @milestones_undo.each do |m| %>
   <span class="milestones_undo state_<%= @project.is_public? ? "public" : "private" %>">
   <% unless m.image.blank? %>
-    <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;', onerror: 'showImgDelay(this,"default.jpg",2)' %><br/>
+    <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+    <%= image_tag m.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %><br/>
   <% end %>
     <b><%= m.name %></b><br/>
     更新时间：
@@ -39,7 +40,8 @@
 <% @milestones_doing.each do |m| %>
   <span class="milestones_doing">
   <% unless m.image.blank? %>
-    <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;', onerror: 'showImgDelay(this,"default.jpg",2)'%><br/>
+    <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+    <%= image_tag m.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %><br/>
   <% end %>
     <b><%= m.name %></b><br/>
     <% unless m.reflection.blank? %>
@@ -85,7 +87,8 @@
   <% else %>
     <span class="milestones_finished">
     <% unless m.image.blank? %>
-      <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' ,onerror: 'showImgDelay(this,"default.jpg",2)'%><br/>
+      <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+      <%= image_tag m.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %><br/>
     <% end %>
     <b><%= m.name %></b><br/>
     <% unless m.reflection.blank? %>

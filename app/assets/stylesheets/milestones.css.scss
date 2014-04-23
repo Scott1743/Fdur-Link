@@ -23,9 +23,9 @@
 
 .new_milestone { display: inline-block; margin: 10px;  }
 
-.new_milestone_form { display: none;width: 400px; margin: 0 auto; padding: 10px; background-color: #4A525C;border-radius: 2px;line-height: 2.0em; color: #fdfdfd }
+.new_milestone_form { display: none; width: 400px; margin: 0 auto; padding: 10px; background-color: #4A525C;border-radius: 2px;line-height: 2.0em; color: #fdfdfd }
 
-.new_milestone_form input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+.new_milestone_form input[type='text'] { padding: 0 10px; height: 30px; width: 288px; }
 
 .new_milestone_form span { display: block;margin: 10px auto;text-align: center; font-size: 16px; }
 
@@ -51,7 +51,7 @@
 
 .undo_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
 
-.undo_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+.undo_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 288px; }
 
 .undo_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #4A525C }
 
