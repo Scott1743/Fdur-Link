@@ -38,7 +38,9 @@ class User < ActiveRecord::Base
     end
 
     def create_detail
-      default_name = self.email.match(/(\A[\w+\-.]+)@[a-z\d\-.]+\.[a-z]+\z/)[1]
-      self.create_user_detail name: default_name
+      if self.name.blank?
+        default_name = self.email.match(/(\A[\w+\-.]+)@[a-z\d\-.]+\.[a-z]+\z/)[1]
+        self.create_user_detail name: default_name
+      end
     end
 end
