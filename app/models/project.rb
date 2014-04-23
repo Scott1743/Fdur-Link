@@ -25,8 +25,8 @@ class Project < ActiveRecord::Base
 
   validates :state, presence: true,
                     inclusion: ['open','finished']
-  VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif))|(default)/
-  validates :image, format: {with: VALID_IMAGE_REGEX}
+  #VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif))|(default)/
+  #validates :image, format: {with: VALID_IMAGE_REGEX}
 
   validates :is_public, inclusion: [true, false]
   validates :name, presence: true
@@ -38,7 +38,9 @@ class Project < ActiveRecord::Base
 
     self.name = '未命名' if self.name.blank?
 
-    self.image = 'default' if self.image.blank?
+    unless self.image.match /http:\/\/[\s\S]*.(jpg|png|gif)/
+      self.image = '' if self.image.blank?
+    end
   end
 
   def create_default_milestone

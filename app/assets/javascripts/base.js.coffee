@@ -21,3 +21,18 @@ $(document).ready ->
   else if $('#page_flag').attr('page-flag') == 'users_show'
     $('a#user_path').addClass 'selected'
 
+  $('[data_flag="image_address_text"]').blur ->
+    image_add = $(this).val()
+    if image_add == ""
+      $('#verify_image').slideUp '', ->
+        $("#default_tips").slideDown()
+    else
+      $("#default_tips").slideUp '', ->
+        $("#warnning_words").html('')
+        $("#verify_image").slideDown()
+        $("#my_image").attr "src", image_add
+
+
+  $('[img_flag="loading"]').one 'load', ->
+    $(this).prev().hide()
+    $(this).show()

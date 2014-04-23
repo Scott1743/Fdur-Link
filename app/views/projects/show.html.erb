@@ -2,10 +2,12 @@
 <ul>
   <li>
     <div>
-      <% if @project.image == 'default' %>
-        <span><%= image_tag 'default.jpg' ,style: 'width: 310px; max-height:500px; overflow:hidden;' %></span>
+      <% if @project.image.blank?  %>
+          <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
+          <%= image_tag 'default.jpg' ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading'%>
       <% else %>
-        <span><%= image_tag @project.image ,style: 'width: 310px; max-height:500px; overflow:hidden;', onerror: 'showImgDelay(this,"default.jpg",2)' %></span>
+          <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
+          <%= image_tag @project.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %>
       <% end %>
       <span class="project_span project_name <%= @project.is_public ? 'state_public' : 'state_private' %>" >
         <%= @project.name %>
@@ -23,7 +25,12 @@
     <div class="extra_project_new_form_border">
       <%= form_for @project,url: project_path(@project),methode: :post do |f| %>
           <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
-          <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p><%= f.text_field :image, autocomplete: :off %>
+          <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p><%= f.text_field :image, autocomplete: :off, data_flag: :image_address_text %>
+          <div id="default_tips">输入链接可以预览您的图片</div>
+          <dt id="verify_image">
+            <img id="my_image" src="" onerror="image_error_warnning()"/>
+            <b id="warnning_words"></b>
+          </dt>
           <p>描述</p><%= f.text_area :description %>
           <%= f.radio_button :is_public, 'false' ,style: "display: none"%>
           <%= f.label :is_public, "私有", value: 'false'%>
@@ -61,3 +68,11 @@
   </div>
   <%= link_to '返回', projects_path, class: 'base_button back_to_projects' %>
 </div>
+
+<script>
+  function image_error_warnning(){
+    if($("#my_image").attr("src") != ""){
+      $("#warnning_words").html("您的图片链接可能不对，看看帮助?");
+    }
+  }
+</script>
