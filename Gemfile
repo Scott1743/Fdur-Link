@@ -42,6 +42,11 @@ gem 'pry'
 gem 'annotate'
 gem 'bcrypt-ruby'
 
+group :development do
+  gem 'paperclip', '~> 4.1'
+  gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
