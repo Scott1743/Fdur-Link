@@ -34,6 +34,8 @@ class Milestone < ActiveRecord::Base
 
     self.state = 'undo' if self.state.blank?
 
+    self.image = '' if self.image.nil?
+
     unless self.image.match /http:\/\/[\s\S]*.(jpg|png|gif)/
       self.image = ''
     end

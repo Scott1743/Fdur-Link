@@ -15,5 +15,11 @@
 class UserDetail < ActiveRecord::Base
   belongs_to :user
 
-  validates :name, presence: true, length: {maximum: 20}
+  has_attached_file :avatar, :styles => { :medium => "300*300>", :thumb => "50*50>" }, :default_url => "icon/default_avatar.png"
+  validates_attachment :avatar,
+                       content_type: { :content_type => /\Aimage/ },
+                       file_name: { :matches => [/png\Z/, /jpe?g\Z/] },
+                       size: { in: 0..2048.kilobytes }
+
+  validates :name, presence: true, length: { maximum: 20 }
 end

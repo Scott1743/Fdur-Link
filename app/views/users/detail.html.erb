@@ -1,33 +1,34 @@
 <i id="page_flag" page-flag='users_show'></i>
 <div class="user_detail" >
-  <div class="milestones_first_line">我的个人信息 </div>
-  <div style="padding: 20px;background-color: #FDFDFD">
-    <% if @user.user_detail.avatar.nil? %>
-      <%= image_tag 'icon/default_avatar.png',style: 'width: 160px;', onerror: 'showImgDelay(this,"default.jpg",2)'%>
-    <% else %>
-      <%= @user.user_detail.avatar %>
-    <% end %>
+  <!--<div class="detail_first_line">我的个人信息 </div>-->
+  <div class="user_detail_information">
+    <%= image_tag 'icon/support-loading.gif', style: 'display:block; width: 50px; padding: 10px; margin: 0 auto' %>
+    <%= image_tag @user.user_detail.avatar.url(:medium), style: 'display: none; width: 300px; max-height:300px; overflow:hidden;', img_flag: 'loading' %>
     <br>
-    <p style="font-weight: bold;font-size: 17px" ><%= @user.name %></p>
+    <p class="detail_user_name" ><%= @user.name %></p>
     <b>Email</b><br>
-    <%= @user.email %> <br>
+    <%= @user.email %> <br><br>
     <b>个人简介</b><br>
     <% if @user.user_detail.description.blank? %>
       <span>快来说点什么，让大家认识你吧</span>
     <% else %>
-      <%= @user.user_detail.description %>
+      <span class="user_detail_description" ><%= @user.user_detail.description %></span>
     <% end %>
   </div>
+  <%= image_tag 'shadow.png' , style: 'display: block; width: 500px; margin: -20px auto 0 auto;' %>
   <a class="base_button edit_user_detail" data-flag="+">编辑 +</a>
-  <div class="new_milestone_form" >
-    <%= form_for @user_detail, url: user_detail_path(@user_detail) do |f| %>
-     <span>名号
-        <%= f.text_field :name %>
+  <div class="new_milestone_form detail_extra_form" >
+    <%= form_for @user_detail, url: user_detail_path(@user_detail), html: { multipart: true } do |f| %>
+     <span>名号<br>
+        <%= f.text_field :name, maxlength: 18 %>
      </span>
-     <span>个人描述<br>
-       <%= f.text_area :description %>
+     <span>个人简介<br>
+       <%= f.text_area :description, maxlength: 500 %>
      </span>
-    <%= f.submit %>
+     <span>头像<br>
+       <%= f.file_field :avatar %>
+     </span>
+    <%= f.submit '更新',class: 'base_button new_milestone_form_button' %>
     <% end %>
   </div>
 </div>
