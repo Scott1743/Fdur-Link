@@ -38,14 +38,17 @@ gem 'therubyracer'
 gem 'execjs'
 # for ubuntu java runtime
 
-gem 'pry'
 gem 'annotate'
 gem 'bcrypt-ruby'
 
 group :development do
-  gem 'paperclip', '~> 4.1'
-  gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-nav'
 end
+
+gem 'paperclip', '~> 4.1'
+gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

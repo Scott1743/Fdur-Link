@@ -2,23 +2,31 @@
 <ul>
   <li>
     <div>
+      <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
       <% if @project.image.blank?  %>
-          <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
-          <%= image_tag 'default.jpg' ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading'%>
+        <%= image_tag 'default.jpg' ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading'%>
       <% else %>
-          <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
-          <%= image_tag @project.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %>
+        <%= image_tag @project.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %>
+      <% end %>
+      <% unless is_himself_project? %>
+        <a href="<%= user_path @project.user.id %>" class="project_user_detail" >
+          <%= image_tag @project.user.user_detail.avatar, style: 'display: inline-block; width: 40px; max-height: 40px; margin-right: 10px; text-align: center; vertical-align: middle;' %>
+          <%= @project.user.name %>
+        </a>
       <% end %>
       <span class="project_span project_name <%= @project.is_public ? 'state_public' : 'state_private' %>" >
         <%= @project.name %>
       </span><br/>
       <span class="project_span project_description" ><%= @project.description %></span>
-      <a data-flag="edit_project" title='编辑'>
-        <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>
-      </a>
-      <a data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href='/projects/<%= @project.id %>' rel='nofollow' title='删除'>
-        <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
-      </a>
+      <span class="project_span project_description" >创建时间：<%= @project.created_at.strftime("%y/%m/%d %X") %></span>
+      <% if is_himself_project? %>
+        <a data-flag="edit_project" title='编辑'>
+          <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>
+        </a>
+        <a data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href='/projects/<%= @project.id %>' rel='nofollow' title='删除'>
+          <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
+        </a>
+      <% end %>
     </div>
   </li>
   <li id="new_project_form" class="new_project" >
@@ -54,7 +62,9 @@
   <div id="milestone_list">
     <%= render 'milestones/milestones_list' %>
   </div>
-  <a class="base_button new_milestone" data-flag="+">新增 +</a>
+  <% if is_himself_project? %>
+    <a class="base_button new_milestone" data-flag="+">新增 +</a>
+  <% end %>
   <div class="new_milestone_form" >
   <%= form_for :milestone,url: project_milestones_path(@project),methode: :post do |f| %>
     <span>里程碑<br>
@@ -68,7 +78,7 @@
       <b id="warnning_words"></b>
     </dt>
     </span>
-    <%= f.submit '新增里程碑', class: 'base_button new_milestone_form_button' %>
+      <%= f.submit '新增里程碑', class: 'base_button new_milestone_form_button' %>
   <% end %>
   </div>
   <%= link_to '返回', projects_path, class: 'base_button back_to_projects' %>

@@ -1,7 +1,8 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
-  before_action :set_project, only: [:show, :update, :destroy]
+  before_action :set_project, only: [:show]
+  before_action :set_current_project, only: [:update, :destroy]
   before_action :find_current_user
 
   def index
@@ -50,8 +51,13 @@ class ProjectsController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_project
+      @project = Project.where(id: params[:id]).first
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_current_project
       @project = current_user.projects.where(id: params[:id]).first
       unless @project
         redirect_to '/404.html'

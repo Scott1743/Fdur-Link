@@ -1,4 +1,20 @@
 #encoding: utf-8
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)      not null
+#  image       :string(255)
+#  description :text
+#  user_id     :integer          not null
+#  is_public   :boolean          not null
+#  state       :string(255)      not null
+#  num         :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 #formation
 #
 # Table name: projects

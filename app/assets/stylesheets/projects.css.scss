@@ -15,11 +15,11 @@
 
 .project_span { display:inline-block; width: 290px; padding: 10px;}
 
-.project_name { width: 295px;margin-left: -5px; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;font-size: 16px; color: #FDFDFD; word-break: keep-all;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.project_name { width: 295px;margin-left: -5px; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;font-size: 16px; color: #FDFDFD; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.project_description { font-size: 14px; color: #FDFDFD; text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
+.project_description { font-size: 14px; color: #FDFDFD; word-break: keep-all; white-space: pre-wrap ;text-align: justify; text-justify: inter-ideograph; overflow: hidden }
 
-.project_milestone { display:inline-block; width: 290px; padding: 10px; background-color: #ffffff; }
+.project_milestone { display: block; width: 290px; padding: 10px; background-color: #ffffff; text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
 
 .project_comments { background-color: #f1f1f1; margin-top: 2px; }
 
@@ -103,3 +103,5 @@ a[data-flag='finished'] { border-top: 4px solid #4A525C; }
 .milestone_state:hover { font-weight: 600 }
 
 dt.milestone_flag { display: none }
+
+.project_user_detail { display: block; text-decoration: none; margin-bottom: 5px; height: 40px; width: 290px; padding: 0 10px; line-height: 40px; font-weight: bold; color: #fdfdfd; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

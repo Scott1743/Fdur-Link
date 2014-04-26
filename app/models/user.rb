@@ -8,7 +8,7 @@
 #  updated_at      :datetime
 #  password_digest :string(255)
 #  remember_token  :string(255)
-#  permission_id   :integer          default(1)
+#  permission_id   :integer          default(1), not null
 #
 
 class User < ActiveRecord::Base
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   belongs_to :permission, dependent: :destroy
   has_one :user_detail, dependent: :destroy
   
-  before_save {self.email.downcase!}
+  before_save { self.email.downcase! }
   before_save :create_remember_token
   after_save :create_detail
 

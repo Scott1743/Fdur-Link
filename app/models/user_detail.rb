@@ -2,14 +2,17 @@
 #
 # Table name: user_details
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :text
-#  avatar      :string(255)
-#  qqnumber    :string(255)
-#  user_id     :integer
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  description         :text
+#  qqnumber            :string(255)
+#  user_id             :integer          not null
+#  created_at          :datetime
+#  updated_at          :datetime
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 
 class UserDetail < ActiveRecord::Base

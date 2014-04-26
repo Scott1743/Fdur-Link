@@ -10,7 +10,7 @@
 #  image       :string(255)
 #  num         :integer
 #  state       :string(255)      not null
-#  project_id  :integer
+#  project_id  :integer          not null
 #  created_at  :datetime
 #  updated_at  :datetime
 #

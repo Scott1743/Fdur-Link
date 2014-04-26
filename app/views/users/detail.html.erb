@@ -6,9 +6,9 @@
     <%= image_tag @user.user_detail.avatar.url(:medium), style: 'display: none; width: 300px; max-height:300px; overflow:hidden;', img_flag: 'loading' %>
     <br>
     <p class="detail_user_name" ><%= @user.name %></p>
-    <b>Email</b><br>
+    <b>Email</b><br><br>
     <%= @user.email %> <br><br>
-    <b>个人简介</b><br>
+    <b>个人简介</b><br><br>
     <% if @user.user_detail.description.blank? %>
       <span>快来说点什么，让大家认识你吧</span>
     <% else %>
