@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   before_action :find_current_user
 
   def index
-    @projects = current_user.projects.order(id: :desc).all
+    @projects = current_user.projects.order(updated_at: :desc).all
     @project = current_user.projects.build
   end
 

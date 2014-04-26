@@ -6,7 +6,11 @@ module ProjectsHelper
     unless @milestones_news = project.milestones.where( state: 'doing' ).blank?
       return @milestones_news = project.milestones.where( state: 'doing' ).order(:updated_at).last
     else
-      return @milestones_news = project.milestones.where( state: 'finished' ).order('updated_at DESC').last
+      if @milestones_news = project.milestones.count > 1
+        return @milestones_news = project.milestones.where( state: 'finished' ).order('updated_at DESC').first
+      else
+        return @milestones_news = project.milestones.where( state: 'finished' ).order('updated_at DESC').last
+      end
     end
   end
 
