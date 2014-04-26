@@ -7,8 +7,7 @@
     <%= image_tag m.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %><br/>
   <% end %>
     <b><%= m.name %></b><br/>
-    更新时间：
-    <%= m.updated_at.strftime("%y/%m/%d %X") %>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
     <% if is_himself_project? %>
       <%= link_to '', project_milestone_path(@project,m), method: :delete ,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
       <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'doing'), remote: true, method: :post, class: 'undo_state',title: '开始' %>
@@ -43,8 +42,7 @@
     <% unless m.reflection.blank? %>
       <p class="milestone_reflection"><%= m.reflection %></p><br/>
     <% end %>
-    更新时间:
-    <%= m.updated_at.strftime("%y/%m/%d %X") %>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
     <% if is_himself_project? %>
       <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'doing_state_delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
       <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'finished'), remote: true, method: :post,class: 'doing_state',title: '完成' %>
@@ -79,8 +77,7 @@
       <% unless m.reflection.blank? %>
       <%= m.reflection %><br/>
     <% end %>
-      更新时间：
-      <%= m.updated_at.strftime("%y/%m/%d %X") %>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
     </span>
   <% else %>
     <span class="milestones_finished">
@@ -92,8 +89,7 @@
     <% unless m.reflection.blank? %>
       <%= m.reflection %><br/>
     <% end %>
-    更新时间：
-    <%= m.updated_at.strftime("%y/%m/%d %X") %>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
     <% if is_himself_project? %>
       <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
       <%= link_to '',ajax_update_project_milestone_path(@project,m,state: 'undo'), remote: true, method: :post, class: 'finished_state',title: '改回未做状态' %>

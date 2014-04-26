@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:session][:password])
   	  sign_in user
       flash[:success] = "欢迎回来,#{current_user.name}"
-  	  redirect_to projects_path current_user
+  	  redirect_to activities_path
     else
-      flash.now[:error] = 'Invalid email/password combination'
+      #flash.now[:error] = 'Invalid email/password combination'
       render 'new'
     end
   end

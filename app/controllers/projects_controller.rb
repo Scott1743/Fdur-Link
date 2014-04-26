@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    milestones =  @project.milestones.order('updated_at DESC')
+    milestones =  @project.milestones.order(updated_at: :desc)
     @milestones_undo = milestones.select {|m| m.state == 'undo'}
     @milestones_doing = milestones.select {|m| m.state == 'doing'}
     @milestones_finished = milestones.select{|m| m.state == 'finished'}

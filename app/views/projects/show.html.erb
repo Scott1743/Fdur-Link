@@ -18,7 +18,7 @@
         <%= @project.name %>
       </span><br/>
       <span class="project_span project_description" ><%= @project.description %></span>
-      <span class="project_span project_description" >创建时间：<%= @project.created_at.strftime("%y/%m/%d %X") %></span>
+      <span class="project_span project_description last_time" >创建时间：<%= @project.created_at.strftime("%y/%m/%d %X") %></span>
       <% if is_himself_project? %>
         <a data-flag="edit_project" title='编辑'>
           <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>

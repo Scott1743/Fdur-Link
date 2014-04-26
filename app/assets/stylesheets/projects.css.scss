@@ -19,7 +19,7 @@
 
 .project_description { font-size: 14px; color: #FDFDFD; word-break: keep-all; white-space: pre-wrap ;text-align: justify; text-justify: inter-ideograph; overflow: hidden }
 
-.project_milestone { display: block; width: 290px; padding: 10px; background-color: #ffffff; text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
+.project_milestone { display: block; width: 290px; padding: 10px; background-color: #ffffff; font-size: 16px;text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
 
 .project_comments { background-color: #f1f1f1; margin-top: 2px; }
 
@@ -104,4 +104,8 @@ a[data-flag='finished'] { border-top: 4px solid #4A525C; }
 
 dt.milestone_flag { display: none }
 
-.project_user_detail { display: block; text-decoration: none; margin-bottom: 5px; height: 40px; width: 290px; padding: 0 10px; line-height: 40px; font-weight: bold; color: #fdfdfd; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.project_user_detail { display: block; text-decoration: none; margin-bottom: 5px; height: 40px; width: 290px; padding: 0 10px; line-height: 40px; font-size: 19px; font-weight: bold; color: #fdfdfd; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.project_user_detail:hover { color: #67B4B1 }
+
+.last_time { display: inline-block; font-weight: normal; font-size: 11px; margin: 0;}

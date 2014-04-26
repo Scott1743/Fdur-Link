@@ -20,6 +20,8 @@ $(document).ready ->
     $('a#projects_path').addClass 'selected'
   else if $('#page_flag').attr('page-flag') == 'users_show'
     $('a#user_path').addClass 'selected'
+  else if $('#page_flag').attr('page-flag') == 'activities_index'
+    $('a#activities_path').addClass 'selected'
 
   $('[data_flag="image_address_text"]').blur ->
     image_input = $(this)

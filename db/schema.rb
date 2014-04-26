@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425140653) do
+ActiveRecord::Schema.define(version: 20140426175706) do
+
+  create_table "activities", force: true do |t|
+    t.integer  "project_id",         null: false
+    t.integer  "project_state_flag"
+    t.integer  "commits_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
 
   create_table "milestones", force: true do |t|
     t.string   "name",        null: false

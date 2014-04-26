@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "注册成功，欢迎来到Fdur"
-      redirect_to projects_path
+      redirect_to activities_path
     else
       flash.now[:failed] = '注册失败，请检查您的注册信息'
       render :new
