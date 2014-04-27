@@ -1,5 +1,6 @@
 #encoding: utf-8
 class UsersController < ApplicationController
+  before_action :set_user_from_id, only: [:show]
   before_action :set_user, only: [:detail, :edit, :update]
   before_action :check_signed_in ,except: [:new, :create]
 
@@ -8,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_detail = @user.user_detail
+    @projects = @user.projects.where(:is_public => true).order(updated_at: :desc)
   end
 
   def detail
@@ -51,6 +54,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def set_user_from_id
+      @user = User.find(params[:id])
+    end
+
     def set_user
       @user = current_user
     end

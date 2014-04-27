@@ -1,15 +1,42 @@
+<div class="user_detail" >
+  <!--<div class="detail_first_line">我的个人信息 </div>-->
+  <div class="user_detail_information">
+    <%= image_tag 'icon/support-loading.gif', style: 'display:block; width: 50px; padding: 10px; margin: 0 auto' %>
+    <%= image_tag @user.user_detail.avatar.url(:medium), style: 'display: none; width: 300px; max-height:300px; overflow:hidden;', img_flag: 'loading' %>
+    <br>
+    <p class="detail_user_name" ><%= @user.name %></p>
+    <b>Email</b><br><br>
+    <%= @user.email %> <br><br>
+    <b>个人简介</b><br><br>
+    <% if @user.user_detail.description.blank? %>
+        <span>快来说点什么，让大家认识你吧</span>
+    <% else %>
+        <span class="user_detail_description" ><%= @user.user_detail.description %></span>
+    <% end %>
+  </div>
+  <%= image_tag 'shadow.png' , style: 'display: block; width: 600px; margin: -20px auto 0 auto;' %>
+  <% if is_himself? %>
+    <i id="page_flag" page-flag='users_show'></i>
+    <a class="base_button edit_user_detail" data-flag="+">编辑 +</a>
+    <div class="new_milestone_form detail_extra_form" >
+      <%= form_for @user_detail, url: user_detail_path(@user_detail), html: { multipart: true } do |f| %>
+       <span>名号<br>
+         <%= f.text_field :name, maxlength: 18 %>
+       </span>
+       <span>个人简介<br>
+         <%= f.text_area :description, maxlength: 500 %>
+       </span>
+       <span>头像<br>
+         <%= f.file_field :avatar %>
+       </span>
+         <%= f.submit '更新',class: 'base_button new_milestone_form_button' %>
+       <% end %>
+     </div>
+  <% end %>
+</div>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% unless is_himself? %>
+<div>
+  <%= render 'projects_preview_list' %>
+</div>
+<% end %>
