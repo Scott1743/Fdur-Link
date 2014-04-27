@@ -1,143 +1,80 @@
-<div style="height: 100%; width: 1000px;margin: 80px auto; ">
-<div id='left'><%= image_tag 'tips/left.png' %></div>
-<div id="cent">
-  <table cellpadding=0 cellspacing=0>
-    <tr>
-      <td>
-        <div class="teach_leftbox"></div>
-        <div class="teach_rightbox">
-          <span class="teach_rightbox_h">Tips:</span>
-          <span class="teach_rightbox_p" >
-            本站只支持带有外链的图片，下面以百度云相册为例，讲讲如何挑选并使用你所喜爱的图片.
-          </span>
-        </div>
-      </td>
-      <td>
-        <div class="teach_leftbox1">
-          <div class="teach_leftbox1_h1">
-            <span class="teach_leftbox1_h2">1</span><span class="teach_leftbox1_h3">/4</span>
-          </div>
-          <span class="teach_leftbox1_p1">登录<a href="http://yun.baidu.com/">百度云</a>,进入你的相册</span>
-        </div>
-        <%= image_tag 'tips/pic0.png', class: "teach_imagebox"%>
-      </td>
-      <td>
-        <div class="teach_leftbox1">
-          <div class="teach_leftbox1_h1">
-            <span class="teach_leftbox1_h2">2</span><span class="teach_leftbox1_h3">/4</span>
-          </div>
-          <span class="teach_leftbox1_p1">上传你所挑选的图片，之后单击你所挑选的图片</span>
-        </div>
-        <%= image_tag 'tips/pic1.png', class: "teach_imagebox"%>
-      </td>
-      <td>
-        <div class="teach_leftbox1">
-          <div class="teach_leftbox1_h1">
-            <span class="teach_leftbox1_h2">3</span><span class="teach_leftbox1_h3">/4</span>
-          </div>
-          <span class="teach_leftbox1_p1">点击操作选项，并选择复制链接子选项</span>
-        </div>
-        <%= image_tag 'tips/pic2.png', class: "teach_imagebox"%>
-      </td>
-      <td>
-        <div class="teach_leftbox1">
-          <div class="teach_leftbox1_h1">
-            <span class="teach_leftbox1_h2">4</span><span class="teach_leftbox1_h3">/4</span>
-          </div>
-            <span class="teach_leftbox1_p1">
-              弹出复制链接框，点击外链地址的复制按钮，将复制的地址粘帖在你新增图片的地址中
-            </span>
-        </div>
-        <%= image_tag 'tips/pic3.png', class: "teach_imagebox"%>
-      </td>
-      <td>
-        <div class="teach_leftbox"></div>
-        <div class="teach_rightbox">
-          <span class="teach_rightbox_h">End：</span>
-             <span class="teach_rightbox_p">
-               除了使用百度云相册之外，你还可以使用任何带有外链地址的图片，如网易云相册等。
-             </span>
-        </div>
-      </td>
-    </tr>
-  </table>
-
-
-</div>
-<div id='right'><%= image_tag 'tips/right.png' %></div>
-<div id="bottom" class="">
-  <span class="index">封</span>
-  <span class="">1</span>
-  <span class="">2</span>
-  <span class="">3</span>
-  <span class="">4</span>
-  <span class="">尾</span>
-</div>
-</div>
-<script>
-  $(function () {
-    var bodyW=$("body").width(),centW=$("#cent").width(),lrW=(bodyW-centW)/2,noLength=$("#cent td").length;
-    $("#left").css({"width":lrW+"px"}).siblings("#right").css({"left":(lrW+centW)+"px","width":lrW+"px"}).siblings("#cent").css({"left":lrW+"px"}).children("table").css({"width":centW*noLength+"px"})
-//  　$(".lyer span").mouseover(function (){      　　})
-    var t_f=true,index=0;
-    function scrollFunc(e){
-
-      if (t_f==true) {
-        t_f=false;
-        //向下是正数
-        if (e>0) {
-            index++;
-
-        }else {
-            index--;
-
-        }
-        animation()
-
-        }
-      }
-  function animation() {
-//      console.log(0)
-    if (index>=noLength) {
-      index=noLength-1;
-    }
-    if (index<0) {
-      index=0;
-      }
-      $("#cent").stop(true,true).animate({"left":(lrW-centW*index)+"px"});
-      $("#bottom span").eq(index).addClass("index").siblings("span").removeClass("index");
-     t_f=true;
-    }
-      /*滚动事件*/
-    if(document.addEventListener){
-      document.addEventListener("DOMMouseScroll",function(e){
-        e.preventDefault();
-        scrollFunc(e.detail);
-      },false);
-      document.addEventListener('mousewheel',function(e){
-        e.preventDefault();
-        //为了兼容chrom
-        scrollFunc(e.wheelDelta<0?120:-120);
-      },false);//
-    }else{
-      document.attachEvent("onmousewheel",function(e){
-        e.returnValue=false;
-        scrollFunc(e.wheelDelta<0?120:-120);
-      });
-    };
-    //点击事件
-    $("#bottom").on("click","span",function () {
-      index=$(this).index();
-      animation();
-    })
-    $("#right").click(function () {
-      index++;
-      animation();
-    })
-    $("#left").click(function () {
-      index--;
-      animation();
-    })
-  });
-
-</script>
+<ul class="tips_container">
+  <li class="tips_title_wrapper1">
+    <span class="tips_title_h1">如何添加图片</span>
+    <span class="tips_title_p"> 你在添加图片的时候，图片是不是不能够正确显示？这是因为本站只支持带有外链的图片（所谓图片外链是指通过引用别的网站(服务器)上的图片的URL在网页上直接显示图片，而不需给出图片的反向链接）。下面将以百度云相册为例，介绍如何正确的添加外链图片。
+    </span>
+  </li>
+ <li class="tips_title_wrapper2">
+   <span class="tips_title_h2">步骤/方法</span>
+ </li>
+ <li class="tips_wrapper">
+  <div class="tips_number">
+    1
+  </div>
+  <div class="tips_content">
+    <span class="tips_p">
+     首先用你的百度帐号登陆
+     <a href="http://xiangce.baidu.com/" class="tips_a">百度云相册</a>
+     ，点击进入我的相册选项。
+    <span>
+    <%= image_tag 'tips/pic1.png', class: "tips_image"%>
+  </div>
+ </li>  
+  <li class="tips_wrapper">
+  <div class="tips_number">
+    2
+  </div>
+  <div class="tips_content">
+    <span class="tips_p">
+    上传你所要添加的图片到相册。
+    <span>
+    <%= image_tag 'tips/pic2.png', class: "tips_image"%>
+  </div>
+ </li>  
+  <li class="tips_wrapper">
+  <div class="tips_number">
+    3
+  </div>
+  <div class="tips_content">
+    <span class="tips_p">
+    接着点击进入你上传好的图片。
+    <span>
+    <%= image_tag 'tips/pic3.png', class: "tips_image"%>
+  </div>
+ </li>  
+   <li class="tips_wrapper">
+  <div class="tips_number">
+    4
+  </div>
+  <div class="tips_content">
+    <span class="tips_p">
+      然后点击图片右下方的操作菜单，并且进入复制链接选项。
+    <span>
+    <%= image_tag 'tips/pic4.png', class: "tips_image"%>
+  </div>
+ </li>  
+   <li class="tips_wrapper">
+  <div class="tips_number">
+    5
+  </div>
+  <div class="tips_content">
+    <span class="tips_p">
+      最后复制外链链接的地址，粘贴到你的项目图片链接处，即可以添加你所需要的图片。
+    <span>
+    <%= image_tag 'tips/pic5.png', class: "tips_image"%>
+  </div>
+ </li>  
+ <li class="tips_title_wrapper1">
+    <span class="tips_title_h1">注意事项</span>
+    <span class="tips_title_p"> 
+     <ul>
+      <li>
+        1.当你在添加图片，图片链接填写为空，或者链接格式不是正确的图片链接格式时，本站将为你提供默认的图片。
+      </li>
+      <li style="margin-top:30px;">
+        2.除了百度云相册外，你还可以使用其他任何带有图片外链的相册，如网易云相册，360云相册。
+      </li>
+      </ul>
+    </span>
+  </li>
+</ul> 

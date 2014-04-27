@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20140405082140) do
   create_table "milestones", force: true do |t|
     t.string   "name",        null: false
     t.text     "description"
-    t.text     "reflection"
+    t.text     "reflections"
     t.string   "image"
     t.integer  "num"
     t.string   "state",       null: false
