@@ -1,4 +1,20 @@
 #encoding: utf-8
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)      not null
+#  image       :string(255)
+#  description :text
+#  user_id     :integer          not null
+#  is_public   :boolean          not null
+#  state       :string(255)      not null
+#  num         :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 #formation
 #
 # Table name: projects
@@ -18,6 +34,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user
   has_many :milestones, dependent: :destroy
+  has_one :activity, dependent: :destroy
 
   before_validation :add_default_information
 
@@ -25,8 +42,8 @@ class Project < ActiveRecord::Base
 
   validates :state, presence: true,
                     inclusion: ['open','finished']
-  VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif))|(default)/
-  validates :image, format: {with: VALID_IMAGE_REGEX}
+  #VALID_IMAGE_REGEX = /(http:\/\/[\s\S]*.(jpg|png|gif))|(default)/
+  #validates :image, format: {with: VALID_IMAGE_REGEX}
 
   validates :is_public, inclusion: [true, false]
   validates :name, presence: true
@@ -38,10 +55,14 @@ class Project < ActiveRecord::Base
 
     self.name = '未命名' if self.name.blank?
 
-    self.image = 'default' if self.image.blank?
+    unless self.image.match /http:\/\/[\s\S]*.(jpg|png|gif)/
+      self.image = ''
+    end
   end
 
   def create_default_milestone
-    self.milestones.create name: "开启了新计划——#{self.name}", state: 'finished'
+    if self.milestones.blank?
+      self.milestones.create name: "创建了新计划——#{self.name}", state: 'finished'
+    end
   end
 end

@@ -1,5 +1,6 @@
 #encoding: utf-8
 class UsersController < ApplicationController
+  before_action :set_user_from_id, only: [:show]
   before_action :set_user, only: [:detail, :edit, :update]
   before_action :check_signed_in ,except: [:new, :create]
 
@@ -8,9 +9,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_detail = @user.user_detail
+    @projects = @user.projects.where(:is_public => true).order(updated_at: :desc)
   end
 
   def detail
+    @user_detail = @user.user_detail
   end
 
   def new
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "注册成功，欢迎来到Fdur"
-      redirect_to projects_path
+      redirect_to activities_path
     else
       flash.now[:failed] = '注册失败，请检查您的注册信息'
       render :new
@@ -50,6 +54,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def set_user_from_id
+      @user = User.find(params[:id])
+    end
+
     def set_user
       @user = current_user
     end

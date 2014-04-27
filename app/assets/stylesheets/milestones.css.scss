@@ -11,7 +11,7 @@
 
 .milestones_undo { color: #fdfdfd; }
 
-.milestones_undo b,.milestones_doing b,.milestones_finished b { font-size: 17px; font-weight: normal; line-height: 2.0em }
+.milestones_undo b,.milestones_doing b,.milestones_finished b { display: inline-block; font-size: 17px; font-weight: normal; line-height: 2.0em;  white-space: nowrap; overflow: hide; text-overflow: ellipsis; }
 
 .milestones_doing { background-color: #FDFDFD; }
 
@@ -23,9 +23,11 @@
 
 .new_milestone { display: inline-block; margin: 10px;  }
 
-.new_milestone_form { display: none;width: 400px; margin: 0 auto; padding: 10px; background-color: #4A525C;border-radius: 2px;line-height: 2.0em; color: #fdfdfd }
+.new_milestone_form { display: none; width: 400px; margin: 0 auto; padding: 10px; background-color: #4A525C;border-radius: 2px;line-height: 2.0em; color: #fdfdfd }
 
-.new_milestone_form input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+.new_milestone_form input[type='text'] { padding: 0 10px; height: 30px; width: 288px; }
+
+.new_milestone_form textarea { padding: 0 10px; height: 100px; width: 288px; }
 
 .new_milestone_form span { display: block;margin: 10px auto;text-align: center; font-size: 16px; }
 
@@ -51,7 +53,7 @@
 
 .undo_form dd { text-align: center; line-height: 2.0em; margin-top: 10px; }
 
-.undo_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 320px; }
+.undo_form dd input[type='text'] { padding: 0 10px; height: 30px; width: 288px; }
 
 .undo_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #4A525C }
 
@@ -76,6 +78,8 @@
 .finished_form dd input[type='submit'] { display: block; margin: 20px auto; background-color: #67B4B1 }
 
 .finished_form dd textarea { padding: 0 10px; height: 60px; width: 320px }
+
+.milestone_reflection { display: inline-block; width: 450px; word-break: keep-all; white-space: pre-wrap ;text-align: justify; text-justify: inter-ideograph; overflow: hidden }
 
 
 

@@ -3,14 +3,16 @@
 <% @milestones_undo.each do |m| %>
   <span class="milestones_undo state_<%= @project.is_public? ? "public" : "private" %>">
   <% unless m.image.blank? %>
-    <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;', onerror: 'showImgDelay(this,"default.jpg",2)' %><br/>
+    <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+    <%= image_tag m.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %><br/>
   <% end %>
     <b><%= m.name %></b><br/>
-    更新时间：
-    <%= m.updated_at.strftime("%y/%m/%d %X") %>
-    <%= link_to '', project_milestone_path(@project,m), method: :delete ,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
-    <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'doing'), remote: true, method: :post, class: 'undo_state',title: '开始' %>
-    <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
+    <% if is_himself_project? %>
+      <%= link_to '', project_milestone_path(@project,m), method: :delete ,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
+      <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'doing'), remote: true, method: :post, class: 'undo_state',title: '开始' %>
+      <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <% end %>
     <div class='undo_form'>
     <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
     <!--或者写成[@project, m]-->
@@ -25,12 +27,6 @@
       </dd>
     <% end %>
     </div>
-      <script>
-        function toggle_div(){
-          var e = event.srcElement;
-          $(e).next().slideToggle();
-        }
-      </script>
   </span>
 <% end %>
 </dt>
@@ -39,17 +35,19 @@
 <% @milestones_doing.each do |m| %>
   <span class="milestones_doing">
   <% unless m.image.blank? %>
-    <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;', onerror: 'showImgDelay(this,"default.jpg",2)'%><br/>
+    <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+    <%= image_tag m.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %><br/>
   <% end %>
     <b><%= m.name %></b><br/>
     <% unless m.reflection.blank? %>
-      <%= m.reflection %><br/>
+      <p class="milestone_reflection"><%= m.reflection %></p><br/>
     <% end %>
-    更新时间:
-    <%= m.updated_at.strftime("%y/%m/%d %X") %>
-    <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'doing_state_delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
-    <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'finished'), remote: true, method: :post,class: 'doing_state',title: '完成' %>
-    <a onclick="toggle_div()" class="edit_milestone_button_black"></a>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
+    <% if is_himself_project? %>
+      <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'doing_state_delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
+      <%= link_to '', ajax_update_project_milestone_path(@project,m,state: 'finished'), remote: true, method: :post,class: 'doing_state',title: '完成' %>
+      <a onclick="toggle_div()" class="edit_milestone_button_black"></a>
+    <% end %>
     <div class='doing_form'>
       <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
           <!--或者写成[@project, m]-->
@@ -79,23 +77,24 @@
       <% unless m.reflection.blank? %>
       <%= m.reflection %><br/>
     <% end %>
-      更新时间：
-      <%= m.updated_at.strftime("%y/%m/%d %X") %>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
     </span>
   <% else %>
     <span class="milestones_finished">
     <% unless m.image.blank? %>
-      <%= image_tag m.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' ,onerror: 'showImgDelay(this,"default.jpg",2)'%><br/>
+      <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+      <%= image_tag m.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %><br/>
     <% end %>
     <b><%= m.name %></b><br/>
     <% unless m.reflection.blank? %>
       <%= m.reflection %><br/>
     <% end %>
-    更新时间：
-    <%= m.updated_at.strftime("%y/%m/%d %X") %>
-    <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
-    <%= link_to '',ajax_update_project_milestone_path(@project,m,state: 'undo'), remote: true, method: :post, class: 'finished_state',title: '改回未做状态' %>
-    <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
+    <% if is_himself_project? %>
+      <%= link_to '', project_milestone_path(@project,m), method: :delete,class: 'delete_milestone',data: { confirm: '确定删除？' },title: '删除' %>
+      <%= link_to '',ajax_update_project_milestone_path(@project,m,state: 'undo'), remote: true, method: :post, class: 'finished_state',title: '改回未做状态' %>
+      <a onclick="toggle_div()" class="edit_milestone_button"></a>
+    <% end %>
     <div class='finished_form'>
       <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
           <!--或者写成[@project, m]-->
@@ -117,3 +116,13 @@
   <% end %>
 <% end %>
 </dt>
+
+<script>
+  function toggle_div(){
+    var e = event.srcElement;
+    $(e).next().slideToggle();
+  }
+  $('[img_flag="loading"]').one('load',function(){
+    $(this).prev().hide();
+    $(this).show();})
+</script>

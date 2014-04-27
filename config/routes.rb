@@ -1,6 +1,10 @@
 FdurLink::Application.routes.draw do
   
-  root 'projects#index'
+  root 'activities#index'
+
+  resources :activities, only: [:index]
+
+  resources :user_details, only: [:update]
   
   resources :users, except: [:new, :index] do
     collection do

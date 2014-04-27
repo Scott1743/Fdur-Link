@@ -25,7 +25,7 @@ $(document).ready ->
     if $(this).attr('data-flag') == '+'
       $(this).text '新增 -'
       $(this).attr('data-flag', '-')
-      $('#milestone_name').focus()
+      $(this).next().children().children().first().next().children().first().next().focus();
     else if $(this).attr('data-flag') == '-'
       $(this).text '新增 +'
       $(this).attr('data-flag', '+')

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405082140) do
+ActiveRecord::Schema.define(version: 20140426175706) do
+
+  create_table "activities", force: true do |t|
+    t.integer  "project_id",         null: false
+    t.integer  "project_state_flag"
+    t.integer  "commits_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["project_id"], name: "index_activities_on_project_id", using: :btree
 
   create_table "milestones", force: true do |t|
     t.string   "name",        null: false
@@ -53,11 +63,14 @@ ActiveRecord::Schema.define(version: 20140405082140) do
   create_table "user_details", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "avatar"
     t.string   "qqnumber"
-    t.integer  "user_id",     null: false
+    t.integer  "user_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "user_details", ["user_id"], name: "index_user_details_on_user_id", using: :btree
