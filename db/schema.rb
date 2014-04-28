@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426175706) do
+ActiveRecord::Schema.define(version: 20140428080145) do
 
   create_table "activities", force: true do |t|
     t.integer  "project_id",         null: false
@@ -46,15 +46,16 @@ ActiveRecord::Schema.define(version: 20140426175706) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "name",                    null: false
     t.string   "image"
     t.text     "description"
-    t.integer  "user_id",     null: false
-    t.boolean  "is_public",   null: false
-    t.string   "state",       null: false
+    t.integer  "user_id",                 null: false
+    t.boolean  "is_public",               null: false
+    t.string   "state",                   null: false
     t.integer  "num"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "forks_count", default: 0, null: false
   end
 
   add_index "projects", ["state"], name: "index_projects_on_state", using: :btree

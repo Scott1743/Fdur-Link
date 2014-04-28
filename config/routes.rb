@@ -18,6 +18,10 @@ FdurLink::Application.routes.draw do
         post :ajax_update
       end
     end
+
+    member do
+      post :fork
+    end
   end
 
   get '/signup', to: 'users#new'

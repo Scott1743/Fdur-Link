@@ -1,12 +1,12 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
-  before_action :set_project, only: [:show]
+  before_action :set_project, only: [:show, :fork]
   before_action :set_current_project, only: [:update, :destroy]
   before_action :find_current_user
 
   def index
-    @projects = current_user.projects.order(updated_at: :desc).all
+    @projects = current_user.projects.order(updated_at: :desc)
     @project = current_user.projects.build
   end
 
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @projects = current_user.projects.order(id: :desc).all
+    #@projects = current_user.projects.order(updated_at: :desc).all
     project = current_user.projects.build project_params
     #respond_to do |format|
       if project.save
@@ -40,6 +40,17 @@ class ProjectsController < ApplicationController
     else
       flash[:failed]= '编辑失败，图片链接格式不正确，看看帮助吧'
       redirect_to action: :show
+    end
+  end
+
+  def fork
+    if @project.user != current_user
+      temp = @project.forks_count + 1
+      @project.update!(forks_count: temp)
+      new_project = Project.new
+      new_project.fork_from @project,current_user.id
+      flash[:success] = '拷贝成功'
+      redirect_to new_project
     end
   end
 

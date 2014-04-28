@@ -21,6 +21,8 @@
 
 .project_milestone { display: block; width: 290px; padding: 10px; background-color: #ffffff; font-size: 16px;text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
 
+.project_milestone > b { font-weight: normal }
+
 .project_comments { background-color: #f1f1f1; margin-top: 2px; }
 
 .projects ul li.can_hover:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; }

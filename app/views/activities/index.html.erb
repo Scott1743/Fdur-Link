@@ -19,9 +19,11 @@
             </a>
             <span class="project_span project_name <%= project.is_public ? 'state_public' : 'state_private' %>" ><%= project.name %></span><br/>
             <span class="project_span project_description" ><%= project.description %></span>
-            <a title='fork'>
-              <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>
-            </a>
+            <% unless is_himself_project project %>
+              <%= link_to 'fork', fork_project_path(project), method: :post, class: 'fork_project',title: 'Meal it' %>
+            <% else %>
+              <i class="fork_project"> fork </i>
+            <% end %>
             <a  title='follow'>
               <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
             </a>
@@ -30,7 +32,7 @@
               <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
               <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
             <% end %>
-            </b><%= @milestones_news.name %></b>
+            <b><%= @milestones_news.name %></b>
             <br><br>
             <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
             </span>
@@ -44,43 +46,45 @@
 
   <ul>
     <% @activities.each_with_index do |a, index| %>
-        <% if (index%3 == 1) %>
-            <% project = a.project %>
-            <%= link_to project do %>
-                <li class="can_hover">
-                  <div>
-                    <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
-                    <% if project.image.blank? %>
-                        <%= image_tag 'default.jpg' ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading'%>
-                    <% else %>
-                        <%= image_tag project.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %>
-                    <% end %>
-                    <a href="<%= user_path project.user.id %>" class="project_user_detail" >
-                      <%= image_tag project.user.user_detail.avatar, style: 'display: inline-block; width: 40px; max-height: 40px; margin-right: 10px; text-align: center; vertical-align: middle;' %>
-                      <%= project.user.name %>
-                    </a>
-                    <span class="project_span project_name <%= project.is_public ? 'state_public' : 'state_private' %>" ><%= project.name %></span><br/>
-                    <span class="project_span project_description" ><%= project.description %></span>
-                    <a title='fork'>
-                      <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>
-                    </a>
-                    <a  title='follow'>
-                      <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
-                    </a>
+      <% if (index%3 == 1) %>
+        <% project = a.project %>
+        <%= link_to project do %>
+          <li class="can_hover">
+            <div>
+            <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
+            <% if project.image.blank? %>
+              <%= image_tag 'default.jpg' ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading'%>
+            <% else %>
+              <%= image_tag project.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %>
+            <% end %>
+            <a href="<%= user_path project.user.id %>" class="project_user_detail" >
+              <%= image_tag project.user.user_detail.avatar, style: 'display: inline-block; width: 40px; max-height: 40px; margin-right: 10px; text-align: center; vertical-align: middle;' %>
+              <%= project.user.name %>
+            </a>
+            <span class="project_span project_name <%= project.is_public ? 'state_public' : 'state_private' %>" ><%= project.name %></span><br/>
+            <span class="project_span project_description" ><%= project.description %></span>
+            <% unless is_himself_project project %>
+              <%= link_to 'fork', fork_project_path(project), method: :post, class: 'fork_project',title: 'Meal it' %>
+            <% else %>
+              <i class="fork_project"> fork </i>
+            <% end %>
+            <a  title='follow'>
+              <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
+            </a>
             <span class="project_span project_milestone">
             <% unless milestone_news(project).image.blank? %>
-              <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
-                  <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
+            <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+              <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
             <% end %>
-              </b><%= @milestones_news.name %></b>
-              <br><br>
+            <b><%= @milestones_news.name %></b>
+            <br><br>
             <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
             </span>
-                  </div>
-                  <span class="project_span project_comments"><a style="float: right;">评论+</a><br></span>
-                </li>
-            <% end %>
+            </div>
+            <span class="project_span project_comments"><a style="float: right;">评论+</a><br></span>
+          </li>
         <% end %>
+      <% end %>
     <% end %>
   </ul>
 
@@ -103,21 +107,23 @@
                     </a>
                     <span class="project_span project_name <%= project.is_public ? 'state_public' : 'state_private' %>" ><%= project.name %></span><br/>
                     <span class="project_span project_description" ><%= project.description %></span>
-                    <a title='fork'>
-                      <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>
-                    </a>
+                    <% unless is_himself_project project %>
+                        <%= link_to 'fork', fork_project_path(project), method: :post, class: 'fork_project',title: 'Meal it' %>
+                    <% else %>
+                        <i class="fork_project"> fork </i>
+                    <% end %>
                     <a  title='follow'>
                       <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
                     </a>
-            <span class="project_span project_milestone">
-            <% unless milestone_news(project).image.blank? %>
-              <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
-                  <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
-            <% end %>
-              </b><%= @milestones_news.name %></b>
-              <br><br>
-            <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
-            </span>
+                    <span class="project_span project_milestone">
+                    <% unless milestone_news(project).image.blank? %>
+                      <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+                      <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
+                    <% end %>
+                    <b><%= @milestones_news.name %></b>
+                    <br><br>
+                    <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
+                    </span>
                   </div>
                   <span class="project_span project_comments"><a style="float: right;">评论+</a><br></span>
                 </li>
