@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
-  before_action :set_project, only: [:show, :fork]
+  before_action :set_project, only: [:show, :fork, :follow]
   before_action :set_current_project, only: [:update, :destroy]
   before_action :find_current_user
 
@@ -49,9 +49,19 @@ class ProjectsController < ApplicationController
       @project.update!(forks_count: temp)
       new_project = Project.new
       new_project.fork_from @project,current_user.id
-      flash[:success] = '拷贝成功'
+      flash[:success] = '拷贝成功，已加入您的私有微计划'
       redirect_to new_project
     end
+  end
+
+  def follow
+    if current_user.followed? @project
+      Follow.ransack({user_id_eq: current_user.id, porject_id_eq: @project.id}).result.first.destroy!
+    else
+      @project.follows.create! user_id: current_user.id
+    end
+    flash[:success] = '收藏成功'
+    redirect_to @project
   end
 
   def destroy
@@ -83,4 +93,5 @@ class ProjectsController < ApplicationController
     def find_current_user
       @user = current_user
     end
+
 end
