@@ -33,14 +33,19 @@
        <% end %>
      </div>
   <% end %>
+  <% if is_himself? %>
+      <div class="user_show_list">
+        <b>我的收藏</b>
+        <%= render 'projects_preview_list' %>
+      </div>
+  <% else %>
+      <div class="user_show_list">
+        <b><%= @user.name %>公开的微计划</b>
+        <%= render 'projects_preview_list' %>
+      </div>
+  <% end %>
 </div>
 
-<% unless is_himself? %>
-<div>
-  <%= render 'projects_preview_list' %>
-</div>
-<% else %>
-<div>
 
-</div>
-<% end %>
+
+

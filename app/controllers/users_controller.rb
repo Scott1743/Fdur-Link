@@ -10,7 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user_detail = @user.user_detail
-    @projects = @user.projects.where(:is_public => true).order(updated_at: :desc)
+    if @user == current_user
+      @projects = @user.followed_projects
+    else
+      @projects = @user.projects.where(:is_public => true).order(updated_at: :desc)
+    end
   end
 
   #def detail

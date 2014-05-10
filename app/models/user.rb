@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     !Follow.ransack({user_id_eq: self.id, project_id_eq: project.id}).result.blank?
   end
 
+  def followed_projects
+    Project.ransack({follows_user_id_eq: self.id}).result
+  end
+
   private
 
     def create_remember_token
