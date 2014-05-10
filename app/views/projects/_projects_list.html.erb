@@ -54,9 +54,11 @@
           <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
         <% end %>
         <b><%= @milestones_news.name %></b>
+        <br><br>
+        <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
       </span>
     </div>
-    <span class="project_span project_comments">comments<br/>comments</span>
+    <span class="project_span project_comments"><b style="float: right;">评论+</b><br></span>
   </li>
   <% end %>
   <% end %>
@@ -85,12 +87,14 @@
       <span class="project_span project_milestone">
         <% unless milestone_news(project).image.blank? %>
           <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
-            <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
+          <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
         <% end %>
         <b><%= @milestones_news.name %></b>
+        <br><br>
+        <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
       </span>
     </div>
-    <span class="project_span project_comments">comments<br/>comments</span>
+    <span class="project_span project_comments"><b style="float: right;">评论+</b><br></span>
   </li>
   <% end %>
   <% end %>
@@ -117,14 +121,16 @@
             <i><%= project.forks_count %></i>
           </span>
           <span class="project_span project_milestone">
-          <% unless milestone_news(project).image.blank? %>
-            <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
-            <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
-          <% end %>
-          <b><%= @milestones_news.name %></b>
-      </span>
+            <% unless milestone_news(project).image.blank? %>
+              <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+              <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
+            <% end %>
+            <b><%= @milestones_news.name %></b>
+            <br><br>
+            <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
+           </span>
         </div>
-        <span class="project_span project_comments">comments<br/>comments</span>
+        <span class="project_span project_comments"><b style="float: right;">评论+</b><br></span>
       </li>
     <% end %>
   <% end %>

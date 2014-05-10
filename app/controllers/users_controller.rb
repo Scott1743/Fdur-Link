@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     @projects = @user.projects.where(:is_public => true).order(updated_at: :desc)
   end
 
-  def detail
-    @user_detail = @user.user_detail
-  end
+  #def detail
+  #  @user_detail = @user.user_detail
+  #end
 
   def new
     if signed_in?
