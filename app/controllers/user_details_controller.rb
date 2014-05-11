@@ -10,8 +10,8 @@ class UserDetailsController < ApplicationController
       redirect_to user_path current_user
     rescue Exception
       @user = current_user
-      flash.now[:failed] = '修改失败，头像请使用小于2M的jpeg、jpg、png格式图片'
-      render detail_users_path
+      flash[:failed] = '修改失败，头像请使用小于2M的jpeg、jpg、png格式图片'
+      redirect_to user_path current_user
     end
   end
 
