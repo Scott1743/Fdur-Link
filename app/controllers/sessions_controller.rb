@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       flash[:success] = "欢迎回来,#{current_user.name}"
   	  redirect_to activities_path
     else
-      #flash.now[:error] = 'Invalid email/password combination'
+      flash.now[:failed] = '用户名或密码无效'
       render 'new'
     end
   end

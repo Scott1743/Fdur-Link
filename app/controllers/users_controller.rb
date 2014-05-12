@@ -48,7 +48,7 @@ class UsersController < ApplicationController
       flash.now[:success] = 'User was successfully updated.'
       redirect_to @user, notice: 'User was successfully updated.'
     else
-      render action: :edit
+      render action: :show
     end
   end
 

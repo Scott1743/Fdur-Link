@@ -20,18 +20,19 @@
     <a class="base_button edit_user_detail" data-flag="+">编辑 +</a>
     <div class="new_milestone_form detail_extra_form" >
       <%= form_for @user_detail, url: user_detail_path(@user_detail), html: { multipart: true } do |f| %>
-       <span>名号<br>
-         <%= f.text_field :name, maxlength: 18 %>
-       </span>
-       <span>个人简介<br>
-         <%= f.text_area :description, maxlength: 500 %>
-       </span>
-       <span>头像<br>
-         <%= f.file_field :avatar %>
-       </span>
-         <%= f.submit '更新',class: 'base_button new_milestone_form_button' %>
-       <% end %>
-     </div>
+        <span>名号<br>
+          <%= f.text_field :name, maxlength: 18 %>
+        </span>
+        <span>个人简介<br>
+          <%= f.text_area :description, maxlength: 500 %>
+        </span>
+        <span>头像<br>
+          <%= f.file_field :avatar %>
+        </span>
+        <%= f.submit '更新',class: 'base_button new_milestone_form_button' %>
+      <% end %>
+    </div>
+
   <% end %>
   <% if is_himself? %>
       <div class="user_show_list">
