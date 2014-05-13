@@ -5,13 +5,15 @@
 
 .projects ul{ display:inline-block; width: 310px; padding: 0; margin-left:15px; vertical-align: top; }
 
-.projects ul li{ display:inline-block; margin-bottom: 15px; border-radius: 2px; box-shadow: 0px 1px 2px 0 #ccc; -webkit-box-shadow: 0px 1px 2px 0 #ccc;
+.projects ul li{ display:inline-block; margin-bottom: 15px; border-radius: 2px; box-shadow: 0px 1px 2px 0 #ccc; -webkit-box-shadow: 0px 1px 2px 0 #ccc; z-index: 10;
   transition: margin 0.2s;
   -moz-transition: margin 0.2s;
   -webkit-transition: margin 0.2s;
   -o-transition: margin 0.2s; }
 
 .projects ul li div { box-shadow: 0 2px 4px 0 #bbb; -webkit-box-shadow:0 2px 4px 0 #bbb; background-color: #4A525C; }
+
+.projects ul li div > a { text-decoration: none; cursor: pointer }
 
 .project_span { display:inline-block; width: 290px; padding: 10px;}
 
@@ -21,9 +23,11 @@
 
 .project_milestone { display: block; width: 290px; padding: 10px; background-color: #ffffff; font-size: 16px;text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
 
+.project_milestone > b { font-weight: normal }
+
 .project_comments { background-color: #f1f1f1; margin-top: 2px; }
 
-.projects ul li.can_hover:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; }
+.projects ul li.can_hover:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; cursor: pointer; }
 
 .projects ul li.can_hover:active { margin-top: 0px; margin-bottom: 15px; }
 
@@ -76,19 +80,19 @@
 
 .back_to_projects { float: right; margin: 10px; }
 
-[data-flag="edit_project"] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C; float: left; height: 40px; width: 154px; text-align: center; color: #fdfdfd; border-right: 1px solid #cccccc;
+[data-flag="edit_project"],[data-flag='follow_project'] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C; float: left; height: 40px; width: 154px; text-align: center; color: #fdfdfd; border-right: 1px solid #cccccc; text-decoration: none;
   transition: background-color 0.2s;
   -moz-transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
   -o-transition: background-color 0.2s; }
 
-[data-flag="delete_project"] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C;float: left; height: 40px; width: 155px; text-align: center; color: #fdfdfd;
+[data-flag="delete_project"],[data-flag="fork_project"] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C;float: left; height: 40px; width: 155px; text-align: center; color: #fdfdfd; text-decoration: none;
   transition: background-color 0.2s;
   -moz-transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
   -o-transition: background-color 0.2s; }
 
-a[data-flag="edit_project"]:hover { background-color: #67B4B1; }
+a[data-flag="edit_project"]:hover,[data-flag="follow_project"]:hover,[data-flag='fork_project']:hover { background-color: #67B4B1; }
 
 a[data-flag="delete_project"]:hover { background-color: #F08080; }
 
@@ -108,4 +112,10 @@ dt.milestone_flag { display: none }
 
 .project_user_detail:hover { color: #67B4B1 }
 
-.last_time { display: inline-block; font-weight: normal; font-size: 11px; margin: 0;}
+.last_time { display: inline-block; font-weight: normal; font-size: 11px; margin: 0; }
+
+.fork_and_follow { float: right; color: #FDFDFD }
+
+.fork_and_follow > img { width: 18px; }
+
+.fork_and_follow > i { display: inline-block; margin: 0 10px 8px 0; font-style: normal }

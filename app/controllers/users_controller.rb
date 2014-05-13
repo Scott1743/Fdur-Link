@@ -10,12 +10,16 @@ class UsersController < ApplicationController
 
   def show
     @user_detail = @user.user_detail
-    @projects = @user.projects.where(:is_public => true).order(updated_at: :desc)
+    if @user == current_user
+      @projects = @user.followed_projects
+    else
+      @projects = @user.projects.where(:is_public => true).order(updated_at: :desc)
+    end
   end
 
-  def detail
-    @user_detail = @user.user_detail
-  end
+  #def detail
+  #  @user_detail = @user.user_detail
+  #end
 
   def new
     if signed_in?
@@ -44,7 +48,7 @@ class UsersController < ApplicationController
       flash.now[:success] = 'User was successfully updated.'
       redirect_to @user, notice: 'User was successfully updated.'
     else
-      render action: :edit
+      render action: :show
     end
   end
 

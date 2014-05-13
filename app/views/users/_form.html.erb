@@ -1,20 +1,13 @@
 <%= form_for(@user) do |f| %>
-	<% error=signup_error %>
     <span class="form_input_font">用户邮箱</span>
     <%= f.text_field :email , class: "form_input" %>
-    <% unless error[:email].first.blank? %>
-      <span class="form_input_error"><%= error[:email].first.last %></span>
-    <% end %>
+    <span class="form_input_error"><%=@user.errors.full_messages_for(:email)[0] %></span>
     <span class="form_input_font">用户密码</span>
     <%= f.password_field :password, class: "form_input" %>
-    <% unless error[:password].first.blank? %>
-     <span class="form_input_error"><%= error[:password].first.last %></span>
-    <% end %>
+    <span class="form_input_error"><%=@user.errors.full_messages_for(:password)[0] %></span>
     <span class="form_input_font">确认密码</span> 
     <%= f.password_field :password_confirmation , class: "form_input"%>
-    <% if error[:password].blank? && !error[:password_confirmation].blank? %>
-    <span class="form_input_error"><%= error[:password_confirmation].first.last %></span>
-    <% end %>
+    <span class="form_input_error"><%=@user.errors.full_messages_for(:password_confirmation)[0] %></span>
     <span class="signup_agreement">点击注册表示已阅读并同意<a href="#">《Fdur服务条款》</a></span>
     <%= f.submit '注册帐号', class: "base_button form_signup_button "%>
 <% end %>

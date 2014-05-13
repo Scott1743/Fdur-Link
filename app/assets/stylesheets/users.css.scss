@@ -1,15 +1,13 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.form_signup_flame { border:1px solid #BDBDBD; display:block; width:736px; height:490px; margin: 5px auto 0 auto; padding:32px; }
-
-.form_signin_flame { border:1px solid #BDBDBD; display:block; width:736px; height:480px; margin: 5px auto 0 auto; padding:32px; }
+.form_signup_flame, .form_signin_flame { border:1px solid #BDBDBD; display:block; width:736px; height: 500px; margin: 60px auto 0 auto; padding:32px; background-color: #fdfdfd }
 
 .form_signup_button { padding:7px 54px; display:block; margin-top:16px; margin-left:64px; }
 
 .form_signin_button { padding:8px 35px; display:block; margin-top:30px; }
 
-.form_box_signup {  float:left;  clear:left;  width:320px;  height:390px;  padding:16px;  margin-top:20px;  background-color: #F5F5F5;  border:1px solid #E4E4E4; }
+.form_box_signup {  float:left; clear:left; width:320px; padding:16px; margin-top:20px; background-color: #F5F5F5; border:1px solid #E4E4E4; }
 
 .form_box_signin { float:left; clear:left; width:320px; height:310px; padding:16px; margin-top:20px; background-color: #F5F5F5; border:1px solid #E4E4E4; }
 
@@ -21,7 +19,7 @@
 
 .form_input_font { display:block; margin-top:14px; font-size:15px; }
 
-.form_input_error { display:block; width:290px; height:30px; background-color:lightcoral; padding-left:10px; line-height:30px; margin-left:7px; }
+.form_input_error { display:block; width:290px; line-height:30px; background-color:lightcoral; text-align: center; margin-left:15px; }
 
 .form_back { float:right; margin-top:-24px; }
 
@@ -57,7 +55,7 @@
 
 .shadow_bottom { display: block; margin : 0 auto; }
 
-.user_detail { display: inline-block; vertical-align: top;width: 100%;margin: 15px 0 0 8px;border: 1px solid #cccccc; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #F1F1F1; }
+.user_detail { display: inline-block; vertical-align: top;width: 100%;margin: 15px 0 0 8px; }
 
 .detail_first_line { height: 50px; padding-left: 10px ;line-height: 50px; font-size: 20px;  font-weight: 600; color: #4A525C }
 
@@ -72,4 +70,8 @@
 .user_detail_description { width: 80%; word-break: break-all; white-space: pre-line; }
 
 .detail_extra_form { margin-bottom: 30px; }
+
+.user_show_list { margin-top: 20px; }
+
+.user_show_list > b { display: block; width: 950px; margin: 0 auto; padding-top: 30px; border-top: 1px solid #cccccc; font-size: 17px }
 

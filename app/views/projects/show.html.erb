@@ -18,6 +18,14 @@
         <%= @project.name %>
       </span><br/>
       <span class="project_span project_description" ><%= @project.description %></span>
+      <% if is_himself_project? %>
+        <span class="fork_and_follow">
+          <%= image_tag 'icon/follow.png', style: 'margin-top: 8px;' %>
+          <i><%= @project.followed_count %></i>
+          <%= image_tag 'icon/fork.png', style: 'margin-top: 8px;' %>
+          <i><%= @project.forks_count %></i>
+        </span>
+      <% end %>
       <span class="project_span project_description last_time" >创建时间：<%= @project.created_at.strftime("%y/%m/%d %X") %></span>
       <% if is_himself_project? %>
         <a data-flag="edit_project" title='编辑'>
@@ -25,6 +33,15 @@
         </a>
         <a data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href='/projects/<%= @project.id %>' rel='nofollow' title='删除'>
           <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
+        </a>
+      <% else %>
+        <a data-flag="follow_project" data-method='post' href='/projects/<%= @project.id %>/follow' title='收藏'>
+          <%= image_tag 'icon/follow.png', style: 'margin-top: 8px;' %>
+          <%= @project.followed_count %>
+        </a>
+        <a data-flag="fork_project" data-method='post' data-confirm="拷贝这个微计划？" href='/projects/<%= @project.id %>/fork' title='Meal it~'>
+          <%= image_tag 'icon/fork.png', style: 'margin-top: 8px;' %>
+          <%= @project.forks_count %>
         </a>
       <% end %>
     </div>

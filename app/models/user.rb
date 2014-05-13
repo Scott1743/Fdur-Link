@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   belongs_to :permission, dependent: :destroy
   has_one :user_detail, dependent: :destroy
+  has_many :follows
   
   before_save { self.email.downcase! }
   before_save :create_remember_token
@@ -31,6 +32,14 @@ class User < ActiveRecord::Base
     self.user_detail.nil? ? nil : self.user_detail.name
   end
 
+  def followed? project
+    !Follow.ransack({user_id_eq: self.id, project_id_eq: project.id}).result.blank?
+  end
+
+  def followed_projects
+    Project.ransack({follows_user_id_eq: self.id}).result
+  end
+
   private
 
     def create_remember_token
@@ -43,4 +52,5 @@ class User < ActiveRecord::Base
         self.create_user_detail name: default_name
       end
     end
+
 end

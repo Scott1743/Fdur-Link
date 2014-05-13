@@ -18,7 +18,14 @@ FdurLink::Application.routes.draw do
         post :ajax_update
       end
     end
+
+    member do
+      post :fork
+      post :follow
+    end
   end
+
+  get '/about', to: 'extra#about'
 
   get '/signup', to: 'users#new'
 
