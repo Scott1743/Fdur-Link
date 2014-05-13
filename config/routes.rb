@@ -27,6 +27,8 @@ FdurLink::Application.routes.draw do
 
   get '/about', to: 'extra#about'
 
+  get '/terms', to: 'extra#terms'
+
   get '/signup', to: 'users#new'
 
   resources :sessions, only: [:new, :create, :destroy]
