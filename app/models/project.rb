@@ -22,6 +22,7 @@ class Project < ActiveRecord::Base
   has_many :milestones, dependent: :destroy
   has_one :activity, dependent: :destroy
   has_many :follows, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   before_validation :add_default_information
 

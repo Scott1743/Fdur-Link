@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   belongs_to :permission, dependent: :destroy
   has_one :user_detail, dependent: :destroy
-  has_many :follows
+  has_many :follows, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   before_save { self.email.downcase! }
   before_save :create_remember_token

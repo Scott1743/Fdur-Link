@@ -68,6 +68,7 @@ $(document).ready ->
     t = $(this).attr('data-flag')
     if t == 'all'
       $('.milestone_flag').show()
+      $('dt[data-flag="comment"]').hide()
     else
       $('.milestone_flag').hide()
       $('dt[data-flag="' + "#{t}" + '"]').show()

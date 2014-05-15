@@ -104,6 +104,8 @@ a[data-flag='doing'] { border-top: 4px solid #fdfdfd; }
 
 a[data-flag='finished'] { border-top: 4px solid #4A525C; }
 
+a[data-flag='comment'] { border-top: 4px solid #f1f1f1; }
+
 .milestone_state:hover { font-weight: 600 }
 
 dt.milestone_flag { display: none }
@@ -119,3 +121,5 @@ dt.milestone_flag { display: none }
 .fork_and_follow > img { width: 18px; }
 
 .fork_and_follow > i { display: inline-block; margin: 0 10px 8px 0; font-style: normal }
+
+.comments { background-color: #f1f1f1; }
