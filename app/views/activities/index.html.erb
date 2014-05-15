@@ -38,7 +38,7 @@
           </span>
         <% end %>
         </div>
-        <span class="project_span project_comments"><a style="float: right;">评论+</a><br></span>
+        <span class="project_span project_comments"><%= link_to '评论', project_path(project.id, comment: 1), style: 'float: right;' %><br></span>
       </li>
     <% end %>
   <% end %>

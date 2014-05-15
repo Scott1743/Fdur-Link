@@ -74,8 +74,21 @@ $(document).ready ->
       $('dt[data-flag="' + "#{t}" + '"]').show()
     $('#project_show_information').attr('data-flag': t)
 
+  $.getUrlParam = (name) ->
+    reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)")
+    r = window.location.search.substr(1).match(reg)
+    if r!=null
+      return unescape(r[2])
+    else
+      return null
 
-  $('a[data-flag="all"]').click()
+
+  if $.getUrlParam('comment') == "1"
+    alert 'aaa'
+    $('a[data-flag="comment"]').click()
+  else
+    $('a[data-flag="all"]').click()
+
 
 
 
