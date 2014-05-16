@@ -1,9 +1,10 @@
 #encoding: utf-8
 class ProjectsController < ApplicationController
   before_action :check_signed_in
-  before_action :set_project, only: [:show, :fork, :follow]
+  before_action :set_project, only: [:show, :fork, :follow, :comment]
   before_action :set_current_project, only: [:update, :destroy]
   before_action :find_current_user
+  before_action :comment_params, only: [:comment]
 
   def index
     @projects = current_user.projects.order(updated_at: :desc)
@@ -11,10 +12,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    milestones =  @project.milestones.order(updated_at: :desc)
-    @milestones_undo = milestones.select {|m| m.state == 'undo'}
-    @milestones_doing = milestones.select {|m| m.state == 'doing'}
-    @milestones_finished = milestones.select{|m| m.state == 'finished'}
+    classify_milestones_and_comments
   end
 
   def create
@@ -70,11 +68,29 @@ class ProjectsController < ApplicationController
     redirect_to projects_url
   end
 
+  def comment
+    comment = comment_params
+    comment[:project_id] = @project.id
+    comment[:user_id] = current_user.id
+    if Comment.create comment
+      flash[:success] = '评论成功'
+      classify_milestones_and_comments
+      render 'milestones/reload_milestones'
+    else
+      flash.now[:failed] = '评论失败'
+      render action: :show
+    end
+  end
+
 
   private
 
     def set_project
       @project = Project.where(id: params[:id]).first
+    end
+
+    def comment_params
+      params.require(:comment).permit(:content)
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -92,6 +108,14 @@ class ProjectsController < ApplicationController
 
     def find_current_user
       @user = current_user
+    end
+
+    def classify_milestones_and_comments
+      milestones =  @project.milestones.order(updated_at: :desc)
+      @milestones_undo = milestones.select {|m| m.state == 'undo'}
+      @milestones_doing = milestones.select {|m| m.state == 'doing'}
+      @milestones_finished = milestones.select{|m| m.state == 'finished'}
+      @comments = @project.comments
     end
 
 end

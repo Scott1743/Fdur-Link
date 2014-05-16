@@ -87,7 +87,7 @@
     <% end %>
     <b><%= m.name %></b><br/>
     <% unless m.reflection.blank? %>
-      <%= m.reflection %><br/>
+      <p class="milestone_reflection"><%= m.reflection %></p><br/>
     <% end %>
     <p class="last_time">更新时间：<%= m.updated_at.strftime("%y/%m/%d %X") %></p>
     <% if is_himself_project? %>
@@ -96,7 +96,7 @@
       <a onclick="toggle_div()" class="edit_milestone_button"></a>
     <% end %>
     <div class='finished_form'>
-      <%= form_for m,url: project_milestone_path(@project,m),remote: true do |f|%>
+      <%= form_for m,url: project_milestone_path(@project,m), remote: true do |f|%>
           <!--或者写成[@project, m]-->
           <dd>里程碑<br>
             <%= f.text_field :name, autocomplete: :off %>
@@ -115,6 +115,26 @@
     </span>
   <% end %>
 <% end %>
+</dt>
+
+
+<dt class="milestone_flag" data-flag='comment'>
+  <% @comments.each do |c| %>
+    <span class="comments">
+      <p class="milestone_reflection"><%= c.content %></p>
+      <br>
+      <p class="last_time">评论时间：<%= c.updated_at.strftime("%y/%m/%d %X") %></p>
+      <a href="<%= user_path c.user.id %>" class="comment_user_detail" >
+        <%= image_tag c.user.user_detail.avatar, style: 'display: inline-block; width: 22px; max-height: 22px; text-align: center; vertical-align: middle;' %>
+        <%= c.user.name %>
+      </a>
+    </span>
+  <% end %>
+  <%= form_for :comment, url: comment_project_path(@project),remote: true do |f| %>
+    <%= image_tag current_user.user_detail.avatar, style: 'display: inline-block; width: 40px; max-height: 40px; vertical-align: top; margin:10px;' %>
+    <%= f.text_area :content, autocomplete: :off %>
+    <%= f.submit '发表',class: 'base_button back_to_projects' %>
+  <% end %>
 </dt>
 
 <script>

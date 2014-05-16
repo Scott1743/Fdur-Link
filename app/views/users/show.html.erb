@@ -17,6 +17,7 @@
   <%= image_tag 'shadow.png' , style: 'display: block; width: 640px; margin: -20px auto 0 auto;' %>
   <% if is_himself? %>
     <i id="page_flag" page-flag='users_show'></i>
+    <a class="base_button back_to_projects" href="<%= edit_user_path %>" >修改密码</a>
     <a class="base_button edit_user_detail" data-flag="+">编辑 +</a>
     <div class="new_milestone_form detail_extra_form" >
       <%= form_for @user_detail, url: user_detail_path(@user_detail), html: { multipart: true } do |f| %>

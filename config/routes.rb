@@ -22,6 +22,7 @@ FdurLink::Application.routes.draw do
     member do
       post :fork
       post :follow
+      post :comment
     end
   end
 
