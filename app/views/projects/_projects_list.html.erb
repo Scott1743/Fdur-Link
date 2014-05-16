@@ -31,8 +31,8 @@
   </li>
 <% @projects.each_with_index do |project,index| %>
   <% if (index%3 == 2) %>
-  <%= link_to project do %>
   <li class="can_hover">
+  <%= link_to project do %>
     <div>
       <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
       <% if project.image.blank? %>
@@ -58,17 +58,30 @@
         <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
       </span>
     </div>
-    <span class="project_span project_comments"><b style="float: right;">评论+</b><br></span>
+    <% end %>
+    <span class="project_span project_comments">
+      <% if project.comments.blank? %>
+        <span>暂无评论</span>
+      <% else %>
+        <% project.comments.order(:updated_at).limit(5).each do |c| %>
+          <%= image_tag c.user.user_detail.avatar, style: 'display: inline-block; width: 22px; max-height: 22px;' %>
+          <%= c.user.name %>
+          <span>
+            <%= c.content %>
+          </span>
+        <% end %>
+      <% end %>
+      <%= link_to '查看全部', project_path(project.id, comment: 1), class: 'preview_comment base_button' %>
+    </span>
   </li>
-  <% end %>
   <% end %>
 <% end %>
 </ul>
 <ul>
 <% @projects.each_with_index do |project,index| %>
   <% if (index%3 == 0) %>
-  <%= link_to project do %>
   <li class="can_hover">
+    <%= link_to project do %>
     <div>
       <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
       <% if project.image.blank? %>
@@ -94,17 +107,30 @@
         <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
       </span>
     </div>
-    <span class="project_span project_comments"><b style="float: right;">评论+</b><br></span>
+    <% end %>
+    <span class="project_span project_comments">
+      <% if project.comments.blank? %>
+          <span>暂无评论</span>
+      <% else %>
+        <% project.comments.order(:updated_at).limit(5).each do |c| %>
+          <%= image_tag c.user.user_detail.avatar, style: 'display: inline-block; width: 22px; max-height: 22px;' %>
+          <%= c.user.name %>
+          <span>
+            <%= c.content %>
+          </span>
+        <% end %>
+      <% end %>
+      <%= link_to '查看全部', project_path(project.id, comment: 1), class: 'preview_comment base_button' %>
+    </span>
   </li>
-  <% end %>
   <% end %>
 <% end %>
 </ul>
 <ul>
 <% @projects.each_with_index do |project,index| %>
   <% if (index%3 == 1) %>
-    <%= link_to project do %>
-      <li class="can_hover">
+    <li class="can_hover">
+      <%= link_to project do %>
         <div>
           <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
           <% if project.image.blank?  %>
@@ -130,9 +156,22 @@
             <b class="last_time">最近更新时间：<%= @milestones_news.created_at.strftime("%y/%m/%d %X") %></b>
            </span>
         </div>
-        <span class="project_span project_comments"><b style="float: right;">评论+</b><br></span>
-      </li>
-    <% end %>
+      <% end %>
+      <span class="project_span project_comments">
+        <% if project.comments.blank? %>
+          <span>暂无评论</span>
+        <% else %>
+        <% project.comments.order(:updated_at).limit(5).each do |c| %>
+          <%= image_tag c.user.user_detail.avatar, style: 'display: inline-block; width: 22px; max-height: 22px;' %>
+            <%= c.user.name %>
+            <span>
+            <%= c.content %>
+          </span>
+        <% end %>
+      <% end %>
+      <%= link_to '查看全部', project_path(project.id, comment: 1), class: 'preview_comment base_button' %>
+      </span>
+    </li>
   <% end %>
 <% end %>
 </ul>

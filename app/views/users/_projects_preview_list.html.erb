@@ -38,7 +38,20 @@
               </span>
             <% end %>
           </div>
-          <span class="project_span project_comments"><a style="float: right;">评论+</a><br></span>
+          <span class="project_span project_comments">
+          <% if project.comments.blank? %>
+              <span>暂无评论</span>
+          <% else %>
+            <% project.comments.order(:updated_at).limit(5).each do |c| %>
+              <%= image_tag c.user.user_detail.avatar, style: 'display: inline-block; width: 22px; max-height: 22px;' %>
+              <%= c.user.name %>
+              <span>
+                <%= c.content %>
+              </span>
+            <% end %>
+          <% end %>
+          <%= link_to '查看全部', project_path(project.id, comment: 1), class: 'preview_comment base_button' %>
+        </span>
         </li>
       <% end %>
     <% end %>
@@ -83,7 +96,20 @@
               </span>
             <% end %>
           </div>
-          <span class="project_span project_comments"><a style="float: right;">评论+</a><br></span>
+          <span class="project_span project_comments">
+          <% if project.comments.blank? %>
+              <span>暂无评论</span>
+          <% else %>
+            <% project.comments.order(:updated_at).limit(5).each do |c| %>
+              <%= image_tag c.user.user_detail.avatar, style: 'display: inline-block; width: 22px; max-height: 22px;' %>
+              <%= c.user.name %>
+              <span>
+                <%= c.content %>
+              </span>
+            <% end %>
+          <% end %>
+          <%= link_to '查看全部', project_path(project.id, comment: 1), class: 'preview_comment base_button' %>
+        </span>
         </li>
       <% end %>
     <% end %>
@@ -128,7 +154,20 @@
               </span>
             <% end %>
           </div>
-          <span class="project_span project_comments"><a style="float: right;">评论+</a><br></span>
+          <span class="project_span project_comments">
+          <% if project.comments.blank? %>
+              <span>暂无评论</span>
+          <% else %>
+            <% project.comments.order(:updated_at).limit(5).each do |c| %>
+              <%= image_tag c.user.user_detail.avatar, style: 'display: inline-block; width: 22px; max-height: 22px;' %>
+              <%= c.user.name %>
+              <span>
+                <%= c.content %>
+              </span>
+            <% end %>
+          <% end %>
+          <%= link_to '查看全部', project_path(project.id, comment: 1), class: 'preview_comment base_button' %>
+        </span>
         </li>
       <% end %>
     <% end %>

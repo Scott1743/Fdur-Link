@@ -68,6 +68,7 @@ class MilestonesController < ApplicationController
     @milestones_undo = milestones.select{|m| m.state == 'undo'}
     @milestones_doing = milestones.select {|m| m.state == 'doing'}
     @milestones_finished = milestones.select{|m| m.state == 'finished'}
+    @comments = @project.comments
   end
 
 end

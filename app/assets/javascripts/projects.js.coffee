@@ -30,38 +30,6 @@ $(document).ready ->
       $(this).text '新增 +'
       $(this).attr('data-flag', '+')
 
-#  $('a[data-flag="all"]').click ->
-#    $('.milestone_state').css('font-weight': 'normal')
-#    $(this).css('font-weight': '600')
-#    $("dt[data-flag='undo']").show()
-#    $("dt[data-flag='doing']").show()
-#    $("dt[data-flag='finished']").show()
-#    $('#project_show_information').attr('data-flag': 'all')
-#
-#  $('a[data-flag="undo"]').click ->
-#    $('.milestone_state').css('font-weight': 'normal')
-#    $(this).css('font-weight': '600')
-#    $("dt[data-flag='undo']").show()
-#    $("dt[data-flag='doing']").hide()
-#    $("dt[data-flag='finished']").hide()
-#    $('#project_show_information').attr('data-flag': 'undo')
-#
-#  $('a[data-flag="doing"]').click ->
-#    $('.milestone_state').css('font-weight': 'normal')
-#    $(this).css('font-weight': '600')
-#    $("dt[data-flag='doing']").show()
-#    $("dt[data-flag='undo']").hide()
-#    $("dt[data-flag='finished']").hide()
-#    $('#project_show_information').attr('data-flag': 'doing')
-#
-#  $('a[data-flag="finished"]').click ->
-#    $('.milestone_state').css('font-weight': 'normal')
-#    $(this).css('font-weight': '600')
-#    $("dt[data-flag='finished']").show()
-#    $("dt[data-flag='undo']").hide()
-#    $("dt[data-flag='doing']").hide()
-#    $('#project_show_information').attr('data-flag': 'finished')
-
   $('.milestone_state').click ->
     $('.milestone_state').css('font-weight': 'normal')
     $(this).css('font-weight': '600')
@@ -74,17 +42,11 @@ $(document).ready ->
       $('dt[data-flag="' + "#{t}" + '"]').show()
     $('#project_show_information').attr('data-flag': t)
 
-  $.getUrlParam = (name) ->
-    reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)")
-    r = window.location.search.substr(1).match(reg)
-    if r!=null
-      return unescape(r[2])
-    else
-      return null
-
-
-  if $.getUrlParam('comment') == "1"
-    alert 'aaa'
+  #评论标识
+  comment_flag = window.location.href.match 'http://[\\s\\S]*comment=(\\d)'
+  unless comment_flag == null
+    comment_flag = comment_flag[1]
+  if comment_flag == "1"
     $('a[data-flag="comment"]').click()
   else
     $('a[data-flag="all"]').click()
