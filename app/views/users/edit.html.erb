@@ -1,6 +1,19 @@
-<h1>Editing user</h1>
+<div class="form_signup_flame">
+  <span class="form_box_h1">修改密码</span>
+  <div class="edit_password_box" >
+    <span class="form_box_h2">请记住您修改后的密码，一旦丢失将无法找回。</span>
+    <%= form_for(@user) do |f| %>
+        <span class="form_input_font">原始密码</span>
+        <%= f.password_field :password_old, class: "form_input" %>
+        <span class="form_input_font">新密码</span>
+        <%= f.password_field :password, class: "form_input" %>
+        <span class="form_input_error"><%=@user.errors.full_messages_for(:password)[0] %></span>
+        <span class="form_input_font">确认密码</span>
+        <%= f.password_field :password_confirmation , class: "form_input"%>
+        <span class="form_input_error"><%=@user.errors.full_messages_for(:password_confirmation)[0] %></span>
+        <%= f.submit '修改密码', class: "base_button form_signup_button "%>
+    <% end %>
+  </div>
+</div>
+<%= image_tag 'shadow.png' , class: "shadow_bottom"%>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

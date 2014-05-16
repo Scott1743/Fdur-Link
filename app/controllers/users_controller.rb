@@ -44,11 +44,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      flash.now[:success] = 'User was successfully updated.'
-      redirect_to @user, notice: 'User was successfully updated.'
+
+    if !(current_user.authenticate(params[:user][:password_old]))
+      flash.now[:failed] = '修改失败，原始密码错误'
+      render :edit
+    elsif current_user.authenticate(params[:user][:password_old]) && @user.update(user_params)
+      flash[:success] = '修改成功，请重新登录'
+      redirect_to @user
     else
-      render action: :show
+      flash.now[:failed] = '修改失败，请检查您填入的信息'
+      render :edit
     end
   end
 
