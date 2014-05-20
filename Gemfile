@@ -49,6 +49,8 @@ end
 
 gem 'paperclip'
 gem "ransack", github: "activerecord-hackery/ransack", branch: "rails-4"
+gem 'rails_admin', github: "Scott1743/rails_admin", branch: 'master'
+gem 'rails_admin-i18n'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
