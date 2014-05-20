@@ -5,29 +5,39 @@
 
 .projects ul{ display:inline-block; width: 310px; padding: 0; margin-left:15px; vertical-align: top; }
 
-.projects ul li{ display:inline-block; margin-bottom: 15px; border: 1px solid #aaaaaa; border-radius: 2px;box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc;
+.projects ul li{ display:inline-block; margin-bottom: 15px; border-radius: 2px; box-shadow: 0px 1px 2px 0 #ccc; -webkit-box-shadow: 0px 1px 2px 0 #ccc; z-index: 10;
   transition: margin 0.2s;
   -moz-transition: margin 0.2s;
   -webkit-transition: margin 0.2s;
   -o-transition: margin 0.2s; }
 
-.projects ul li div { border-bottom: 1px solid #aaaaaa; box-shadow: 0 1px 2px 0 #cccccc; -webkit-box-shadow:0 1px 2px 0 #cccccc; background-color: #4A525C; }
+.projects ul li div { box-shadow: 0 2px 4px 0 #bbb; -webkit-box-shadow:0 2px 4px 0 #bbb; background-color: #4A525C; }
+
+.projects ul li div > a { text-decoration: none; cursor: pointer; }
 
 .project_span { display:inline-block; width: 290px; padding: 10px;}
 
-.project_name { width: 295px;margin-left: -5px; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;font-size: 16px; color: #FDFDFD; word-break: keep-all;white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.project_name { width: 295px;margin-left: -5px; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;font-size: 16px; color: #FDFDFD; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.project_description { font-size: 14px; color: #FDFDFD; text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
+.project_description { font-size: 14px; color: #FDFDFD; word-break: keep-all; white-space: pre-wrap ;text-align: justify; text-justify: inter-ideograph; overflow: hidden }
 
-.project_milestone { display:inline-block; width: 290px; padding: 10px; background-color: #ffffff; }
+.project_milestone { display: block; width: 290px; padding: 10px; background-color: #ffffff; font-size: 16px;text-align: justify; text-justify: inter-ideograph; overflow: hidden; }
 
-.project_comments { background-color: #f1f1f1; margin-top: 2px; }
+.project_milestone > b { font-weight: normal }
 
-.projects ul li.can_hover:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; }
+.project_comments { background-color: #f1f1f1; margin: 2px 0 0 0; }
+
+.project_comments > span { display: inline-block; padding: 2px 0 10px 0; margin-bottom: 10px; width: 290px; border-bottom: 1px solid #cccccc; font-size: 13px; color: #212121; word-break: keep-all; text-align: justify; text-justify: inter-ideograph; overflow: hidden }
+
+.project_comments > a { float: right; text-decoration: none; }
+
+.projects ul li.can_hover:hover { margin-top: -4px; margin-bottom: 19px; box-shadow: 1px 3px 15px #aaa; cursor: pointer; }
 
 .projects ul li.can_hover:active { margin-top: 0px; margin-bottom: 15px; }
 
-.new_project { display: block; height: 290px; width: 290px; padding: 10px;text-align: center;line-height: 50px;border-radius: 2px;font-size: 20px;color: #666666; cursor: pointer;overflow: hidden; background-color: #F1F1F1;
+.projects ul li > a { text-decoration: none; cursor: pointer; }
+
+.new_project { display: block; height: 290px; width: 290px; padding: 0px 10px;text-align: center;line-height: 50px;border-radius: 2px;font-size: 20px;color: #666666; cursor: pointer;overflow: hidden; background-color: #F1F1F1;
   -moz-user-select:-moz-none;
   transition: background-color 0.2s;
   -moz-transition: background-color 0.2s;
@@ -36,9 +46,11 @@
 
 .new_project:hover { background-color: #FDFDFD; color: #4A525C; }
 
-#new_project_form { display: none; height: 442px; }
+.new_project b { display: block;font-size: 100px;font-weight: 600;margin-top: 50px;line-height: 120px; }
 
-#new_project_form div { margin: -10px 0 0 -10px; width: 308px; font-size: 16px; }
+#new_project_form { display: none; height: auto; }
+
+#new_project_form > div { margin: -10px 0 0 -10px; width: 308px; font-size: 16px; }
 
 #new_project_form p { background-color: #67B4B1; color: #ffffff; margin: 0; line-height: 50px; height: 50px; }
 
@@ -52,7 +64,7 @@
 
 [for='project_is_public_false']:hover { font-weight: 600 }
 
-[for='project_is_public_false'] { float: left; width: 153px; color: #fdfdfd; cursor: pointer; border-right:2px solid #fdfdfd; }
+[for='project_is_public_false'] { float: left; width: 154px; color: #fdfdfd; cursor: pointer; border-right:1px solid #fdfdfd; }
 
 #new_project_form input[name='commit'] { display: block; width: 100%; height: 50px;margin: 50px auto 0 auto; color: #fff;background-color: transparent; cursor: pointer;
   transition: background-color 0.2s;
@@ -62,7 +74,7 @@
 
 #new_project_form input[name='commit']:hover { font-weight: 600;background: #67B4B1; }
 
-#new_project_form input#new_project_form_cancel { display: block; width: 100%; height: 50px; margin: 0 auto 20px auto; color: #fff;background-color: transparent; cursor: pointer; outline: none;
+#new_project_form input#new_project_form_cancel { display: block; width: 100%; height: 50px; margin: 0 auto; color: #fff;background-color: transparent; cursor: pointer; outline: none;
   transition: background-color 0.2s;
   -moz-transition: background-color 0.2s;
   -webkit-transition: background-color 0.2s;
@@ -70,4 +82,49 @@
 
 #new_project_form input#new_project_form_cancel:hover { font-weight: 600;background: #F08080; }
 
-.extra_project_new_form_border { border: 1px solid #4A525C }
+.extra_project_new_form_border { border: 1px solid #cccccc }
+
+.back_to_projects { float: right; margin: 10px; clear: both; }
+
+[data-flag="edit_project"],[data-flag='follow_project'] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C; float: left; height: 40px; width: 154px; text-align: center; color: #fdfdfd; border-right: 1px solid #cccccc; text-decoration: none;
+  transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s; }
+
+[data-flag="delete_project"],[data-flag="fork_project"] { display:inline-block; box-shadow: 0 1px 2px 0 #4A525C; -webkit-box-shadow:0 1px 2px 0 #4A525C;background-color: #4A525C;float: left; height: 40px; width: 155px; text-align: center; color: #fdfdfd; text-decoration: none;
+  transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  -webkit-transition: background-color 0.2s;
+  -o-transition: background-color 0.2s; }
+
+a[data-flag="edit_project"]:hover,[data-flag="follow_project"]:hover,[data-flag='fork_project']:hover { background-color: #67B4B1; }
+
+a[data-flag="delete_project"]:hover { background-color: #F08080; }
+
+.milestone_state { float: right; width: 66px; text-align: center; font-weight: normal; color: #4A525C; line-height: 42px; }
+
+a[data-flag='all'] { border-top: 4px solid #E6764E;}
+
+a[data-flag='doing'] { border-top: 4px solid #fdfdfd; }
+
+a[data-flag='finished'] { border-top: 4px solid #4A525C; }
+
+a[data-flag='comment'] { border-top: 4px solid #f1f1f1; }
+
+.milestone_state:hover { font-weight: 600 }
+
+dt.milestone_flag { display: none }
+
+.project_user_detail { display: block; text-decoration: none; margin-bottom: 5px; height: 40px; width: 290px; padding: 0 10px; line-height: 40px; font-size: 19px; font-weight: bold; color: #fdfdfd; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.project_user_detail:hover { color: #67B4B1 }
+
+.last_time { display: inline-block; font-weight: normal; font-size: 11px; margin: 0; }
+
+.fork_and_follow { float: right; color: #FDFDFD }
+
+.fork_and_follow > img { width: 18px; }
+
+.fork_and_follow > i { display: inline-block; margin: 0 10px 8px 0; font-style: normal }
+

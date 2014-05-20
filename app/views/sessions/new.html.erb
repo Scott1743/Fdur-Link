@@ -1,55 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>FdurLink</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body style="background-color: #000">
-
-<div class="welcome_image" style="display: block;height:100%;width:100%;min-width:1000px;min-height:646px;">
-  <%= image_tag "sessions/first.jpg", id: "bg_img_first", style: "display:none;width:100%;height:100%;margin:0;" %>
-  <%= image_tag "sessions/second.jpg", id: "bg_img_second" %>
-</div>
-<div class="welcome_main">
-  <div class="welcome_flame">
-    <div class="welcome_tip" style="font-size: 22px;font-weight: 600;color: #666666">
-      我穿越人群轰鸣，来到你家楼下，大声喊着我爱你，你流着泪说不搞基，炸成了天边一朵红霞！
-    </div>
-  <%= form_for(:session, url: sessions_path) do |f| %>
-  <div class="welcome_signin">
-    <div class="welcome_sign_border">
-      <span>登录</span>
-    </div>
-    <input type="text" dataflag="welcome_fake_input" class="welcome_sign_input" value="请输入邮箱" readonly='readonly' />
-    <%= f.text_field :email ,dataflag: "welcome_real_input",class: "welcome_sign_input"%>
-    <input type="text" dataflag="welcome_fake_input" value="请输入密码" class="welcome_sign_input welcome_signin_button" readonly='readonly'  />
-    <%= f.password_field :password, dataflag: "welcome_real_input", class: "welcome_sign_input welcome_signin_button" %>
-    <%= f.submit '登陆', class: "button_sign_in base_button"%>
-  </div>
-  <% end %>
-
-    <div class="welcome_signup">
-      <div class="welcome_sign_border">
-        <span>注册</span>
-      </div>
-      <%= form_for(:user, url: users_path, method: :post) do |f| %>
-      <input type="text" dataflag="welcome_fake_input" class="welcome_sign_input" value="请输入邮箱" readonly='readonly' />
-      <%= f.text_field :email,dataflag: "welcome_real_input", class: "welcome_sign_input"  %>
-      <!--<input type="text" dataflag="welcome_real_input" class="welcome_sign_input"  />-->
-      <input type="text" dataflag="welcome_fake_input" value="请输入密码" class="welcome_sign_input" readonly='readonly' />
-      <%= f.password_field :password, dataflag:"welcome_real_input", class:"welcome_sign_input"%>
-      <!--<input type="password" dataflag="welcome_real_input" class="welcome_sign_input" />-->
-      <input type="text" dataflag="welcome_fake_input" value="请再次输入密码" class="welcome_sign_input" readonly='readonly' />
-      <%= f.password_field :password_confirmation, dataflag: "welcome_real_input", class: "welcome_sign_input"%>
-      <!--<input type="password" dataflag="welcome_real_input" class="welcome_sign_input"  />-->
-      <%= f.submit "注册新的账号", class: "button_register base_button" %>
-      <!--<a class="button_register base_button" tabindex="0">注册新的账号</a>-->
+  
+  <div class="form_signin_flame">
+    <span class="form_box_h1">欢迎回来</span>
+    <div class="form_box_signin">
+      <span class="form_box_h2">登录</span>
+      <span class="form_back">或者  <%= link_to '创建账户', signup_path ,class: "form_back_font"%></span>
+      <%= form_for(:session, url: sessions_path) do |f| %>
+        <span class="form_input_font">用户名或邮箱</span>
+        <%= f.text_field :email ,class: "form_input"%>
+        <span class="form_input_font">密码</span>
+        <%= f.password_field :password, class: "form_input" %>
+        <%= f.submit '登录', class: "base_button form_signin_button"%>
       <% end %>
+    <a href="#" class="forget_code">忘记密码？</a>
+    </div>
+    <div class="signup_other">
+      <div class="other_box1">
+        <%= image_tag 'foot.png', class: "other_icon"%>
+        <div class="other_box_word">
+          <span class="other_box_h">计划和记录</span>
+          <span class="other_box_p">抛开空想和等待，让学习和实践充实生活；在这里留下你走向成功的每一个脚印。</span>
+        </div>
+      </div>
+      <div class="other_box2">
+        <%= image_tag 'friends.png', class: "other_icon"%>
+        <div class="other_box_word">
+          <span class="other_box_h">收获与分享</span>
+          <span class="other_box_p">和朋友们互相分享脚踏实地的历程；走过太多的生活百态，一路总有你陪伴。</span>
+        </div>
+      </div>
+      <div class="other_box3">
+        <%= image_tag 'fork.png', class: "other_icon"%>
+        <div class="other_box_word">
+          <span class="other_box_h">自媒体平台</span>
+          <span class="other_box_p">建立你的微项目供其他小伙伴们收藏&拷贝；说自己想说的话，打造属于你自己的的媒体。</span>
+        </div>
+      </div>
+        <span class="other_box4">米er,让你的生活更加丰富多彩,无论用手机、平板还是电脑。</span>
     </div>
   </div>
-</div>
+  <%= image_tag 'shadow.png' , class: "shadow_bottom"%>
 
-</body>
-</html>

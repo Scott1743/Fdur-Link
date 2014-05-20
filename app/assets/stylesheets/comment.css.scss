@@ -1,0 +1,12 @@
+.comments { background-color: #f1f1f1; }
+
+.comment_user_detail { display: inline-block; text-decoration: none; margin:0 0 5px 0; height: 26px; padding: 0 10px; line-height: 26px; font-size: 16px; color: #67B4B1; word-break: keep-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.comment_user_detail:hover { font-weight: bold }
+
+#comment_content { display: inline-blockblock; padding: 0 10px; margin: 5px 0 0 0; width: 466px; height: 40px; outline: none; }
+
+a.preview_comment { font-weight: normal; font-size: 13px; padding: 4px 10px }
+
+a.preview_comment:hover { font-weight: bold }
+

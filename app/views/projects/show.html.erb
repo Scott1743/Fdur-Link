@@ -2,24 +2,60 @@
 <ul>
   <li>
     <div>
-      <% if @project.image.nil? %>
-        <span><%= image_tag 'default.jpg' ,style: 'width: 310px; max-height:500px; overflow:hidden;' %></span>
+      <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
+      <% if @project.image.blank?  %>
+        <%= image_tag 'default.jpg' ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading'%>
       <% else %>
-        <span><%= image_tag @project.image ,style: 'width: 310px; max-height:500px; overflow:hidden;' %></span>
+        <%= image_tag @project.image ,style: 'display: none; width: 310px; max-height:500px; overflow:hidden;', img_flag: 'loading' %>
+      <% end %>
+      <% unless is_himself_project? %>
+        <a href="<%= user_path @project.user.id %>" class="project_user_detail" >
+          <%= image_tag @project.user.user_detail.avatar, style: 'display: inline-block; width: 40px; max-height: 40px; margin-right: 10px; text-align: center; vertical-align: middle;' %>
+          <%= @project.user.name %>
+        </a>
       <% end %>
       <span class="project_span project_name <%= @project.is_public ? 'state_public' : 'state_private' %>" >
         <%= @project.name %>
-      <a style="display:inline-block; float: right; margin-top: -2px; height: 24px; width: 24px; border-left: 1px solid #fdfdfd" data-flag="edit_project"></a></span><br/>
+      </span><br/>
       <span class="project_span project_description" ><%= @project.description %></span>
-      <span class="project_span project_milestone">milestone</span>
+      <% if is_himself_project? %>
+        <span class="fork_and_follow">
+          <%= image_tag 'icon/follow.png', style: 'margin-top: 8px;' %>
+          <i><%= @project.followed_count %></i>
+          <%= image_tag 'icon/fork.png', style: 'margin-top: 8px;' %>
+          <i><%= @project.forks_count %></i>
+        </span>
+      <% end %>
+      <span class="project_span project_description last_time" >创建时间：<%= @project.created_at.strftime("%y/%m/%d %X") %></span>
+      <% if is_himself_project? %>
+        <a data-flag="edit_project" title='编辑'>
+          <%= image_tag 'icon/edit.png', style: 'margin-top: 8px;' %>
+        </a>
+        <a data-flag="delete_project" data-method='delete' data-confirm="确定删除该微计划及评论?" href='/projects/<%= @project.id %>' rel='nofollow' title='删除'>
+          <%= image_tag 'icon/delete.png', style: 'margin-top: 8px;' %>
+        </a>
+      <% else %>
+        <a data-flag="follow_project" data-method='post' href='/projects/<%= @project.id %>/follow' title='收藏'>
+          <%= image_tag 'icon/follow.png', style: 'margin-top: 8px;' %>
+          <%= @project.followed_count %>
+        </a>
+        <a data-flag="fork_project" data-method='post' data-confirm="拷贝这个微计划？" href='/projects/<%= @project.id %>/fork' title='Meal it~'>
+          <%= image_tag 'icon/fork.png', style: 'margin-top: 8px;' %>
+          <%= @project.forks_count %>
+        </a>
+      <% end %>
     </div>
-    <span class="project_span project_comments">comments<br/>comments</span>
   </li>
   <li id="new_project_form" class="new_project" >
     <div class="extra_project_new_form_border">
       <%= form_for @project,url: project_path(@project),methode: :post do |f| %>
           <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
-          <p>图片链接</p><%= f.text_field :image, autocomplete: :off %>
+          <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p><%= f.text_field :image, autocomplete: :off, data_flag: :image_address_text %>
+          <div id="default_tips">输入链接可以预览您的图片</div>
+          <dt id="verify_image">
+            <img id="my_image" src="" onerror="image_error_warnning()"/>
+            <b id="warnning_words"></b>
+          </dt>
           <p>描述</p><%= f.text_area :description %>
           <%= f.radio_button :is_public, 'false' ,style: "display: none"%>
           <%= f.label :is_public, "私有", value: 'false'%>
@@ -28,26 +64,74 @@
           <%= f.submit '保存' %>
           <input type='button' id="new_project_form_cancel" data-flag="click_cancel" value="取消"/>
       <% end %>
-      <% if @project.is_public == false %>
-        <script>
-          (function(){$("[for='project_is_public_false']").click()})();
-        </script>
-      <% end %>
     </div>
   </li>
+  <!-- JiaThis Button BEGIN -->
+  <% if @project.is_public? %>
+  <div class="jiathis_style_32x32">
+    <a class="jiathis_button_qzone"></a>
+    <a class="jiathis_button_tsina"></a>
+    <a class="jiathis_button_tqq"></a>
+    <a class="jiathis_button_weixin"></a>
+    <a class="jiathis_button_renren"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  </div>
+  <script type="text/javascript" >
+      var jiathis_config={
+          url: window.location.href,
+          summary:"<%= @project.description %>",
+          title:"小伙伴在 米er 分享了他的微计划 --\'<%= @project.name %>\' ##",
+          ralateuid:{
+              "tsina":"xcccccx"
+          },
+          shortUrl:false,
+          hideMore:true
+      }
+  </script>
+  <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+  <!-- JiaThis Button END -->
+  <% end %>
 </ul>
 </div>
 <div class="milestones">
-  <div class="milestones_first_line">里程碑</div>
+  <div class="milestones_first_line">里程碑
+    <a class='milestone_state' data-flag='comment'>评论</a>
+    <a class='milestone_state' data-flag='finished'>完成</a>
+    <a class='milestone_state' data-flag='doing'>已开始</a>
+    <a class='milestone_state' data-flag='undo' style="border-top: 4px solid <%= @project.is_public? ? '#67B4B1' : '#F08080' %>">未开始</a>
+    <a class='milestone_state' data-flag='all'>总览</a>
+  </div>
+  <i id='project_show_information' data-flag='all'></i>
   <div id="milestone_list">
     <%= render 'milestones/milestones_list' %>
   </div>
-
-  <%= form_for :milestone,url: project_milestones_path(@project),methode: :post,remote: true do |f| %>
-    <%= f.text_field :name ,placeholder: "里程碑" %><br/>
-    <%= f.text_field :image %><br/>
-    <%= f.submit %>
+  <% if is_himself_project? %>
+    <a class="base_button new_milestone" data-flag="+">新增 +</a>
   <% end %>
-
-  <%= link_to 'Back', projects_path %>
+  <div class="new_milestone_form" >
+  <%= form_for :milestone,url: project_milestones_path(@project),methode: :post do |f| %>
+    <span>里程碑<br>
+    <%= f.text_field :name, autocomplete: :off%><br/>
+    </span>
+    <span>图片链接<br>
+    <%= f.text_field :image, autocomplete: :off , data_flag: :image_address_text %>
+    <div id="default_tips">输入链接可以预览您的图片</div>
+    <dt id="verify_image">
+      <img id="my_image" src="" onerror="image_error_warnning()"/>
+      <b id="warnning_words"></b>
+    </dt>
+    </span>
+      <%= f.submit '新增里程碑', class: 'base_button new_milestone_form_button' %>
+  <% end %>
+  </div>
+  <%= link_to '返回', projects_path, class: 'base_button back_to_projects' %>
 </div>
+
+<script>
+  function image_error_warnning(){
+    var e = event.srcElement;
+    if($(e).attr("src") != ""){
+      $(e).next().html("您的图片链接可能不对，看看帮助?").css('color','#212121');
+    }
+  }
+</script>

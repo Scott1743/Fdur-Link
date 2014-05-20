@@ -1,8 +1,11 @@
 #encoding: utf-8
 class SessionsController < ApplicationController
-  layout false
+  # layout false
 
   def new
+    if signed_in?
+      redirect_to root_path
+    end
   end
 
   def create
@@ -10,9 +13,9 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:session][:password])
   	  sign_in user
       flash[:success] = "欢迎回来,#{current_user.name}"
-  	  redirect_to projects_path current_user
+  	  redirect_to activities_path
     else
-      flash.now[:error] = 'Invalid email/password combination'
+      flash.now[:failed] = '用户名或密码无效'
       render 'new'
     end
   end

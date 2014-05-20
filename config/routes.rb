@@ -1,8 +1,17 @@
 FdurLink::Application.routes.draw do
   
-  root 'sessions#new'
+  mount RailsAdmin::Engine => '/scott1743_administrator', as: 'rails_admin'
+  root 'activities#index'
+
+  resources :activities, only: [:index]
+
+  resources :user_details, only: [:update]
   
-  resources :users, except: [:new]
+  resources :users, except: [:new, :index] do
+    collection do
+      get :detail
+    end
+  end
 
   resources :projects, except: [:edit, :new] do
     resources :milestones do
@@ -10,7 +19,17 @@ FdurLink::Application.routes.draw do
         post :ajax_update
       end
     end
+
+    member do
+      post :fork
+      post :follow
+      post :comment
+    end
   end
+
+  get '/about', to: 'extra#about'
+
+  get '/terms', to: 'extra#terms'
 
   get '/signup', to: 'users#new'
 
@@ -20,7 +39,7 @@ FdurLink::Application.routes.draw do
 
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  get '/baiduyun_tips', to: 'extra#tips'
+  get '/tips', to: 'extra#tips'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

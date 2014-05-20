@@ -3,7 +3,9 @@ body, div, pre, form, blockquote,
 dl, dt, dd,
 h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
 body, html{height: 100%;height: 100%}
-a {cursor: pointer; outline: none;}
+a { cursor: pointer; outline: none; }
+a:visited { text-decoration: none; outline: none; }
+a:hover { text-decoration: none; }
 img { border: 0; }  //for IE
 div {display: block}
 body, input, select, textarea, a, div,{
@@ -12,27 +14,28 @@ body, input, select, textarea, a, div,{
   color: #212121
 }
 
-input { maxlength: 80 }
-textarea { maxlength: 500 }
+li{ list-style-type: none }
 
-li{ list-style-type: none}
+body{ background-color: #FFFFF0 }
 
-body{ background-color: #FDFDFD; }
+.image_helper{ float: right; position: absolute; margin: 11px 80px;background-image: image-url("icon/helper.png"); background-color: #4A525C; width: 26px; height: 26px; border: 1px solid #cccccc; border-radius: 2px}
 
 //共用button
-.base_button {  border: none;  background-color:#44c767;  -moz-border-radius:15px;  -webkit-border-radius:15px;  border-radius:8px;  display:inline-block;  cursor:pointer;  color:#ffffff;  font-family:arial;  font-size:15px;  padding:7px 20px;  text-decoration:none;  outline: none;  font-weight: bold;}
-.base_button:hover {  border-bottom:1px solid #18ab29;  position:relative;  top:-1px;}
+.base_button {  border: none;  background-color:#67B4B1;  -moz-border-radius:15px;  -webkit-border-radius:15px;  border-radius:4px;  display:inline-block;  cursor:pointer;  color:#ffffff;  font-family:arial;  font-size:15px;  padding:8px 20px;  text-decoration:none;  outline: none;  font-weight: bold;}
+//.base_button:hover {  border-bottom:1px solid #18ab29;  position:relative;  top:-1px;}
 .base_button:active {  border: none;  position:relative;  top:1px;}
 
-header{ position: fixed;  top: 0;  width: 100%;  background-color: #444;  color: #FFF;opacity: 0.92; filter:alpha(opacity=92); z-index: 999}
+header{ position: fixed;  top: 0;  width: 100%;  background-color: #444;  color: #FFF;opacity: 0.92; filter:alpha(opacity=92); z-index: 9999}
 
 header div{ margin-bottom: 4px;  background-color: #212121;  height: 60px;}
 
 header div div{ min-width: 1000px; margin: 0 auto;}
 
-header div a{ margin: -4px 5px 0 5px;  line-height: 60px;  float: right;  height: 60px;  border-top: 4px solid #444;  text-decoration: none;  cursor: pointer;  color: #FFF;  padding: 0;}
+header div > a{ margin: -4px 0 0 0;  line-height: 60px;  float: right;  height: 60px; width: 80px; text-align: center; border-top: 4px solid #444;  text-decoration: none;  cursor: pointer;  color: #FFF; }
 
-header div a:hover{ background-color: #111;  border-bottom: 4px solid #E46A3F; }
+header div > a:hover{ background-color: #111;  border-bottom: 4px solid #67B4B1; }
+
+a.selected { background-color: #111;  border-bottom: 4px solid #67B4B1; }
 
 .scaffold_overall{ min-height: 100%; width: 100%; margin: 0 auto;}
 
@@ -43,15 +46,25 @@ header div a:hover{ background-color: #111;  border-bottom: 4px solid #E46A3F; }
 .scaffold_top{ width: 100%;height: 64px}
 .scaffold_footer{ width: 100%;height: 64px}
 
-footer{  display: block;  margin-top: -64px;  height: 64px;  width: 100%;  background-color: #49565D;}
+footer { display: block; width: 100%; margin: -64px auto 0 auto; height: 64px; }
+
+footer > div { display: block; width: 1000px; margin: 0 auto; border-top: 1px solid #cccccc}
+
+.about_us { display: inline-block; margin: 16px 0 0 26px; font-size: 11px; text-align: center; text-decoration: none; }
+
+.footer_extra { float: right; line-height: 64px; margin-right: 30px; text-decoration: none; font-weight: bold }
+
+.footer_extra:hover { margin-top: -1px }
+
+.footer_extra:active { margin-top: 0 }
 
 .logo{ float: left; margin-left: 10px; height: 60px }
 
-.flash{ display: 100%;height: 40px;line-height: 40px;background-color: lightgreen;margin: 0;text-align: center;font-weight: 600}
+.flash{ display: block; width: 100%; height: 40px; line-height: 40px; margin: 0; text-align: center; font-weight: bold; font-size: 17px;}
 
 .success{ background-color: #67B4B1 }
 
-.failed{ background-color: lightcoral}
+.failed{ background-color: lightcoral }
 
 .state_public { background-color: #67B4B1 }
 
@@ -60,5 +73,15 @@ footer{  display: block;  margin-top: -64px;  height: 64px;  width: 100%;  backg
 .display_inline{ display: inline; }
 
 .display_inline_block {display: inline-block; }
+
+#image_address_text { width:200px; height:20px; padding:5px; }
+
+#verify_image { display: none; margin: 0 auto; width: 288px; padding: 2px 10px; line-height: 1.5em; background-color: #cccccc}
+
+#my_image { display: block; margin: 0 auto; width: 100px; max-height: 150px; }
+
+#warnning_words { margin: 0; line-height: 1.7em; background-color: #cccccc; font-weight: normal; font-size: 14px; text-align: center }
+
+#default_tips { width: 290px ; margin: 0 auto; line-height: 1.7em; background-color: #cccccc; font-weight: normal; font-size: 14px; text-align: center; padding: 0 10px }
 
 
