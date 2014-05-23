@@ -25,7 +25,7 @@ body{ background-color: #FFFFF0 }
 //.base_button:hover {  border-bottom:1px solid #18ab29;  position:relative;  top:-1px;}
 .base_button:active {  border: none;  position:relative;  top:1px;}
 
-header{ position: fixed;  top: 0;  width: 100%;  background-color: #444;  color: #FFF;opacity: 0.92; filter:alpha(opacity=92); z-index: 9999}
+header{ position: fixed;  top: 0;  width: 100%;  background-color: #444;  color: #FFF; opacity: 0.92; filter:alpha(opacity=92); z-index: 9999}
 
 header div{ margin-bottom: 4px;  background-color: #212121;  height: 60px;}
 
@@ -43,8 +43,23 @@ a.selected { background-color: #111;  border-bottom: 4px solid #67B4B1; }
   //border: 1px solid #888;
   border-radius: 4px;  padding: 0;}
 
-.scaffold_top{ width: 100%;height: 64px}
-.scaffold_footer{ width: 100%;height: 64px}
+.scaffold_top, .scaffold_footer{ width: 100%;height: 64px}
+
+.background_pic { height: 500px; overflow: hidden; }
+
+.gaussian { display: inline-block; position: absolute; top: 180px; background-color: #fffff0; height: 240px; width: 100%; z-index: 99; opacity: 0.80; filter:alpha(opacity=80); }
+
+.gaussian > span > a { float: left; clear: both; z-index: 100; margin: 20px 0 0 100px; background-color: #4A525C; padding: 14px 20px }
+
+.gaussian > span > a:hover { margin-top: 19px }
+
+.gaussian > span > a:active { margin-top: 20px }
+
+.scaffold_center { display: block; width: 1000px; margin: 0 auto }
+
+b.welcome_logo { float: left; clear: both; margin: 20px 0 0 100px; text-align: center; color: #4A525C; font-size: 36px; line-height: 2em }
+
+b.welcome_description { float: left; clear: both;margin-left: 100px; text-align: center; color: #4A525C; font-size: 20px; line-height: 2em }
 
 footer { display: block; width: 100%; margin: -64px auto 0 auto; height: 64px; }
 

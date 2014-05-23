@@ -1,6 +1,6 @@
 #encoding: utf-8
 class SessionsController < ApplicationController
-  # layout false
+  layout 'welcome'
 
   def new
     if signed_in?

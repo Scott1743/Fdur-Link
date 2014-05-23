@@ -19,12 +19,12 @@
       </a>
       </span>
       <% if signed_in? %>
-        <%= link_to "登出", signout_path, method: "delete" %>
-        <%= link_to "个人信息", user_path(current_user_id), id: 'user_path'%>
-        <%= link_to "微计划", projects_path, id: 'projects_path' %>
-        <%= link_to "动态", activities_path, id: 'activities_path' %>
+          <%= link_to "登出", signout_path, method: "delete" %>
+          <%= link_to "个人信息", user_path(current_user_id), id: 'user_path'%>
+          <%= link_to "微计划", projects_path, id: 'projects_path' %>
+          <%= link_to "动态", activities_path, id: 'activities_path' %>
       <% else %>
-        <%= link_to "登录", signin_path %>
+          <%= link_to "登录", signin_path %>
       <% end %>
     </div>
   </div>
@@ -33,18 +33,17 @@
   <% end %>
 </header>
 <div class="scaffold_overall">
-<div class="scaffold_top"></div>
-<div class="scaffold">
-  <%= yield %>
-</div>
-<div class="scaffold_footer"></div>
+  <div class="scaffold_top"></div>
+  <div class="scaffold">
+    <%= yield %>
+  </div>
 </div>
 <footer>
   <div>
-      <a class="about_us" href="<%= about_path %>">米er制作团队<br>联系我们: mealit@yeah.com</a>
-      <a class="footer_extra" onselectstart="return false" href="<%= about_path %>">关于我们</a>
-      <a class="footer_extra" onselectstart="return false" href="<%= tips_path %>">图片帮助</a>
-      <a class="footer_extra" onselectstart="return false" href="<%= terms_path %>">使用条款</a>
+    <a class="about_us" href="<%= about_path %>">米er制作团队<br>联系我们: mealit@yeah.com</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= about_path %>">关于我们</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= tips_path %>">图片帮助</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= terms_path %>">使用条款</a>
   </div>
 </footer>
 </body>

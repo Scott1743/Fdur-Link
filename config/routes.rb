@@ -1,7 +1,7 @@
 FdurLink::Application.routes.draw do
   
   mount RailsAdmin::Engine => '/scott1743_administrator', as: 'rails_admin'
-  root 'activities#index'
+  root 'extra#index'
 
   resources :activities, only: [:index]
 
