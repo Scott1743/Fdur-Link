@@ -71,7 +71,7 @@ class Project < ActiveRecord::Base
 
     self.name = '未命名' if self.name.blank?
 
-    unless self.image.match /http:\/\/[\s\S]*.(jpg|png|gif)/
+    unless self.image.match /http:\/\/[\s\S]*.(jpg|png|gif|JPG|PNG|GIF)/
       self.image = ''
     end
   end
