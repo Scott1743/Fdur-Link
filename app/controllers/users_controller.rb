@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user_from_id, only: [:show]
   before_action :set_user, only: [:detail, :edit, :update]
   before_action :check_signed_in ,except: [:new, :create]
+  layout 'login', only: [:new, :edit]
 
   def index
     @users = User.all

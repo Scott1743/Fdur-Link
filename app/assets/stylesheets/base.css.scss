@@ -39,6 +39,8 @@ a.selected { background-color: #111;  border-bottom: 4px solid #67B4B1; }
 
 .scaffold_overall{ min-height: 100%; width: 100%; margin: 0 auto;}
 
+.login_scaffold { background-image: image-url("boat.jpg"); background-repeat: repeat }
+
 .scaffold{ height: auto; width: 1000px;  margin: 30px auto;
   //border: 1px solid #888;
   border-radius: 4px;  padding: 0;}
@@ -62,6 +64,8 @@ b.welcome_logo { float: left; clear: both; margin: 20px 0 0 100px; text-align: c
 b.welcome_description { float: left; clear: both;margin-left: 100px; text-align: center; color: #4A525C; font-size: 20px; line-height: 2em }
 
 footer { display: block; width: 100%; margin: -64px auto 0 auto; height: 64px; }
+
+footer.footer_common { background-image: image-url("boat.jpg"); background-position: 0 -1100px }
 
 footer > div { display: block; width: 1000px; margin: 0 auto; border-top: 1px solid #cccccc}
 

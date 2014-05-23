@@ -32,13 +32,13 @@
       <div id='flash_message' class="flash <%= key %>"><%= value %></div>
   <% end %>
 </header>
-<div class="scaffold_overall">
+<div class="scaffold_overall login_scaffold">
   <div class="scaffold_top"></div>
   <div class="scaffold">
     <%= yield %>
   </div>
 </div>
-<footer>
+<footer style="margin-top: -94px">
   <div>
     <a class="about_us" href="<%= about_path %>">米er制作团队<br>联系我们: mealit@yeah.com</a>
     <a class="footer_extra" onselectstart="return false" href="<%= about_path %>">关于我们</a>
