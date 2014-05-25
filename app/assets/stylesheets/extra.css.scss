@@ -11,22 +11,33 @@ ul,li{list-style-type:none;}
 .tips_title_h2{display:block;font-size:22px;border-bottom:1px solid #d6d6d8;padding:5px;}
 .tips_a:link{text-decoration:none;color:blue;}
 .tips_image{margin-top:20px;width:650px;height:400px;}
-.service_terms_box{width:800px;height:3260px;margin:0 auto;border: 1px solid #d3d7d4;}
+
+.service_terms_box{width:800px; padding: 20px 0; margin:0 auto;}
+
 .title2{font-size: 19px;font-weight: 500;color: #67B4B1;padding: 18px 20px 6px 20px;}
-.text_content{line-height: 200%;font-size: 15px;padding: 0 20px;margin: 0;white-space: pre-line;}
-.contact_top_box{width:600px;height: 180px;padding-top:30px; margin:0 auto;}
-.contact_top_box_h{display: block;width: 150px;height:50px;margin: 0 auto;font-size: 28px;}
-.contact_top_box_p{display: block;width: 500px;height:100px;margin: 20px auto; }
+.text_content{line-height: 200%;font-size: 15px;padding: 0 20px 0 0;margin: 0;white-space: pre-line;}
+
+.contact_top_box{ width: 100%; padding: 0 0 30px 0; margin: 40px auto; border-bottom: 1px solid #cccccc }
+
+.contact_top_box_h{display: block;width: 150px; height: 50px;margin: 0 auto;font-size: 28px;}
+
+.contact_top_box_p{display: block;width: 500px; padding: 0 20px; margin: 0 auto; }
+
 .contact_middle_box{width: 1000px;height:24px;background-color: #67B4B1;text-align:center;font-size: 18px; color: white;}
 .contact_first_h{display:block;width:140px;text-align:center;font-size: 24px;margin:40px auto 0 auto;}
-.contact_h{display:block;width:180px;text-align:center;font-size: 18px;margin:0 auto;}
-.vertical_line{width:8px;height:80px;margin:0 auto;background-color:#919191;}
-.vertical_line2{width:3px;height:30px;margin:0 auto;background-color:#919191;}
-.contact_user_box_content{width:190px;height:50px;margin-left:80px;padding:20px;}
+
 .contact_user_avatar{float:left;width:50px;height:50px;margin:0 auto;border-radius:50%;background-color:black;}
+
 .contact_user_name{float:right;width:120px;margin-top:16px;font-size:18px;}
-.contact_developer_box{float:left;width:300px;}
-.contact_support_box{float:right;width:300px;}
-.contact_wrapper_box{width:800px;height:800px;margin:0 auto;}
-.index_use_box{width:1000px;height:900px;background-color:yellow;}
-.index_use_h{font-size:30px;color:#67B4B1;}
+
+.contact_developer_box {  }
+
+.contact_support_box {  }
+
+.base_content_box { background-color: #ffffff; border-radius: 2px; box-shadow: 0px 1px 2px 0 #ccc; -webkit-box-shadow: 0px 1px 2px 0 #ccc; }
+
+.extra_index_left { display:inline-block;  width: 480px; height: 400px; margin: 0 10px 0 12px; padding-bottom: 20px; margin-bottom: 12px }
+
+.extra_index_right { display:inline-block;  width: 480px; height: 400px; margin: 0; padding-bottom: 20px; margin-bottom: 12px }
+
+.index_use_h{ display: block; font-size:30px; color: #5B9090; margin-bottom: 20px }
