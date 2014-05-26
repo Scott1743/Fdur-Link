@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-#encoding: utf-8
+# encoding: utf-8
 if Permission.first.nil?
   Permission.create(name: 'normal')
   Permission.create(name: 'admin')
@@ -51,7 +44,5 @@ if Project.first.nil?
    project.milestones.create name: '《飞行家》'
    project.milestones.create name: '《胡佛传》'
    project.milestones.create name: '《禁闭岛》'
-
-
 
 end
