@@ -11,7 +11,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: Fdur-Link_development
+  database: meal_it_development
   pool: 5
   username: root
   password:
