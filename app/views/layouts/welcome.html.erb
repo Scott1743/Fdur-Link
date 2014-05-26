@@ -40,7 +40,12 @@
       <span class="scaffold_center" >
         <b class="welcome_logo" >米er</b>
         <b class="welcome_description" >分享你的计划，记录你的航向；更精彩的航程，从这里开始。</b>
-        <a class="base_button welcome_button" href="<%= activities_path %>" >普通用户注册</a>
+        <% unless signed_in? %>
+          <a class="base_button welcome_button" href="<%= signup_path %>" >普通用户注册</a>
+          <a class="welcome_go_inside" href="<%= activities_path %>" >去看看 ></a>
+        <% else %>
+          <a class="base_button welcome_button" href="<%= activities_path %>" >开始使用</a>
+        <% end %>
       </span>
     </span>
   </div>

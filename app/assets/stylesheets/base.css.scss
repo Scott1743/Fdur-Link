@@ -51,11 +51,15 @@ a.selected { background-color: #111;  border-bottom: 4px solid #67B4B1; }
 
 .gaussian { display: inline-block; position: absolute; top: 180px; background-color: #fffff0; height: 240px; width: 100%; z-index: 99; opacity: 0.80; filter:alpha(opacity=80); }
 
-.gaussian > span > a { float: left; clear: both; z-index: 100; margin: 20px 0 0 100px; background-color: #4A525C; padding: 14px 20px }
+.welcome_button { float: left; clear: left; z-index: 100; margin: 20px 0 0 100px; background-color: #4A525C; padding: 14px 20px }
 
-.gaussian > span > a:hover { margin-top: 19px }
+.welcome_button:hover { margin-top: 19px }
 
-.gaussian > span > a:active { margin-top: 20px }
+.welcome_button:active { margin-top: 20px }
+
+.welcome_go_inside { float:left; z-index: 100; margin: 20px 0 0 40px; line-height: 44px; color: #4A525C }
+
+.welcome_go_inside:hover { font-weight: bold }
 
 .scaffold_center { display: block; width: 1000px; margin: 0 auto }
 
