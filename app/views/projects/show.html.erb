@@ -49,14 +49,14 @@
   <li id="new_project_form" class="new_project" >
     <div class="extra_project_new_form_border">
       <%= form_for @project,url: project_path(@project),methode: :post do |f| %>
-          <p>计划名</p><%= f.text_field :name, autocomplete: :off %>
+          <p>计划名</p><%= f.text_field :name, autocomplete: :off, maxlength: 40%>
           <p>图片链接<a href="<%= tips_path %>" class='image_helper' title="外链图片帮助" target="_blank"></a></p><%= f.text_field :image, autocomplete: :off, data_flag: :image_address_text %>
           <div id="default_tips">输入链接可以预览您的图片</div>
           <dt id="verify_image">
             <img id="my_image" src="" onerror="image_error_warnning()"/>
             <b id="warnning_words"></b>
           </dt>
-          <p>描述</p><%= f.text_area :description %>
+          <p>描述</p><%= f.text_area :description, autocomplete: :off, maxlength: 500 %>
           <%= f.radio_button :is_public, 'false' ,style: "display: none"%>
           <%= f.label :is_public, "私有", value: 'false'%>
           <%= f.radio_button :is_public, 'true', style: "display: none"%>
@@ -111,7 +111,7 @@
   <div class="new_milestone_form" >
   <%= form_for :milestone,url: project_milestones_path(@project),methode: :post do |f| %>
     <span>里程碑<br>
-    <%= f.text_field :name, autocomplete: :off%><br/>
+    <%= f.text_field :name, autocomplete: :off, maxlength: 80%><br/>
     </span>
     <span>图片链接<br>
     <%= f.text_field :image, autocomplete: :off , data_flag: :image_address_text %>

@@ -24,7 +24,7 @@ if User.first.nil?
   user.create_user_detail name: 'jq'
 
   user = User.create!(email: '513105786@qq.com',password: '123123',password_confirmation: '123123', permission_id: 2)
-  user.create_user_detail name: 'yy'
+  user.create_user_detail name: 'Dino'
 
   user = User.create!(email: 'xiedongdong1025@qq.com',password: '123123',password_confirmation: '123123', permission_id: 1)
   user.create_user_detail name: 'xdd'
