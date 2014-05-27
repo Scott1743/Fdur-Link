@@ -20,7 +20,7 @@
       <span class="project_span project_description" ><%= @project.description %></span>
       <% if is_himself_project? %>
         <span class="fork_and_follow">
-          <%= image_tag 'icon/follow.png', style: 'margin-top: 8px;' %>
+          <%= image_tag 'icon/follow.png', style: 'height: 18px; margin-top: 8px;' %>
           <i><%= @project.followed_count %></i>
           <%= image_tag 'icon/fork.png', style: 'margin-top: 8px;' %>
           <i><%= @project.forks_count %></i>
@@ -36,7 +36,7 @@
         </a>
       <% else %>
         <a data-flag="follow_project" data-method='post' href='/projects/<%= @project.id %>/follow' title='收藏'>
-          <%= image_tag 'icon/follow.png', style: 'margin-top: 8px;' %>
+          <%= image_tag 'icon/follow.png', style: 'height: 24px; margin-top: 8px;' %>
           <%= @project.followed_count %>
         </a>
         <a data-flag="fork_project" data-method='post' data-confirm="拷贝这个微计划？" href='/projects/<%= @project.id %>/fork' title='Meal it~'>

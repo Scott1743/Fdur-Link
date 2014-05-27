@@ -6,26 +6,33 @@
 
 <span class="base_content_box extra_index_left">
   <h2>技术支持</h2>
-   <span class='contact_developer_box'>
-     <div style="margin: 0 auto; ">
-       <span class='contact_user_avatar'>
-         <%= image_tag "unbrella.jpg", style: 'width:50px; height:50px;' %>
-       </span>
-       <%= link_to @yzt.name, @yzt %>
-     </div>
-     <p>架构、UI设计与实现</p>
-     <a href='http://www.baidu.com' target='_blank'> 查看他的主页</a>
-   </span>
+  <% @dev_team.each do |dev| %>
+    <dt class='contact_developer_box'>
+      <div style="margin: 0 auto; ">
+        <span class='contact_user_avatar'>
+          <%= image_tag "unbrella.jpg", style: 'width:50px; height:50px;' %>
+        </span>
+        <%= link_to (dev[:human].name), dev[:human] %>
+      </div>
+      <p><%= dev[:duty] %></p>
+      <% unless dev[:page].nil? %>
+        <a href='<%= dev[:page] %>' target='_blank'> 查看他的主页</a>
+      <% end %>
+    </dt>
+  <% end %>
 </span>
-<span class="base_content_box extra_index_right">
+
+<span class="base_content_box extra_index_right" style="height: 523px">
   <h2>运营支持</h2>
-   <span class='contact_developer_box'>
-     <div style="margin: 0 auto; ">
-       <span class='contact_user_avatar'>
-         <%= image_tag "unbrella.jpg", style: 'width:50px; height:50px;' %>
-       </span>
-       <%= link_to @dy.name, @dy %>
-     </div>
-     <p>宣传、运营</p>
-   </span>
+  <% @ops_team.each do |ops| %>
+    <dt class='contact_developer_box'>
+      <div style="margin: 0 auto; ">
+        <span class='contact_user_avatar'>
+          <%= image_tag "unbrella.jpg", style: 'width:50px; height:50px;' %>
+        </span>
+        <%= link_to (ops[:human].name), ops[:human] %>
+      </div>
+      <p><%= ops[:duty] %></p>
+    </dt>
+  <% end %>
 </span>
