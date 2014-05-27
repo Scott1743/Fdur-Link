@@ -107,4 +107,8 @@ footer > div { display: block; width: 1000px; margin: 0 auto; border-top: 1px so
 
 #default_tips { width: 290px ; margin: 0 auto; line-height: 1.7em; background-color: #cccccc; font-weight: normal; font-size: 14px; text-align: center; padding: 0 10px }
 
+a#gotop{ display:block; display: none; width: 60px; height:30px; position:fixed;  bottom:65px; right:20px; border-radius: 4px; text-decoration:none; background-color:#000; z-index: 10000; opacity: 0.40; filter:alpha(opacity=40); }
 
+a#gotop:hover { opacity: 0.80; filter:alpha(opacity=80); }
+
+#gotop span{ display:block; width: 100%; color:#dddddd; font-size:34px; text-align:center; margin-top:4px; line-height: 34px }

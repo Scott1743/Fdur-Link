@@ -36,11 +36,11 @@ class MilestonesController < ApplicationController
     end
   end
 
-  def destroy
-    @milestone.destroy
-    flash[:success] = '删除成功'
-    redirect_to @project
-  end
+  #def destroy
+  #  @milestone.destroy
+  #  flash[:success] = '删除成功'
+  #  redirect_to @project
+  #end
 
 
   private

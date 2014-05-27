@@ -62,11 +62,11 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
-  def destroy
-    @project.destroy
-    flash[:success] = '删除成功'
-    redirect_to projects_url
-  end
+  #def destroy
+  #  @project.destroy
+  #  flash[:success] = '删除成功'
+  #  redirect_to projects_url
+  #end
 
   def comment
     comment = comment_params
