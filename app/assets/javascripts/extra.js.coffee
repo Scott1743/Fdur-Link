@@ -4,7 +4,7 @@
 $(document).ready ->
   $(window).scroll ->
     scrollt = document.documentElement.scrollTop + document.body.scrollTop;
-    if scrollt > 500
+    if scrollt > 200
       $("#gotop").fadeIn(400);
     else
       $("#gotop").stop().fadeOut(400);
