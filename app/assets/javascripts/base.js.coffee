@@ -49,15 +49,16 @@ $(document).ready ->
   b_version = navigator.appVersion
   version = b_version.split(";")
   trim_version = version[1].replace(/[ ]/g, "")
-  if (b_name == "Microsoft Internet Explorer")
-    if (trim_version == "MSIE6.0" || trim_version == "MSIE7.0" || trim_version == "MSIE8.0")
-      $('header').after("<div id='warnning' style=';position:fixed;left: 0;bottom:0;height:60;width:100%;min-width:960px;background-color:#DC5A03;margin: 60px 0 0 0;color:#ffffff;text-align: center;font-size: 20px;line-height: 60px;z-index: 50;opacity:0.9;filter:alpha(opacity=90);'>您的浏览器版本古老了，不能完美体验我们的产品，请使用" +
-      "<a style='font-size: 20px;color: #CACACA' href='http://se.360.cn/'>360浏览器</a>或者" +
-      "<a style='font-size: 20px;color: #CACACA' href='http://www.google.cn/intl/zh-CN/chrome/'>Chrome浏览器</a>等更现代的浏览器</div>")
-    else
-      $('header').after("<div id='warnning' style=';position:fixed;left: 0;bottom:0;height:60;width:100%;min-width:960px;background-color:#DC5A03;margin: 60px 0 0 0;color:#ffffff;text-align: center;font-size: 20px;line-height: 60px;z-index: 50;opacity:0.9;filter:alpha(opacity=90);'>检测到您正在使用ie内核的浏览器，为了维护世界的安宁，请使用" +
-      "<a style='font-size: 20px;color: #CACACA' href='http://se.360.cn/'>360浏览器</a>或者" +
-      "<a style='font-size: 20px;color: #CACACA' href='http://www.google.cn/intl/zh-CN/chrome/'>Chrome浏览器</a>等更现代的浏览器</div>")
-#   setTimeout("$('#warnning').remove();$('#header').css('height','60px')",10000)
+  if $('body').attr('data-flag') == 'welcome'
+    if (b_name == "Microsoft Internet Explorer")
+      if (trim_version == "MSIE6.0" || trim_version == "MSIE7.0" || trim_version == "MSIE8.0")
+        $('header').after("<div id='warnning' style=';position:fixed;left: 0;bottom:0;height:60;width:100%;min-width:960px;background-color:#DC5A03;margin: 60px 0 0 0;color:#ffffff;text-align: center;font-size: 20px;line-height: 60px;z-index: 50;opacity:0.9;filter:alpha(opacity=90);'>您的浏览器版本古老了，不能正常使用我们的产品，请使用" +
+        "<a style='font-size: 20px;color: #CACACA' href='http://se.360.cn/' target='_blank'>360浏览器</a>或者" +
+        "<a style='font-size: 20px;color: #CACACA' href='http://www.google.cn/intl/zh-CN/chrome/' target='_blank'>Chrome浏览器</a>等更现代的浏览器</div>")
+      else
+        $('header').after("<div id='warnning' style=';position:fixed;left: 0;bottom:0;height:60;width:100%;min-width:960px;background-color:#DC5A03;margin: 60px 0 0 0;color:#ffffff;text-align: center;font-size: 20px;line-height: 60px;z-index: 50;opacity:0.9;filter:alpha(opacity=90);'>检测到您正在使用ie内核的浏览器，为了您的体验更加美好，请使用最新的" +
+        "<a style='font-size: 20px;color: #CACACA' href='http://se.360.cn/' target='_blank'>360浏览器</a>或者" +
+        "<a style='font-size: 20px;color: #CACACA' href='http://www.google.cn/intl/zh-CN/chrome/' target='_blank'>Chrome</a>等更现代的浏览器</div>")
+  setTimeout("$('#warnning').remove();$('#header').css('height','60px')",15000)
 
 

@@ -18,20 +18,20 @@
 
 .title2 {font-size: 19px;font-weight: 500;color: #67B4B1;padding: 18px 20px 6px 20px;}
 
-.text_content{ line-height: 200%;font-size: 15px;padding: 0 20px 0 0;margin: 0;white-space: pre-line; }
+.text_content{ line-height: 200%; font-size: 15px;padding: 0 20px 0 0;margin: 0; white-space: pre-line; }
 
 .contact_top_box{ display: block; width: 100%; padding: 0 0 30px 0; margin: 40px auto; border-bottom: 1px solid #cccccc }
 
 .contact_top_box_h{display: block;width: 150px; height: 50px;margin: 0 auto;font-size: 28px;}
 
-.contact_top_box_p{display: block;width: 500px; padding: 0 20px; margin: 0 auto; }
+.contact_top_box_p{display: block; text-align: center; width: 500px; padding: 0 20px; margin: 0 auto; font-size: 17px; color: #6E747C; line-height: 1.5em }
 
 .contact_middle_box{width: 1000px;height:24px;background-color: #67B4B1;text-align:center;font-size: 18px; color: white;}
 .contact_first_h{display:block;width:140px;text-align:center;font-size: 24px;margin:40px auto 0 auto;}
 
-.contact_user_avatar{ display: inline-block; width:50px; height:50px; margin:0 auto; border-radius:50%; overflow: hidden }
+.contact_user_avatar{ display: inline-block; width:50px; height:50px; margin:0 auto; border-radius: 50%; overflow: hidden }
 
-.contact_user_name{ display: inline-block; width:120px;margin-top:16px;font-size:18px;}
+.contact_user_name{ display: inline-block; width:120px;margin-top:16px;font-size: 18px; }
 
 .contact_developer_box { display: block; margin: 0 auto; width: 240px; padding: 20px; text-align: center }
 
@@ -39,7 +39,7 @@
 
 .contact_developer_box > div > a { display: inline-block; font-size: 19px; line-height: 30px; margin: 16px 0 0 10px; vertical-align: top; }
 
-.contact_developer_box > div > a:hover, .contact_developer_box > a:hover { text-decoration: underline }
+.contact_developer_box > div > a:hover, .contact_developer_box > a:hover { text-decoration: underline; }
 
 .contact_developer_box > p { margin: 10px; line-height: 0; font-size: 13px }
 
@@ -49,7 +49,7 @@
   -webkit-transition: background-color 0.8s, color 0.8s ;
   -o-transition: background-color 0.8s, color 0.8s ; }
 
-.base_content_box:hover { background-color: #6E747C; color: #f1f1f1; margin-top: -4px; margin-bottom: 14px; box-shadow: 1px 3px 15px #aaa;}
+.base_content_box:hover { background-color: #6E747C; color: #f1f1f1; margin-top: -4px; margin-bottom: 14px; box-shadow: 1px 3px 15px #aaa; }
 
 .extra_index_left > span, .extra_index_right > span { float: right; margin: -60px 30px 0 0; height: 240px; width: 240px; border: 1px solid #cccccc; border-radius: 50%; overflow: hidden; }
 
@@ -57,12 +57,26 @@
 
 .extra_index_left > p, .extra_index_right > p { display: inline-block; float: left; clear: both; width: 170px; margin: 20px 0 0 30px; padding: 0; line-height: 1.8em; font-size: 18px; white-space: pre-wrap; text-justify: inter-ideograph; overflow: hidden }
 
-.extra_index_left > b, .extra_index_right > b { float: left; clear: both; color: #67B4B1; font-size: 24px; vertical-align: top; margin: 80px 0 0 30px }
+.extra_index_left > b, .extra_index_right > b { float: left; clear: both; color: #67B4B1; font-size: 24px; vertical-align: top; margin: 80px 0 0 30px; }
 
-.extra_index_left > h2, .extra_index_right > h2 { text-align:center; font-size: 20px; margin-top: 20px }
+.extra_index_left > h2, .extra_index_right > h2 { text-align:center; font-size: 20px; margin-top: 20px; }
 
 .extra_index_right { display: inline-block; clear: right; width: 480px; min-height: 340px; margin: 0; padding-bottom: 20px; margin-bottom: 12px; vertical-align: top; }
 
 .index_use_h{ display: block; font-size: 26px; color: #6E747C; margin-bottom: 20px }
 
 .how_to_use { display: block; width: 100%; padding-bottom: 20px; border-bottom: 1px solid #cccccc }
+
+.download_for_phone { width: 840px; border-top: 1px solid #cccccc; padding: 20px 80px; height: 50px; margin-top: 20px }
+
+.browser { float: left; color: #6E747C; font-size: 15px }
+
+.download_for_phone > a { float: left; margin: 10px 0 0 50px }
+
+.download_for_phone > a:hover { margin-top: 8px }
+
+.download_for_phone > a:active { margin-top: 10px }
+
+.download_for_phone > span > a { float: right; margin: -20px -10px 0 20px; height: 80px; width: 180px; background-color: #6E747C; color: #f1f1f1; border-radius: 4px; opacity: 0.50; filter:alpha(opacity=50); }
+
+.download_for_phone > span > a:hover {  }
