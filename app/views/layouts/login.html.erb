@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='login_scaffold'>
 <header>
   <div>
     <div>
@@ -30,13 +30,14 @@
       <div id='flash_message' class="flash <%= key %>"><%= value %></div>
   <% end %>
 </header>
-<div class="scaffold_overall login_scaffold">
+<div class="scaffold_overall">
   <div class="scaffold_top"></div>
   <div class="scaffold">
     <%= yield %>
   </div>
+  <div class="scaffold_footer"></div>
 </div>
-<footer style="margin-top: -94px">
+<footer style="margin-top: -64px">
   <div>
     <a class="about_us" href="<%= about_path %>">米er制作团队<br>联系我们: mealit@yeah.com</a>
     <a class="footer_extra" onselectstart="return false" href="<%= about_path %>">关于我们</a>

@@ -18,8 +18,9 @@ module FdurLink
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = "zh-CN"
-    config.i18n.locale = "zh-CN"
+    I18n.enforce_available_locales = false
+    config.i18n.default_locale = 'zh-CN'
+    config.i18n.locale = 'zh-CN'
     config.time_zone = 'Beijing'
     config.active_record.default_timezone = :local
     config.secret_key_base = "scott-------------1743!@$%^&*()"
