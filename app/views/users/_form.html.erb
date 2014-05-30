@@ -8,6 +8,6 @@
     <span class="form_input_font">确认密码</span> 
     <%= f.password_field :password_confirmation , class: "form_input", maxlength: 18%>
     <span class="form_input_error"><%=@user.errors.full_messages_for(:password_confirmation)[0] %></span>
-    <span class="signup_agreement">点击注册表示已阅读并同意<a href="<%= terms_path %>">《Fdur服务条款》</a></span>
+    <span class="signup_agreement">点击注册表示已阅读并同意<a href="<%= terms_path %>">《米er服务协议》</a></span>
     <%= f.submit '注册帐号', class: "base_button form_signup_button "%>
 <% end %>
