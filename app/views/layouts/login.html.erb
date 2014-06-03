@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meal It</title>
+  <meta name="renderer" content="webkit">
+  <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='login_scaffold'>
+<header>
+  <div>
+    <div>
+      <span>
+      <a href="<%=root_path %>" class="logo">
+        <%= image_tag 'Fdur_1.jpg', class: "logo"%>
+      </a>
+      </span>
+      <% if signed_in? %>
+          <%= link_to "登出", signout_path, method: "delete" %>
+          <%= link_to "个人信息", user_path(current_user_id), id: 'user_path'%>
+          <%= link_to "微计划", projects_path, id: 'projects_path' %>
+          <%= link_to "动态", activities_path, id: 'activities_path' %>
+      <% else %>
+          <%= link_to "登录", signin_path %>
+      <% end %>
+    </div>
+  </div>
+  <% flash.each do |key, value| %>
+      <div id='flash_message' class="flash <%= key %>"><%= value %></div>
+  <% end %>
+</header>
+<div class="scaffold_overall">
+  <div class="scaffold_top"></div>
+  <div class="scaffold">
+    <%= yield %>
+  </div>
+  <div class="scaffold_footer"></div>
+</div>
+<footer style="margin-top: -64px">
+  <div>
+    <a class="about_us" href="<%= about_path %>">米er制作团队<br>联系我们: mealit@yeah.com</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= about_path %>">关于我们</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= tips_path %>">图片帮助</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= terms_path %>">使用条款</a>
+  </div>
+</footer>
+</body>
+</html>

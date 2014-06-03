@@ -1,1 +1,38 @@
-1
+
+<div class="contact_top_box">
+  <span class="index_use_h" style="text-align: center">ABOUT US</span>
+  <span class="contact_top_box_p">我们应当努力奋斗，有所作为；<br>如此，我们就可以说，我们没有虚度年华;<br>并有可能在时间的沙滩上流下我们的足迹。<br>—— 拿破仑</span>
+</div>
+
+<span class="base_content_box extra_index_left">
+  <h2>技术支持</h2>
+  <% @dev_team.each do |dev| %>
+    <dt class='contact_developer_box'>
+      <div style="margin: 0 auto; ">
+        <span class='contact_user_avatar'>
+          <%= image_tag "unbrella.jpg", style: 'width:50px; height:50px;' %>
+        </span>
+        <%= link_to (dev[:human].name), dev[:human] %>
+      </div>
+      <p><%= dev[:duty] %></p>
+      <% unless dev[:page].nil? %>
+        <a href='<%= dev[:page] %>' target='_blank'> 查看他的主页</a>
+      <% end %>
+    </dt>
+  <% end %>
+</span>
+
+<span class="base_content_box extra_index_right" style="height: 523px">
+  <h2>运营支持</h2>
+  <% @ops_team.each do |ops| %>
+    <dt class='contact_developer_box'>
+      <div style="margin: 0 auto; ">
+        <span class='contact_user_avatar'>
+          <%= image_tag "unbrella.jpg", style: 'width:50px; height:50px;' %>
+        </span>
+        <%= link_to (ops[:human].name), ops[:human] %>
+      </div>
+      <p><%= ops[:duty] %></p>
+    </dt>
+  <% end %>
+</span>

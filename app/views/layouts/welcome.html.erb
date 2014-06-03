@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meal It</title>
+  <meta name="renderer" content="webkit">
+  <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <meta content="个人计划,计划管理,读书笔记,记录,分享,解决拖延症,自媒体平台" name="keywords">
+  <meta content="米er是一个供大家制定计划，管理计划，分享计划，拷贝计划的工具平台，同时也是一个创新的社交平台和自媒体平台" name="description">
+</head>
+<body data-flag='welcome'>
+<header>
+  <div>
+    <div>
+      <span>
+      <a href="<%=root_path %>" class="logo">
+        <%= image_tag 'Fdur_1.jpg', class: "logo"%>
+      </a>
+      </span>
+      <% if signed_in? %>
+          <%= link_to "登出", signout_path, method: "delete" %>
+          <%= link_to "个人信息", user_path(current_user_id), id: 'user_path'%>
+          <%= link_to "微计划", projects_path, id: 'projects_path' %>
+          <%= link_to "动态", activities_path, id: 'activities_path' %>
+      <% else %>
+          <%= link_to "登录", signin_path %>
+      <% end %>
+    </div>
+  </div>
+  <% flash.each do |key, value| %>
+      <div id='flash_message' class="flash <%= key %>"><%= value %></div>
+  <% end %>
+</header>
+<div class="scaffold_overall">
+  <div class="scaffold_top"></div>
+  <div class="background_pic">
+    <span class="gaussian">
+      <span class="scaffold_center" >
+        <b class="welcome_logo" >米er</b>
+        <b class="welcome_description" >分享你的计划，记录你的航向；更精彩的航程，从这里开始。</b>
+        <% unless signed_in? %>
+          <a class="base_button welcome_button" href="<%= signup_path %>" >普通用户注册</a>
+          <a class="welcome_go_inside" href="<%= activities_path %>" >去看看 ></a>
+        <% else %>
+          <a class="base_button welcome_button" href="<%= activities_path %>" >开始使用</a>
+        <% end %>
+      </span>
+    </span>
+    <%= image_tag 'boat.jpg', style: 'width: 100%; min-width: 1200px; margin-top: -200px; z-index: 10' %>
+  </div>
+  <div class="scaffold">
+    <%= yield %>
+  </div>
+  <div class="scaffold_footer"></div>
+</div>
+<footer>
+  <div>
+    <a class="about_us" href="<%= about_path %>">米er制作团队<br>联系我们: mealit@yeah.com</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= about_path %>">关于我们</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= tips_path %>">图片帮助</a>
+    <a class="footer_extra" onselectstart="return false" href="<%= terms_path %>">使用条款</a>
+  </div>
+</footer>
+</body>
+</html>

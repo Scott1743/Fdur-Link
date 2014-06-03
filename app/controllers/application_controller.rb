@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -17,7 +18,8 @@ def check_is_admin
   if current_user.permission.name == 'admin'
     nil
   else
-    flash.now[:failed] = "没有权限"
+    flash[:failed] = "没有权限"
+    redirect_to main_app.root_path
   end
 end
 

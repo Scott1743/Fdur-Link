@@ -3,12 +3,12 @@
     <span class="form_box_h1">欢迎回来</span>
     <div class="form_box_signin">
       <span class="form_box_h2">登录</span>
-      <span class="form_back">或者  <%= link_to '创建账户', signup_path ,class: "form_back_font"%></span>
+      <span class="form_back">或者  <%= link_to '创建用户', signup_path ,class: "form_back_font"%></span>
       <%= form_for(:session, url: sessions_path) do |f| %>
         <span class="form_input_font">用户名或邮箱</span>
-        <%= f.text_field :email ,class: "form_input"%>
+        <%= f.text_field :email ,class: "form_input", maxlength: 80%>
         <span class="form_input_font">密码</span>
-        <%= f.password_field :password, class: "form_input" %>
+        <%= f.password_field :password, class: "form_input", maxlength: 18 %>
         <%= f.submit '登录', class: "base_button form_signin_button"%>
       <% end %>
     <a href="#" class="forget_code">忘记密码？</a>

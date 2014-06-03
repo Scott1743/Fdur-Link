@@ -3,7 +3,7 @@ body, div, pre, form, blockquote,
 dl, dt, dd,
 h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
 body, html{height: 100%;height: 100%}
-a { cursor: pointer; outline: none; }
+a { cursor: pointer; outline: none; text-decoration: none; }
 a:visited { text-decoration: none; outline: none; }
 a:hover { text-decoration: none; }
 img { border: 0; }  //for IE
@@ -25,7 +25,7 @@ body{ background-color: #FFFFF0 }
 //.base_button:hover {  border-bottom:1px solid #18ab29;  position:relative;  top:-1px;}
 .base_button:active {  border: none;  position:relative;  top:1px;}
 
-header{ position: fixed;  top: 0;  width: 100%;  background-color: #444;  color: #FFF;opacity: 0.92; filter:alpha(opacity=92); z-index: 9999}
+header{ position: fixed;  top: 0;  width: 100%;  background-color: #444;  color: #FFF; opacity: 0.92; filter:alpha(opacity=92); z-index: 9999}
 
 header div{ margin-bottom: 4px;  background-color: #212121;  height: 60px;}
 
@@ -39,14 +39,37 @@ a.selected { background-color: #111;  border-bottom: 4px solid #67B4B1; }
 
 .scaffold_overall{ min-height: 100%; width: 100%; margin: 0 auto;}
 
+.login_scaffold { background-image: image-url("boat.jpg"); background-repeat: repeat; }
+
 .scaffold{ height: auto; width: 1000px;  margin: 30px auto;
   //border: 1px solid #888;
   border-radius: 4px;  padding: 0;}
 
-.scaffold_top{ width: 100%;height: 64px}
-.scaffold_footer{ width: 100%;height: 64px}
+.scaffold_top, .scaffold_footer{ width: 100%;height: 64px}
+
+.background_pic { height: 500px; overflow: hidden; }
+
+.gaussian { display: inline-block; position: absolute; top: 180px; background-color: #fffff0; height: 240px; width: 100%; z-index: 99; opacity: 0.80; filter:alpha(opacity=80); }
+
+.welcome_button { float: left; clear: left; z-index: 100; margin: 20px 0 0 100px; background-color: #4A525C; padding: 14px 20px }
+
+.welcome_button:hover { margin-top: 19px }
+
+.welcome_button:active { margin-top: 20px }
+
+.welcome_go_inside { float:left; z-index: 100; margin: 20px 0 0 40px; line-height: 44px; color: #4A525C }
+
+.welcome_go_inside:hover { font-weight: bold }
+
+.scaffold_center { display: block; width: 1000px; margin: 0 auto }
+
+b.welcome_logo { float: left; clear: both; margin: 20px 0 0 100px; text-align: center; color: #4A525C; font-size: 36px; line-height: 2em }
+
+b.welcome_description { float: left; clear: both;margin-left: 100px; text-align: center; color: #4A525C; font-size: 20px; line-height: 2em }
 
 footer { display: block; width: 100%; margin: -64px auto 0 auto; height: 64px; }
+
+footer.footer_common { background-image: image-url("boat.jpg"); background-position: 0 -1100px }
 
 footer > div { display: block; width: 1000px; margin: 0 auto; border-top: 1px solid #cccccc}
 
@@ -84,4 +107,8 @@ footer > div { display: block; width: 1000px; margin: 0 auto; border-top: 1px so
 
 #default_tips { width: 290px ; margin: 0 auto; line-height: 1.7em; background-color: #cccccc; font-weight: normal; font-size: 14px; text-align: center; padding: 0 10px }
 
+a#gotop{ display:block; display: none; position: fixed; left: 50%; bottom: 100px;width: 60px; height:30px; margin-left: 508px; border-radius: 4px; text-decoration:none; background-color:#000; z-index: 10000; opacity: 0.40; filter:alpha(opacity=40); }
 
+a#gotop:hover { opacity: 0.80; filter:alpha(opacity=80); }
+
+#gotop span{ display:block; width: 100%; color:#dddddd; font-size:34px; text-align:center; margin-top:4px; line-height: 34px }

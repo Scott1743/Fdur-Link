@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user_from_id, only: [:show]
   before_action :set_user, only: [:detail, :edit, :update]
   before_action :check_signed_in ,except: [:new, :create]
+  layout 'login', only: [:new, :edit]
 
   def index
     @users = User.all
@@ -57,10 +58,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    redirect_to users_url
-  end
+  #def destroy
+  #  @user.destroy
+  #  redirect_to users_url
+  #end
 
   private
 
