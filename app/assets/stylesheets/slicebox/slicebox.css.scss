@@ -28,7 +28,7 @@
 }
 
 .sb-description {
-	padding: 20px;
+	padding: 0 20px 10px 20px;
 	bottom: 10px;
 	left: 10px;
 	right: 10px;
@@ -47,6 +47,14 @@
 	-o-transition: all 200ms;
 	-ms-transition: all 200ms;
 	transition: all 200ms;
+}
+
+.sb-description > h3 {
+  line-height: 40px;
+}
+
+.sb-description > span {
+  line-height: 1.2em;
 }
 
 .sb-slider li.sb-current .sb-description {

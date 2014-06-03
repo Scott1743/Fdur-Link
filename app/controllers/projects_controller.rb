@@ -34,6 +34,11 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       flash[:success] = '修改成功'
+      temp = @project.milestones.order(:created_at).first
+      if temp.name.match /创建了新计划/
+        temp.name = "创建了新计划——#{@project.name}"
+        temp.save!
+      end
       redirect_to action: 'show'
     else
       flash[:failed]= '编辑失败，图片链接格式不正确，看看帮助吧'

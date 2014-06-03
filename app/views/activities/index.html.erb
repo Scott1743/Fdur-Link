@@ -1,11 +1,12 @@
 <div class="background_pic_ac" >
-  <%= image_tag 'boat_gaussian.jpg', style: 'width: 100%; min-width: 1200px; margin-top: 0px; z-index: 10' %>
+  <%= image_tag 'boat_gaussian.jpg', style: 'width: 100%; min-width: 1200px; margin-top: 0px; z-index: 10',id: 'activities_top_image' %>
 </div>
 <div class="slicebox">
   <%= render 'slicebox' %>
 </div>
+<%= image_tag 'icon/support-loading.gif', style: 'display:block; position: absolute; left:50%; top: 580px; margin-left: -60px; width: 50px; padding: 10px; margin: 0 auto', id: 'projects_loading' %>
 <i id="page_flag" page-flag='activities_index'></i>
-<div class="projects">
+<div class="projects" style="display: none">
   <ul>
   <% @activities.each_with_index do |a, index| %>
     <% if (index%3 == 0) %>
@@ -35,7 +36,7 @@
           </span>
           <span class="project_span project_milestone">
           <% unless milestone_news(project).image.blank? %>
-            <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0' %>
+            <%= image_tag 'icon/support-loading.gif', style: 'display:block ;width: 50px; padding: 10px; margin: 0 auto' %>
             <%= image_tag @milestones_news.image ,style: 'display: none; width: 100px; max-height:180px; overflow:hidden;', img_flag: 'loading' %><br/>
           <% end %>
           <b><%= @milestones_news.name %></b>

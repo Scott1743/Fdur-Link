@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515031334) do
+ActiveRecord::Schema.define(version: 20140603015351) do
 
   create_table "activities", force: true do |t|
     t.integer  "project_id",         null: false
@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(version: 20140515031334) do
 
   add_index "projects", ["state"], name: "index_projects_on_state", using: :btree
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+
+  create_table "sliders", force: true do |t|
+    t.string  "image_path",             null: false
+    t.integer "num",        default: 0
+    t.string  "title",                  null: false
+    t.text    "content"
+  end
 
   create_table "user_details", force: true do |t|
     t.string   "name"
