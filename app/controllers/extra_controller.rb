@@ -16,7 +16,7 @@ class ExtraController < ApplicationController
     # - - - - - - 0 - - - - 1 - - - - - - 2 - - - - 3 - - - - - 4 - - - 5 - - - 6 - - - - 7
     @dev_team = []
     @ops_team = []
-    @dev_team << { human: (User.find_by_email '512981271@qq.com'), duty: (duty_type[0].to_s + '、' + duty_type[1].to_s), page: 'http://www.baidu.com' }
+    @dev_team << { human: (User.find_by_email '512981271@qq.com'), duty: (duty_type[0].to_s + '、' + duty_type[1].to_s), page: 'http://scott1743.jd-app.com/' }
     @dev_team << { human: (User.find_by_email '513105786@qq.com'), duty: duty_type[1].to_s }
     @dev_team << { human: (User.find_by_email '519421832@qq.com'), duty: duty_type[2].to_s }
     @dev_team << { human: (User.find_by_email 'mqf9.18@qq.com'), duty: duty_type[3].to_s }
