@@ -29,7 +29,7 @@ header{ position: fixed;  top: 0;  width: 100%;  background-color: #444;  color:
 
 header div{ margin-bottom: 4px;  background-color: #212121;  height: 60px;}
 
-header div div{ min-width: 1000px; margin: 0 auto;}
+header div div{ width: 1000px; margin: 0 auto;}
 
 header div > a{ margin: -4px 0 0 0;  line-height: 60px;  float: right;  height: 60px; width: 80px; text-align: center; border-top: 4px solid #444;  text-decoration: none;  cursor: pointer;  color: #FFF; }
 

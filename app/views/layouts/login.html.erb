@@ -8,28 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class='login_scaffold'>
-<header>
-  <div>
-    <div>
-      <span>
-      <a href="<%=root_path %>" class="logo">
-        <%= image_tag 'Fdur_1.jpg', class: "logo"%>
-      </a>
-      </span>
-      <% if signed_in? %>
-          <%= link_to "登出", signout_path, method: "delete" %>
-          <%= link_to "个人信息", user_path(current_user_id), id: 'user_path'%>
-          <%= link_to "微计划", projects_path, id: 'projects_path' %>
-          <%= link_to "动态", activities_path, id: 'activities_path' %>
-      <% else %>
-          <%= link_to "登录", signin_path %>
-      <% end %>
-    </div>
-  </div>
-  <% flash.each do |key, value| %>
-      <div id='flash_message' class="flash <%= key %>"><%= value %></div>
-  <% end %>
-</header>
+<%= render 'layouts/header' %>
 <div class="scaffold_overall">
   <div class="scaffold_top"></div>
   <div class="scaffold">
